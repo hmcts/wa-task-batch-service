@@ -1,0 +1,21 @@
+#!groovy
+
+@Library("Infrastructure")
+
+def type = "nodejs"
+def product = "wa"
+def component = "task-batch-service"
+
+def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
+
+withPipeline(type, product, component) {
+  disableLegacyDeployment()
+  enableDockerBuild()
+  installCharts()
+  nonServiceApp()
+
+  after('build') {
+    yarnBuilder.yarn('build')
+  }
+
+}
