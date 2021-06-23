@@ -7,7 +7,7 @@ version: 0.0.1
 dependencies:
   - name: job
     version: ~0.7.2
-    repository: '@hmcts'
+    repository: '@hmctspublic'
 
 
 
