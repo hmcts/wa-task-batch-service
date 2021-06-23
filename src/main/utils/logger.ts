@@ -6,12 +6,13 @@ enum SEVERITY {
   EXCEPTION = 3
 }
 
+//eslint-disable-next-line @typescript-eslint/interface-name-prefix
 interface ILogger {
   exception: (message: string, label: string) => void;
   request: (message: string, label: string) => void;
   trace: (message: string, label: string) => void;
 }
-
+//eslint-disable @typescript-eslint/explicit-function-return-type
 export default class Logger implements ILogger {
 
   request(message: string, label: string) {
@@ -27,7 +28,7 @@ export default class Logger implements ILogger {
   }
 
   console(message: string, label: string, severity?: number) {
-    const log: string = `[${label}]: ${message}`;
+    const log = `[${label}]: ${message}`;
     switch (severity) {
       case SEVERITY.REQUEST:
         // tslint:disable:no-console
@@ -45,8 +46,8 @@ export default class Logger implements ILogger {
   }
 }
 
+//eslint-disable @typescript-eslint/explicit-function-return-type
 export function getLogLabel(path: string) {
-  let paths: string[];
-  paths = path.split('\\').pop().split('/');
+  const paths: string[] = path.split('\\').pop().split('/');
   return paths[paths.length - 2] + '/' + paths[paths.length - 1];
 }

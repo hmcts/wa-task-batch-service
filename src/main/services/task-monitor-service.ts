@@ -1,8 +1,8 @@
 import axios, {AxiosInstance} from 'axios';
 import config from 'config';
-import {JobName} from "../model/job-names";
-import Logger, {getLogLabel} from "../utils/logger";
-import S2SService from "./s2s-service";
+import {JobName} from '../model/job-names';
+import Logger, {getLogLabel} from '../utils/logger';
+import S2SService from './s2s-service';
 
 const BASE_URL: string = config.get('services.taskMonitor.url');
 const logger: Logger = new Logger();
@@ -14,22 +14,23 @@ const taskMonitorApi: AxiosInstance = axios.create({
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
-  }
+  },
 });
 
 export class TaskMonitorService {
-  public createJob(jobName: JobName) {
-    logger.trace(`Attempting to create a job for task ${jobName}`, logLabel)
+  public createJob(jobName: JobName): void {
+    logger.trace(`Attempting to create a job for task ${jobName}`, logLabel);
     this.createTaskJob(jobName);
   }
 
-  private createTaskJob(job: JobName) {
-    const jobRequest: MonitorTaskJobRequest = {job_details: {name: job}};
+  private createTaskJob(job: JobName): void {
+    const jobRequest: MonitorTaskJobRequest = {'job_details': {name: job}};
     s2sService.getServiceToken().then(s2sToken => {
+      //eslint-disable-next-line @typescript-eslint/no-explicit-any
       const headers: any = {ServiceAuthorization: s2sToken};
-      taskMonitorApi.post("/monitor/tasks/jobs", jobRequest, {headers}).then(resp => {
-        logger.trace(`Status: ${resp.status}`, logLabel)
-        logger.trace(`Response: ${JSON.stringify(resp.data)}`, logLabel)
+      taskMonitorApi.post('/monitor/tasks/jobs', jobRequest, {headers}).then(resp => {
+        logger.trace(`Status: ${resp.status}`, logLabel);
+        logger.trace(`Response: ${JSON.stringify(resp.data)}`, logLabel);
       }).catch(err => {
         logger.exception(err, logLabel);
       });

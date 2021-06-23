@@ -1,8 +1,8 @@
 import axios from 'axios';
-import {setupSecrets} from "../config/secrets";
-import Logger, {getLogLabel} from "../utils/logger";
+import {setupSecrets} from '../config/secrets';
+import Logger, {getLogLabel} from '../utils/logger';
 
-const otp = require(("otp"))
+const otp = require(('otp'));
 const config = setupSecrets();
 
 const s2sSecret: string = config.get('s2s.secret');
@@ -12,6 +12,7 @@ const microServiceName: string = config.get('s2s.microserviceName');
 const logger: Logger = new Logger();
 const logLabel: string = getLogLabel(__filename);
 
+//eslint-disable-next-line @typescript-eslint/interface-name-prefix
 interface IS2SService {
   buildRequest: () => {};
   requestServiceToken: () => void;
@@ -19,6 +20,7 @@ interface IS2SService {
   getServiceToken: () => {};
 }
 
+//eslint-disable @typescript-eslint/explicit-function-return-type
 export default class S2SService implements IS2SService {
   private static instance: S2SService;
   private serviceToken: string;
@@ -52,8 +54,8 @@ export default class S2SService implements IS2SService {
       uri: uri,
       body: {
         microservice: microServiceName,
-        oneTimePassword: oneTimePassword
-      }
+        oneTimePassword: oneTimePassword,
+      },
     };
   }
 

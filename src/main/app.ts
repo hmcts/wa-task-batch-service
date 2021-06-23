@@ -7,9 +7,9 @@ import * as path from 'path';
 import {HTTPError} from 'HttpError';
 import {PropertiesVolume} from './modules/properties-volume';
 import {AppInsights} from './modules/appinsights';
-import {JobName} from "./model/job-names";
-import {TaskMonitorService} from "./services/task-monitor-service";
-import S2SService from "./services/s2s-service";
+import {JobName} from './model/job-names';
+import {TaskMonitorService} from './services/task-monitor-service';
+import S2SService from './services/s2s-service';
 
 const {Logger} = require('@hmcts/nodejs-logging');
 
