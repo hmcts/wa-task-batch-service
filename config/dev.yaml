@@ -1,0 +1,12 @@
+useCSRFProtection: true
+security:
+  referrerPolicy: origin
+appInsights:
+  instrumentationKey: false
+s2s:
+  microserviceName: wa_task_monitor
+  secret: AAAAAAAAAAAAAAAA
+  url: http://service-auth-provider-api
+services:
+  taskMonitor:
+    url: http://localhost:8077
