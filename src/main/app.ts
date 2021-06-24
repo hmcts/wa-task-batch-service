@@ -10,6 +10,7 @@ import {AppInsights} from './modules/appinsights';
 import {JobName} from './model/job-names';
 import {TaskMonitorService} from './services/task-monitor-service';
 import S2SService from './services/s2s-service';
+import {exit} from "./utils/exit";
 
 const {Logger} = require('@hmcts/nodejs-logging');
 
@@ -65,3 +66,5 @@ const s2s = S2SService.getInstance();
 app.locals.s2s = s2s;
 
 new TaskMonitorService().createJob(JobName.CONFIGURATION);
+
+exit();

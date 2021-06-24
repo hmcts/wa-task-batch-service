@@ -32,15 +32,6 @@ export default class S2SService implements IS2SService {
     return S2SService.instance;
   }
 
-  constructor() {
-    this.init()
-      .catch(ex => logger.exception(ex, logLabel));
-  }
-
-  async init() {
-    await this.requestServiceToken();
-  }
-
   /**
    * Assembles a serviceAuthProvider request object to be used to query the service
    * also creates a one-time-password from the secret.
