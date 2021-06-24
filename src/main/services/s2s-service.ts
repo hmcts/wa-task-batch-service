@@ -67,7 +67,6 @@ export default class S2SService implements IS2SService {
   async requestServiceToken() {
     logger.trace('Attempting to request a S2S token', logLabel);
     const request = this.buildRequest();
-    console.info(JSON.stringify(request))
     await axios.post(request.uri, request.body).then(res => {
       if (res && res.data) {
         this.serviceToken = res.data;
