@@ -9,6 +9,14 @@ const logger: Logger = new Logger();
 const logLabel: string = getLogLabel(__filename);
 const s2sService: S2SService = S2SService.getInstance();
 
+interface JobDetails {
+  name: string;
+}
+
+interface MonitorTaskJobRequest {
+  job_details: JobDetails;
+}
+
 const taskMonitorApi: AxiosInstance = axios.create({
   baseURL: BASE_URL,
   timeout: 30000,
