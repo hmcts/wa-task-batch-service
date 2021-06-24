@@ -3,6 +3,9 @@ import * as fs from 'fs';
 import * as https from 'https';
 import * as path from 'path';
 import {app} from './app';
+import {TaskMonitorService} from './services/task-monitor-service';
+import {JobName} from './model/job-names';
+import {exit} from './utils/exit';
 
 const {Logger} = require('@hmcts/nodejs-logging');
 
@@ -26,3 +29,5 @@ if (app.locals.ENV === 'development') {
     logger.info(`Application started: http://localhost:${port}`);
   });
 }
+
+new TaskMonitorService().createJob(JobName.CONFIGURATION).then(() => exit());

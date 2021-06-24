@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import {setupSecrets} from '../config/secrets';
 import Logger, {getLogLabel} from '../utils/logger';
 
@@ -16,14 +16,12 @@ const logLabel: string = getLogLabel(__filename);
 interface IS2SService {
   buildRequest: () => {};
   requestServiceToken: () => void;
-  setServiceToken: (token: string) => void;
   getServiceToken: () => {};
 }
 
 //eslint-disable @typescript-eslint/explicit-function-return-type
 export default class S2SService implements IS2SService {
   private static instance: S2SService;
-  private serviceToken: string;
 
   public static getInstance(): S2SService {
     if (!S2SService.instance) {
@@ -58,26 +56,21 @@ export default class S2SService implements IS2SService {
   async requestServiceToken() {
     logger.trace('Attempting to request a S2S token', logLabel);
     const request = this.buildRequest();
-    await axios.post(request.uri, request.body).then(res => {
-      if (res && res.data) {
-        this.serviceToken = res.data;
-        logger.trace('Received S2S token and stored token', logLabel);
-      } else {
-        logger.exception('Could not retrieve S2S token', logLabel);
+    try {
+      const response: AxiosResponse = await axios.post(request.uri, request.body);
+      if (response && response.data) {
+        logger.trace('Received S2S token', logLabel);
+        return response.data;
       }
-    }).catch(err => {
+    } catch (err) {
+      logger.exception('Could not retrieve S2S token', logLabel);
       logger.exception(err, logLabel);
-    });
+    }
   }
 
   async getServiceToken() {
-    if (this.serviceToken === undefined) {
-      await this.requestServiceToken();
-    }
-    return `Bearer ${this.serviceToken}`;
+    const serviceToken = await this.requestServiceToken();
+    return `Bearer ${serviceToken}`;
   }
 
-  setServiceToken(token: string) {
-    this.serviceToken = token;
-  }
 }
