@@ -10,7 +10,7 @@ import {AppInsights} from './modules/appinsights';
 import {JobName} from './model/job-names';
 import {TaskMonitorService} from './services/task-monitor-service';
 import S2SService from './services/s2s-service';
-import {exit} from "./utils/exit";
+import {exit} from './utils/exit';
 
 const {Logger} = require('@hmcts/nodejs-logging');
 
