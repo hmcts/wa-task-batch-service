@@ -65,6 +65,6 @@ app.use((err: HTTPError, req: express.Request, res: express.Response) => {
 const s2s = S2SService.getInstance();
 app.locals.s2s = s2s;
 
-new TaskMonitorService().createJob(JobName.CONFIGURATION);
+new TaskMonitorService().createJob(JobName.CONFIGURATION).then(() => exit());
 
-exit();
+

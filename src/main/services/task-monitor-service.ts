@@ -26,12 +26,12 @@ const taskMonitorApi: AxiosInstance = axios.create({
 });
 
 export class TaskMonitorService {
-  public createJob(jobName: JobName): void {
+  public async createJob(jobName: JobName): Promise<void> {
     logger.trace(`Attempting to create a job for task ${jobName}`, logLabel);
-    this.createTaskJob(jobName);
+    return this.createTaskJob(jobName);
   }
 
-  private createTaskJob(job: JobName): void {
+  private async createTaskJob(job: JobName): Promise<void> {
     const jobRequest: MonitorTaskJobRequest = {'job_details': {name: job}};
     s2sService.getServiceToken().then(s2sToken => {
       //eslint-disable-next-line @typescript-eslint/no-explicit-any
