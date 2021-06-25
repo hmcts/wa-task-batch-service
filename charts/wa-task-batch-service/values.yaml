@@ -2,13 +2,13 @@ job:
   image: hmctspublic.azurecr.io/wa/task-batch-service:latest
   schedule: "*/5 * * * *"
   aadIdentityName: wa
-  keyVaults:
-    wa:
-      secrets:
-        - s2s-secret-task-monitor
   environment:
     S2S_URL: "http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
-    S2S_MICROSERVICE_NAME: "wa_task_monitor"
+    S2S_MICROSERVICE_NAME_TASK_MONITOR: "wa_task_monitor"
     WA_TASK_MONITOR_SERVICE_URL: "http://wa-task-monitor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
+  secrets:
+    S2S_SECRET_TASK_MONITOR:
+      secretRef: "wa-{{ .Values.global.environment }}"
+      key: s2s-secret-task-monitor
 global:
   jobKind: CronJob
