@@ -36,7 +36,7 @@ export class TaskMonitorService {
     return s2sService.getServiceToken().then(s2sToken => {
       //eslint-disable-next-line @typescript-eslint/no-explicit-any
       const headers: any = {ServiceAuthorization: s2sToken};
-      taskMonitorApi.post('/monitor/tasks/jobs', jobRequest, {headers}).then(resp => {
+      return taskMonitorApi.post('/monitor/tasks/jobs', jobRequest, {headers}).then(resp => {
         logger.trace(`Status: ${resp.status}`, logLabel);
         logger.trace(`Response: ${JSON.stringify(resp.data)}`, logLabel);
       }).catch(err => {
