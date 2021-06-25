@@ -7,11 +7,6 @@ import {TaskMonitorService} from './services/task-monitor-service';
 import {JobName} from './model/job-names';
 import {exit} from './utils/exit';
 
-import * as config from 'config';
-import * as propertiesVolume from '@hmcts/properties-volume';
-
-propertiesVolume.addTo(config);
-
 const {Logger} = require('@hmcts/nodejs-logging');
 
 const logger = Logger.getLogger('server');

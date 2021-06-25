@@ -1,9 +1,8 @@
 import axios, {AxiosResponse} from 'axios';
 import Logger, {getLogLabel} from '../utils/logger';
-import {setupSecrets} from '../config/secrets';
+import config from 'config';
 
 const otp = require(('otp'));
-const config = setupSecrets();
 const s2sSecret: string = config.get('s2s.secret');
 const s2sUrl: string = config.get('s2s.url');
 const microServiceName: string = config.get('s2s.microserviceName');

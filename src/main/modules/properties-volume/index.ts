@@ -1,7 +1,7 @@
 import config from 'config';
 import * as propertiesVolume from '@hmcts/properties-volume';
-import { Application } from 'express';
-import { get, set } from 'lodash';
+import {Application} from 'express';
+import {get, set} from 'lodash';
 
 export class PropertiesVolume {
 
@@ -10,6 +10,7 @@ export class PropertiesVolume {
       propertiesVolume.addTo(config);
 
       this.setSecret('secrets.wa.AppInsightsInstrumentationKey', 'appInsights.instrumentationKey');
+      this.setSecret('secrets.wa.s2s-secret-task-monitor', 's2s.secret');
     }
   }
 
