@@ -1,8 +1,5 @@
-import * as propertiesVolume from '@hmcts/properties-volume';
 import config from 'config';
 import {get, has, set} from 'lodash';
-
-propertiesVolume.addTo(config);
 
 const setSecret = (secretPath: string, configPath: string): void => {
   // Only overwrite the value if the secretPath is defined
