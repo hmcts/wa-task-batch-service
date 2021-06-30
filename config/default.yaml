@@ -4,3 +4,13 @@ security:
 appInsights:
   enabled: "false"
   instrumentationKey: "false"
+s2s:
+  microserviceName: S2S_MICROSERVICE_NAME_TASK_MONITOR
+  secret: S2S_SECRET_TASK_MONITOR
+  url: S2S_URL
+services:
+  taskMonitor:
+    url: WA_TASK_MONITOR_SERVICE_URL
+job:
+  name: JOB_NAME
+

@@ -1,0 +1,3 @@
+appInsights:
+  enabled: "false"
+  instrumentationKey: "false"
