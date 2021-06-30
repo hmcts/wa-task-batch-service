@@ -7,7 +7,6 @@ const appInsightsKey: string = config.get('appInsights.instrumentationKey');
 export class AppInsights {
 
   enable(): void {
-    console.info(appInsightsEnabled)
     if (appInsightsEnabled && appInsightsEnabled === true) {
       appInsights.setup(appInsightsKey)
         .setSendLiveMetrics(true)
