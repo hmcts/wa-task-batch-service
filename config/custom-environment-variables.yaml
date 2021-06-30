@@ -2,6 +2,7 @@ useCSRFProtection: "true"
 security:
   referrerPolicy: origin
 appInsights:
+  enabled: "false"
   instrumentationKey: "false"
 s2s:
   microserviceName: S2S_MICROSERVICE_NAME_TASK_MONITOR
