@@ -4,14 +4,11 @@ import * as https from 'https';
 import * as path from 'path';
 import {app} from './app';
 import {TaskMonitorService} from './services/task-monitor-service';
-import {JobName} from './model/job-names';
 import {exit} from './utils/exit';
-import config from 'config';
 
 const {Logger} = require('@hmcts/nodejs-logging');
 
 const logger = Logger.getLogger('server');
-const JOB_NAME = config.get('job.name') as keyof typeof JobName;
 // TODO: set the right port for your application
 const port: number = parseInt(process.env.PORT, 10) || 9999;
 
@@ -31,4 +28,4 @@ if (app.locals.ENV === 'development') {
   });
 }
 
-new TaskMonitorService().createJob(JobName[JOB_NAME]).then(() => exit());
+new TaskMonitorService().createJob().then(() => exit(0));

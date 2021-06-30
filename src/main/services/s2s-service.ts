@@ -1,6 +1,7 @@
 import axios, {AxiosResponse} from 'axios';
 import Logger, {getLogLabel} from '../utils/logger';
 import config from 'config';
+import {exit} from '../utils/exit';
 
 const otp = require(('otp'));
 const s2sSecret: string = config.get('s2s.secret');
@@ -63,6 +64,7 @@ export default class S2SService implements IS2SService {
     } catch (err) {
       logger.exception('Could not retrieve S2S token', logLabel);
       logger.exception(err, logLabel);
+      exit(1);
     }
   }
 
