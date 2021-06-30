@@ -3,7 +3,7 @@ import config from 'config';
 import {JobName} from '../model/job-names';
 import Logger, {getLogLabel} from '../utils/logger';
 import S2SService from './s2s-service';
-import {exit} from "../utils/exit";
+import {exit} from '../utils/exit';
 
 const BASE_URL: string = config.get('services.taskMonitor.url');
 const logger: Logger = new Logger();
