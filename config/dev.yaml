@@ -10,3 +10,5 @@ s2s:
 services:
   taskMonitor:
     url: http://localhost:8077
+job:
+  name: JOB_NAME
