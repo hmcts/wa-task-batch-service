@@ -7,7 +7,6 @@ import * as path from 'path';
 import {HTTPError} from 'HttpError';
 import {PropertiesVolume} from './modules/properties-volume';
 import {AppInsights} from './modules/appinsights';
-import config from 'config';
 
 const {Logger} = require('@hmcts/nodejs-logging');
 
@@ -22,7 +21,7 @@ app.locals.ENV = env;
 const logger = Logger.getLogger('app');
 
 new PropertiesVolume().enableFor(app);
-new Helmet(config.get('security')).enableFor(app);
+new Helmet().enableFor(app);
 new AppInsights().enable();
 
 app.use(bodyParser.json());
