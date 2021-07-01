@@ -1,4 +1,4 @@
-import config from 'config';
+import * as config from 'config';
 import * as propertiesVolume from '@hmcts/properties-volume';
 import {Application} from 'express';
 import {get, set} from 'lodash';
