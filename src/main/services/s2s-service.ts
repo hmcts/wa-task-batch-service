@@ -3,19 +3,14 @@ import Logger, {getLogLabel} from '../utils/logger';
 import config from 'config';
 import {exit} from '../utils/exit';
 
-const otp = require(('otp'));
-const s2sSecret: string = config.get('s2s.secret');
-const s2sUrl: string = config.get('s2s.url');
-const microServiceName: string = config.get('s2s.microserviceName');
+import {authenticator} from 'otplib';
 
 const logger: Logger = new Logger();
 const logLabel: string = getLogLabel(__filename);
 
-//eslint-disable-next-line @typescript-eslint/interface-name-prefix
 interface IS2SService {
-  buildRequest: () => {};
-  requestServiceToken: () => void;
-  getServiceToken: () => {};
+  requestServiceToken: () => Promise<string>;
+  getServiceToken: () => Promise<string>;
 }
 
 //eslint-disable @typescript-eslint/explicit-function-return-type
@@ -30,33 +25,22 @@ export default class S2SService implements IS2SService {
   }
 
   /**
-   * Assembles a serviceAuthProvider request object to be used to query the service
-   * also creates a one-time-password from the secret.
-   */
-  buildRequest() {
-
-    const uri = `${s2sUrl}/lease`;
-    const oneTimePassword = otp({secret: s2sSecret}).totp();
-
-    return {
-      uri: uri,
-      body: {
-        microservice: microServiceName,
-        oneTimePassword: oneTimePassword,
-      },
-    };
-  }
-
-  /**
    * Sends out a request to the serviceAuthProvider and request a new service token
    * to be passed as a header in any outgoing calls.
    * Note: This token is stored in memory and this token is only valid for 3 hours.
    */
-  async requestServiceToken() {
+  async requestServiceToken(): Promise<string> {
     logger.trace('Attempting to request a S2S token', logLabel);
-    const request = this.buildRequest();
+
+    const url: string = config.get('s2s.url') + '/lease';
+    const secret: string = config.get('s2s.secret');
+    const microservice: string = config.get('s2s.microserviceName');
+
+    const oneTimePassword = authenticator.generate(secret);
+    const body = {microservice, oneTimePassword};
+
     try {
-      const response: AxiosResponse = await axios.post(request.uri, request.body);
+      const response: AxiosResponse = await axios.post(url, body);
       if (response && response.data) {
         logger.trace('Received S2S token', logLabel);
         return response.data;
@@ -68,7 +52,7 @@ export default class S2SService implements IS2SService {
     }
   }
 
-  async getServiceToken() {
+  async getServiceToken(): Promise<string> {
     const serviceToken = await this.requestServiceToken();
     return `Bearer ${serviceToken}`;
   }
