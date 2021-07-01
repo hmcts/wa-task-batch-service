@@ -1,7 +1,7 @@
 import * as config from 'config';
 import * as propertiesVolume from '@hmcts/properties-volume';
 import {Application} from 'express';
-import {get, set} from 'lodash';
+import {get, has, set} from 'lodash';
 
 export class PropertiesVolume {
 
@@ -15,7 +15,7 @@ export class PropertiesVolume {
   }
 
   private setSecret(fromPath: string, toPath: string): void {
-    if (config.has(fromPath)) {
+    if (has(config, fromPath)) {
       set(config, toPath, get(config, fromPath));
     }
   }
