@@ -12,6 +12,7 @@ const s2sService: S2SService = S2SService.getInstance();
 
 interface JobDetails {
   name: string;
+  camundaMaxResults: string
 }
 
 interface MonitorTaskJobRequest {
@@ -29,13 +30,20 @@ const taskMonitorApi: AxiosInstance = axios.create({
 export class TaskMonitorService {
   public async createJob(): Promise<void> {
     const jobName: string = config.get('job.name');
+    
+    const camundaMaxResults: string =
+      config.get('job.camundaMaxResults') == 'CAMUNDA_MAX_RESULTS'
+        ? config.get('job.defaultCamundaMaxResults')
+        : config.get('job.camundaMaxResults');
+    
     const JOB_NAME: JobName = JobName[jobName as keyof typeof JobName];
-    logger.trace(`Attempting to create a job for task ${JOB_NAME}`, logLabel);
-    return this.createTaskJob(JobName[JOB_NAME]);
+    logger.trace(`Attempting to create job=${JOB_NAME} with camundaMaxResults=${camundaMaxResults}`, logLabel);
+    return this.createTaskJob(JobName[JOB_NAME], camundaMaxResults);
   }
 
-  private createTaskJob(job: JobName): Promise<void> {
-    const jobRequest: MonitorTaskJobRequest = {'job_details': {name: job}};
+  private createTaskJob(job: JobName, camundaMaxResults: string): Promise<void> {
+    const jobRequest: MonitorTaskJobRequest = { job_details: { name: job , camundaMaxResults: camundaMaxResults} };
+    
     return s2sService.getServiceToken().then(s2sToken => {
       //eslint-disable-next-line @typescript-eslint/no-explicit-any
       const headers: any = {ServiceAuthorization: s2sToken};
