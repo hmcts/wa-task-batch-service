@@ -26,7 +26,7 @@ $ yarn webpack
 Run:
 
 ```bash
-$ yarn start
+$ NODE_CONFIG_ENV=dev yarn start
 ```
 
 The applications's home page will be available at https://localhost:9999
