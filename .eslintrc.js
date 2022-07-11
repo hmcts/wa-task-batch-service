@@ -1,10 +1,10 @@
 module.exports = {
-  'env': { 'browser': true, 'es2021': true, 'node': true },
+  'env': { 'browser': true, 'es6': true, 'node': true },
   'extends': ['eslint:recommended'],
   'globals': { 'Atomics': 'readonly', 'SharedArrayBuffer': 'readonly' },
-  'parser': '@babel/eslint-parser',
+  'parser': 'babel-eslint',
   'parserOptions': {
-    'ecmaVersion': 12,
+    'ecmaVersion': 2018,
     'sourceType': 'module',
   },
   'rules': {
@@ -17,7 +17,7 @@ module.exports = {
   'overrides': [
     {
       'files': ['**/*.ts', '**/*.tsx'],
-      'env': { 'browser': true, 'es2021': true, 'node': true },
+      'env': { 'browser': true, 'es6': true, 'node': true },
       'extends': [
         'eslint:recommended',
         'plugin:@typescript-eslint/eslint-recommended',
@@ -26,7 +26,7 @@ module.exports = {
       'globals': { 'Atomics': 'readonly', 'SharedArrayBuffer': 'readonly' },
       'parser': '@typescript-eslint/parser',
       'parserOptions': {
-        'ecmaVersion': 12,
+        'ecmaVersion': 2018,
         'sourceType': 'module',
         'project': './tsconfig.json',
       },
