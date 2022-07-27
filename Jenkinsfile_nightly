@@ -9,10 +9,7 @@ def component = "task-batch-service"
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
 withNightlyPipeline(type, product, component) {
-  enableSecurityScan()
-
   after('build') {
     yarnBuilder.yarn('build')
   }
-
 }
