@@ -29,6 +29,7 @@ const taskMonitorApi: AxiosInstance = axios.create({
 export class TaskMonitorService {
   public async createJob(): Promise<void> {
     const jobName: string = config.get('job.name');
+    logger.trace(`environment variable job.name value is ${jobName}`, logLabel);
     const JOB_NAME: JobName = JobName[jobName as keyof typeof JobName];
     logger.trace(`Attempting to create a job for task ${JOB_NAME}`, logLabel);
     return this.createTaskJob(JobName[JOB_NAME]);
