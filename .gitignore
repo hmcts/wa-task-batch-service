@@ -23,4 +23,4 @@ npm-debug.log.*
 dist/
 public/
 .vscode/
-coverate/
+coverage/
