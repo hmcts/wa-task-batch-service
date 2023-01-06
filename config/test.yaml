@@ -1,3 +1,6 @@
 appInsights:
   enabled: "false"
   instrumentationKey: "false"
+services:
+  taskMonitor:
+    url: http://taskmonitor
