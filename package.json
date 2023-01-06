@@ -13,7 +13,7 @@
     "build": "yarn webpack --config webpack.config.js",
     "build:prod": "NODE_ENV=production yarn webpack --mode production --config webpack.config.js",
     "test": "WA_TASK_MONITOR_SERVICE_URL=http://localhost:8077 jest",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "WA_TASK_MONITOR_SERVICE_URL=http://localhost:8077 jest --coverage",
     "test:routes": "jest -c jest.routes.config.js",
     "sonar-scan": "sonar-scanner",
     "test:a11y": "echo 'Not needed' && exit 0",
