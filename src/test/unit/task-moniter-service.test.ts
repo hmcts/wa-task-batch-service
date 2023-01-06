@@ -1,12 +1,16 @@
 import { TaskMonitorService } from '../../main/services/task-monitor-service';
 import { setupServer }  from 'msw/node';
 import { rest } from 'msw';
+import  config  from 'config';
+//import Logger from 'utils/logger';
 
-const s2sUrl = 'http://service-auth-provider-api/lease';
-const tmUrl = 'http://localhost/WA_TASK_MONITOR_SERVICE_URL/monitor/tasks/jobs';
 
 
 describe('create job', () => {
+  const s2sUrl = config.get('s2s.url') + '/lease';
+  const tmUrl =  config.get('services.taskMonitor.url') + '/monitor/tasks/jobs';
+
+
   const realProcessExit = process.exit;
   process.exit = jest.fn(() => { throw 'mockExit'; });
   afterAll(() => { 
