@@ -2,8 +2,7 @@ import { TaskMonitorService } from '../../main/services/task-monitor-service';
 import { setupServer }  from 'msw/node';
 import { rest } from 'msw';
 
-
-const s2sUrl = 'http://localhost/S2S_URL/lease';
+const s2sUrl = 'http://service-auth-provider-api/lease';
 const tmUrl = 'http://localhost/WA_TASK_MONITOR_SERVICE_URL/monitor/tasks/jobs';
 
 
