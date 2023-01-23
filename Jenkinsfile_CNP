@@ -12,7 +12,7 @@ withPipeline(type, product, component) {
   disableLegacyDeployment()
   nonServiceApp()
 
-  after('build') {
+  afterSuccess('build') {
     yarnBuilder.yarn('build')
   }
 
