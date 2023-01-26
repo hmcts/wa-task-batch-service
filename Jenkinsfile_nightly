@@ -14,7 +14,7 @@ def component = "task-batch-service"
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
 withNightlyPipeline(type, product, component) {
-  after('build') {
+  afterSuccess('build') {
     yarnBuilder.yarn('build')
   }
 }
