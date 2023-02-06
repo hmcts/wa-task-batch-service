@@ -88,5 +88,6 @@
     "webpack-dev-middleware": "^5.3.3",
     "webpack-node-externals": "^3.0.0",
     "yarn-audit-fix": "^9.3.2"
-  }
+  },
+  "packageManager": "yarn@3.4.1"
 }
