@@ -19,7 +19,8 @@
     "test:a11y": "echo 'Not needed' && exit 0",
     "test:smoke": "echo 'TODO add smoke tests' && exit 1",
     "test:functional": "echo 'TODO add functional tests' && exit 1",
-    "cichecks": "yarn && yarn build && yarn lint && yarn test && yarn test:routes"
+    "cichecks": "yarn && yarn build && yarn lint && yarn test && yarn test:routes",
+    "audit": "yarn npm audit"
   },
   "dependencies": {
     "@hmcts/info-provider": "^1.0.0",
@@ -88,5 +89,6 @@
     "webpack-dev-middleware": "^5.3.3",
     "webpack-node-externals": "^3.0.0",
     "yarn-audit-fix": "^9.3.2"
-  }
+  },
+  "packageManager": "yarn@3.4.1"
 }
