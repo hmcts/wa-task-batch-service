@@ -4,7 +4,7 @@
   "private": true,
   "type": "commonjs",
   "engines": {
-    "node": ">=16.13.1"
+    "node": ">=18.17.0"
   },
   "scripts": {
     "start": "NODE_ENV=production ./node_modules/.bin/ts-node -r tsconfig-paths/register src/main/server.ts",
@@ -35,7 +35,7 @@
     "@types/glob": "^7.2.0",
     "@types/helmet": "^4.0.0",
     "@types/lodash": "^4.14.182",
-    "@types/node": "^18.0.3",
+    "@types/node": "^18.17.0",
     "@types/require-directory": "^2.1.2",
     "@types/serve-favicon": "^2.5.3",
     "applicationinsights": "^2.1.3",
