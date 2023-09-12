@@ -1,7 +1,9 @@
 {
-  "enabledManagers": ["helm-requirements", "nvm"],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "automerge": true,
   "labels": ["dependencies"],
+  "extends": [
+    "local>hmcts/.github:renovate-config"],
   "helm-requirements":
   {
     "fileMatch": ["\\Chart.yaml$"],
