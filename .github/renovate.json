@@ -11,5 +11,10 @@
       "hmctspublic": "https://hmctspublic.azurecr.io/helm/v1/repo/"
     }
   },
-  "excludePackageNames": ["helmet"]
+  "packageRules": [
+    {
+      "matchPackageNames": ["helmet"],
+      "allowedVersions": "<5.0.0"
+    }
+  ]
 }
