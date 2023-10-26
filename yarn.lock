@@ -5466,6 +5466,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fs-monkey@npm:^1.0.4":
+  version: 1.0.5
+  resolution: "fs-monkey@npm:1.0.5"
+  checksum: 424b67f65b37fe66117ae2bb061f790fe6d4b609e1d160487c74b3d69fbf42f262c665ccfba32e8b5f113f96f92e9a58fcdebe42d5f6649bdfc72918093a3119
+  languageName: node
+  linkType: hard
+
 "fs.realpath@npm:^1.0.0":
   version: 1.0.0
   resolution: "fs.realpath@npm:1.0.0"
@@ -7031,6 +7038,15 @@ __metadata:
   version: 0.3.0
   resolution: "media-typer@npm:0.3.0"
   checksum: af1b38516c28ec95d6b0826f6c8f276c58aec391f76be42aa07646b4e39d317723e869700933ca6995b056db4b09a78c92d5440dc23657e6764be5d28874bba1
+  languageName: node
+  linkType: hard
+
+"memfs@npm:^3.4.12":
+  version: 3.5.3
+  resolution: "memfs@npm:3.5.3"
+  dependencies:
+    fs-monkey: ^1.0.4
+  checksum: 18dfdeacad7c8047b976a6ccd58bc98ba76e122ad3ca0e50a21837fe2075fc0d9aafc58ab9cf2576c2b6889da1dd2503083f2364191b695273f40969db2ecc44
   languageName: node
   linkType: hard
 
@@ -9591,7 +9607,7 @@ __metadata:
     typescript: ^5.0.0
     webpack: ^5.73.0
     webpack-cli: ^5.0.0
-    webpack-dev-middleware: ^5.3.3
+    webpack-dev-middleware: ^6.0.0
     webpack-node-externals: ^3.0.0
     yarn-audit-fix: ^9.3.2
   languageName: unknown
@@ -9648,7 +9664,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-dev-middleware@npm:*, webpack-dev-middleware@npm:^5.3.3":
+"webpack-dev-middleware@npm:*":
   version: 5.3.3
   resolution: "webpack-dev-middleware@npm:5.3.3"
   dependencies:
@@ -9660,6 +9676,24 @@ __metadata:
   peerDependencies:
     webpack: ^4.0.0 || ^5.0.0
   checksum: dd332cc6da61222c43d25e5a2155e23147b777ff32fdf1f1a0a8777020c072fbcef7756360ce2a13939c3f534c06b4992a4d659318c4a7fe2c0530b52a8a6621
+  languageName: node
+  linkType: hard
+
+"webpack-dev-middleware@npm:^6.0.0":
+  version: 6.1.1
+  resolution: "webpack-dev-middleware@npm:6.1.1"
+  dependencies:
+    colorette: ^2.0.10
+    memfs: ^3.4.12
+    mime-types: ^2.1.31
+    range-parser: ^1.2.1
+    schema-utils: ^4.0.0
+  peerDependencies:
+    webpack: ^5.0.0
+  peerDependenciesMeta:
+    webpack:
+      optional: true
+  checksum: 3bced6ef644b20f2e76df9db1c5209f4a73761d7d307fe29ae20bc00397d4f9727af2607f98794c6c7c57d5c1a48bfa12690168b08f5d46820b07aab2c63640c
   languageName: node
   linkType: hard
 
