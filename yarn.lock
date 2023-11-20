@@ -5525,6 +5525,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"find-up@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "find-up@npm:7.0.0"
+  dependencies:
+    locate-path: ^7.2.0
+    path-exists: ^5.0.0
+    unicorn-magic: ^0.1.0
+  checksum: e1c63860f9c04355ab2aa19f4be51c1a6e14a7d8cfbd8090e2be6da2a36a76995907cb45337a4b582b19b164388f71d6ab118869dc7bffb2093f2c089ecb95ee
+  languageName: node
+  linkType: hard
+
 "flat-cache@npm:^3.0.4":
   version: 3.0.4
   resolution: "flat-cache@npm:3.0.4"
@@ -7150,6 +7161,15 @@ __metadata:
   dependencies:
     p-locate: ^6.0.0
   checksum: 1d88af5b512d6e6398026252e17382907126683ab09ae5d6b8918d0bc72ca2642e1ad6e2fe635c5920840e369618e5d748c08deb57ba537fdd3f78e87ca993e0
+  languageName: node
+  linkType: hard
+
+"locate-path@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "locate-path@npm:7.2.0"
+  dependencies:
+    p-locate: ^6.0.0
+  checksum: c1b653bdf29beaecb3d307dfb7c44d98a2a98a02ebe353c9ad055d1ac45d6ed4e1142563d222df9b9efebc2bcb7d4c792b507fad9e7150a04c29530b7db570f8
   languageName: node
   linkType: hard
 
@@ -9662,6 +9682,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"unicorn-magic@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "unicorn-magic@npm:0.1.0"
+  checksum: 48c5882ca3378f380318c0b4eb1d73b7e3c5b728859b060276e0a490051d4180966beeb48962d850fd0c6816543bcdfc28629dcd030bb62a286a2ae2acb5acb6
+  languageName: node
+  linkType: hard
+
 "unique-filename@npm:^2.0.0":
   version: 2.0.1
   resolution: "unique-filename@npm:2.0.1"
@@ -10174,8 +10201,8 @@ __metadata:
   linkType: hard
 
 "yarn-audit-fix@npm:^10.0.0":
-  version: 10.0.4
-  resolution: "yarn-audit-fix@npm:10.0.4"
+  version: 10.0.5
+  resolution: "yarn-audit-fix@npm:10.0.5"
   dependencies:
     "@types/find-cache-dir": ^3.2.1
     "@types/fs-extra": ^11.0.1
@@ -10187,7 +10214,7 @@ __metadata:
     commander: ^10.0.1
     fast-glob: ^3.3.1
     find-cache-dir: ^5.0.0
-    find-up: ^6.3.0
+    find-up: ^7.0.0
     fs-extra: ^11.1.1
     js-yaml: ^4.1.0
     lodash-es: ^4.17.21
@@ -10196,7 +10223,7 @@ __metadata:
     synp: ^1.9.10
   bin:
     yarn-audit-fix: target/esm/cli.mjs
-  checksum: dabfa1029177e8e9487e32a682cee67d30d3ec580480eb24601d22e9c814d91c24b077de04e1d989cc38f2c510271b57c597b24c6c24c91c89dbf3a1f2a51331
+  checksum: ed47d1708f754ab890eee05f58a0c251fad09ae5ca5558f9887886127f1b90aa47265230cb85b9a9947ffddd6a587091deff290af16ac94f7087c550aa562fd5
   languageName: node
   linkType: hard
 
