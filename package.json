@@ -43,7 +43,7 @@
     "config": "3.3.11",
     "cookie-parser": "^1.4.6",
     "csurf": "^1.11.0",
-    "express": "^4.17.1",
+    "express": "^4.19.2",
     "glob": "^10.0.0",
     "helmet": "^4.2.0",
     "jquery": "3.7.1",
