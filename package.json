@@ -2,7 +2,7 @@
   "name": "wa-task-batch-service",
   "version": "0.0.1",
   "private": true,
-  "type": "commonjs",
+  "type": "module",
   "engines": {
     "node": ">=18.17.0"
   },
