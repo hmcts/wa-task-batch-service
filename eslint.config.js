@@ -1,17 +1,48 @@
-import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
-import path from "path";
-import { fileURLToPath } from "url";
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const compat = new FlatCompat({
-});
+import babelParser from "@babel/eslint-parser";
+import typescriptEs from "@typescript-eslint";
 
 export default [
-  ...compat.extends(".eslintrc.js"),
+  {
+    languageOptions: {
+      ecmaVersion: 12,
+      sourceType: 'module',
+      globals: {
+        Atomics: 'readonly',
+        SharedArrayBugger: 'readonly',
+        ...globals.browser,
+        ...globals.es2021,
+        ...globals.node
+      }
+      parser: "@babel/eslint-parser",
+    },
+    rules: {
+      indent: ['error', 2, { 'SwitchCase': 1 }],
+      linebreak-style: ['error', 'unix'],
+      quotes: ['error', 'single'],
+      comma-dangle: ['error', 'always-multiline'],
+      semi: ['error', 'always'],
+    },
+  },
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    rules: {
+    'indent': ['error', 2, { 'SwitchCase': 1 }],
+    'linebreak-style': ['error', 'unix'],
+    'quotes': ['error', 'single', { 'avoidEscape': true }],
+    'comma-dangle': ['error', 'always-multiline'],
+    '@typescript-eslint/no-var-requires': 0,
+    },
+    plugins: {
+      typescriptEs: typescriptEs
+    },
+    languageOptions: {
+      parser: "@typescript-eslint/parser",
+      project: './tsconfig.json',
+    }
+  },
+  pluginJs.configs.recommended,
+  tseslint.configs.recommended,
 ];
