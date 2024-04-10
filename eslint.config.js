@@ -13,5 +13,5 @@ const compat = new FlatCompat({
 });
 
 export default [
-  ...compat.extends("eslintrc.js"),
+  ...compat.extends(".eslintrc.js"),
 ];
