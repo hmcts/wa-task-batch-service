@@ -10,6 +10,7 @@ export default [
     languageOptions: {
       ecmaVersion: 12,
       sourceType: 'module',
+      parser: babelParser,
       globals: {
         Atomics: 'readonly',
         SharedArrayBugger: 'readonly',
@@ -17,7 +18,6 @@ export default [
         ...globals.es2021,
         ...globals.node
       }
-      parser: babelParser
     },
     rules: {
       indent: ['error', 2, { 'SwitchCase': 1 }],
