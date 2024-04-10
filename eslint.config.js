@@ -3,6 +3,7 @@ import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
 import babelParser from "@babel/eslint-parser";
 import typescriptEs from "@typescript-eslint";
+import parser from "@typescript-eslint/parser";
 
 export default [
   {
@@ -16,7 +17,7 @@ export default [
         ...globals.es2021,
         ...globals.node
       }
-      parser: "@babel/eslint-parser",
+      parser: babelParser
     },
     rules: {
       indent: ['error', 2, { 'SwitchCase': 1 }],
@@ -39,7 +40,7 @@ export default [
       typescriptEs: typescriptEs
     },
     languageOptions: {
-      parser: "@typescript-eslint/parser",
+      parser: parser,
       project: './tsconfig.json',
     }
   },
