@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 
 enum SEVERITY {
   REQUEST = 0,
@@ -32,13 +31,13 @@ export default class Logger implements ILogger {
     switch (severity) {
       case SEVERITY.REQUEST:
         // tslint:disable:no-console
-        console.log(chalk.white(`Request: ${log}`));
+        console.log(`Request: ${log}`);
         break;
       case SEVERITY.TRACE:
-        console.warn(chalk.green(`Info: ${log} `));
+        console.warn(`Info: ${log} `);
         break;
       case SEVERITY.EXCEPTION:
-        console.error(chalk.red(`Exception: ${log}`));
+        console.error(`Exception: ${log}`);
         break;
       default:
         break;
