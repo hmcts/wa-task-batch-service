@@ -37,8 +37,8 @@ describe('create job', () => {
           headers: {
             'Content-Type': 'application/json',
           },
-        })
-      })
+        });
+      }),
     ];
     const server = setupServer(...handlers);
     beforeAll(() => {
@@ -64,18 +64,18 @@ describe('create job', () => {
     const handlers = [
       http.post(s2sUrl, async ({ request }) => {
         return new Response(JSON.stringify({ data: 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YV90YXNrX21vbml0b3IiLCJleHAiOjE2NzE0NzA0MTh9.jCkNjnDYv5apkVnwjsp2mtIvHoxz36STalgWImOadE3xv-o8dpQl6qCCWOwUuHjZZsn99_1qRh0xGHNJ5UtAeA' }), {
-         headers: {
+          headers: {
             'Content-Type': 'application/json',
-         },
-      })
-    }),
+          },
+        });
+      }),
       http.post(tmUrl, async ({ request }) => {
         return new Response(JSON.stringify({'job_details':{}}), {
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                })
-              })
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+      }),
     ];
         
     const server = setupServer(...handlers);
