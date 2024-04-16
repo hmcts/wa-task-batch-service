@@ -1,6 +1,6 @@
 import { TaskMonitorService } from '../../main/services/task-monitor-service';
 import { setupServer }  from 'msw/node';
-import { rest } from 'msw';
+import { http } from 'msw';
 import  config  from 'config';
 //import Logger from 'utils/logger';
 
@@ -29,13 +29,17 @@ describe('create job', () => {
       }             
     });
   });
-   
+
   describe ('unhappy day taskmonitor fails', () => {
     const handlers = [
-      rest.post(s2sUrl, (req, res, ctx) => {
-        return res(ctx.json({ data: 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YV90YXNrX21vbml0b3IiLCJleHAiOjE2NzE0NzA0MTh9.jCkNjnDYv5apkVnwjsp2mtIvHoxz36STalgWImOadE3xv-o8dpQl6qCCWOwUuHjZZsn99_1qRh0xGHNJ5UtAeA' }));
-      }), 
-    ]; 
+      http.post(s2sUrl, async ({ request }) => {
+        return new Response(JSON.stringify({ data: 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YV90YXNrX21vbml0b3IiLCJleHAiOjE2NzE0NzA0MTh9.jCkNjnDYv5apkVnwjsp2mtIvHoxz36STalgWImOadE3xv-o8dpQl6qCCWOwUuHjZZsn99_1qRh0xGHNJ5UtAeA' }), {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+      })
+    ];
     const server = setupServer(...handlers);
     beforeAll(() => {
       server.listen();
@@ -58,12 +62,20 @@ describe('create job', () => {
   
   describe ('happy day', () => {
     const handlers = [
-      rest.post(s2sUrl, (_, res, ctx) => {
-        return res(ctx.json({ data: 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YV90YXNrX21vbml0b3IiLCJleHAiOjE2NzE0NzA0MTh9.jCkNjnDYv5apkVnwjsp2mtIvHoxz36STalgWImOadE3xv-o8dpQl6qCCWOwUuHjZZsn99_1qRh0xGHNJ5UtAeA' }));
-      }),
-      rest.post(tmUrl, (_, res, ctx) => {
-        return res(ctx.json({'job_details':{}}));
-      }),  
+      http.post(s2sUrl, async ({ request }) => {
+        return new Response(JSON.stringify({ data: 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YV90YXNrX21vbml0b3IiLCJleHAiOjE2NzE0NzA0MTh9.jCkNjnDYv5apkVnwjsp2mtIvHoxz36STalgWImOadE3xv-o8dpQl6qCCWOwUuHjZZsn99_1qRh0xGHNJ5UtAeA' }), {
+         headers: {
+            'Content-Type': 'application/json',
+         },
+      })
+    }),
+      http.post(tmUrl, async ({ request }) => {
+        return new Response(JSON.stringify({'job_details':{}}), {
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                })
+              })
     ];
         
     const server = setupServer(...handlers);
