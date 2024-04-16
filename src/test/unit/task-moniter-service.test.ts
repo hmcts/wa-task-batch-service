@@ -32,7 +32,7 @@ describe('create job', () => {
 
   describe ('unhappy day taskmonitor fails', () => {
     const handlers = [
-      http.post(s2sUrl, async ({ request }) => {
+      http.post(s2sUrl, async () => {
         return new Response(JSON.stringify({ data: 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YV90YXNrX21vbml0b3IiLCJleHAiOjE2NzE0NzA0MTh9.jCkNjnDYv5apkVnwjsp2mtIvHoxz36STalgWImOadE3xv-o8dpQl6qCCWOwUuHjZZsn99_1qRh0xGHNJ5UtAeA' }), {
           headers: {
             'Content-Type': 'application/json',
@@ -62,14 +62,14 @@ describe('create job', () => {
   
   describe ('happy day', () => {
     const handlers = [
-      http.post(s2sUrl, async ({ request }) => {
+      http.post(s2sUrl, () => {
         return new Response(JSON.stringify({ data: 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YV90YXNrX21vbml0b3IiLCJleHAiOjE2NzE0NzA0MTh9.jCkNjnDYv5apkVnwjsp2mtIvHoxz36STalgWImOadE3xv-o8dpQl6qCCWOwUuHjZZsn99_1qRh0xGHNJ5UtAeA' }), {
           headers: {
             'Content-Type': 'application/json',
           },
         });
       }),
-      http.post(tmUrl, async ({ request }) => {
+      http.post(tmUrl, async () => {
         return new Response(JSON.stringify({'job_details':{}}), {
           headers: {
             'Content-Type': 'application/json',
