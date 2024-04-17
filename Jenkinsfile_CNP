@@ -14,6 +14,9 @@ withPipeline(type, product, component) {
 
   afterSuccess('build') {
     yarnBuilder.yarn('build')
+    sh 'yarn test'
   }
+
+
 
 }
