@@ -14,7 +14,9 @@ withPipeline(type, product, component) {
 
   afterSuccess('build') {
     yarnBuilder.yarn('build')
-    sh 'yarn test'
+    yarnBuilder.yarn('cichecks')
+    echo 'yarn checks complete'
+
   }
 
 
