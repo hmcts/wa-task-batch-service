@@ -23,6 +23,7 @@ npm-debug.log.*
 dist/
 public/
 .vscode/
+coverage/
 
 .pnp.*
 .yarn/*
@@ -31,4 +32,3 @@ public/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-
