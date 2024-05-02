@@ -1,6 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "automerge": true,
+  "schedule": "after 7am and before 11am every weekday",
+  "automergeSchedule": "after 8:00am and before 10:30am Monday to Thursday",
+  "prCreation": "not-pending",
   "labels": ["dependencies"],
   "extends": [
     "local>hmcts/.github:renovate-config"],
@@ -13,8 +15,23 @@
   },
   "packageRules": [
     {
-      "matchPackageNames": ["helmet"],
-      "allowedVersions": "<5.0.0"
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "automerge": true
+    },
+    {
+      "matchPackageNames": [
+        "helmet"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "automerge": false,
+      "groupName": "Helmet Upgrade"
+
     }
   ]
 }
