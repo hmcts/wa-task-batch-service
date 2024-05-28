@@ -64,15 +64,23 @@ $ yarn lint --fix
 
 ### Running Tests
 
-Due to the simplicity of this application, just checking that the application starts successfully is enough
+Due to the simplicity of this application, just checking that the application starts successfully (yarn start:dev) is enough
 to be confident that it will work. You should see console output similar to the below:
 
 ```
+1. Ensure wa-task-monitor service is up. 
+    (Its dependent services also need to be up I.e. wa-workflow-api & wa-taskmanagement-service).
+
+2. Set up the following environment variable on your local wa-task-batch-service path terminal.
+    export ALLOW_CONFIG_MUTATIONS=true
+
+3. The s2s.secret is exclusively read from the config at runtime. For testing the application start-up locally to verify no issues:
+    edit s2s-service.ts file & set the s2s.secret to the s2s.secret value in the dev.yaml file. 
+
+4. Execute the following commands up to yarn start:dev and verify the start up is as below;
 rm -rf node_modules
 yarn install
 yarn start:dev
-yarn run v1.22.18
-$ NODE_ENV=dev nodemon --config nodemon.json
 [nodemon] 2.0.19
 [nodemon] to restart at any time, enter `rs`
 [nodemon] watching path(s): src/main/**/*
@@ -89,6 +97,42 @@ Info: [services/task-monitor-service.ts]: Status: 200
 Info: [services/task-monitor-service.ts]: Response: {"job_details":{}}
 Info: [utils/exit.ts]: Job will now exit with code 0
 [nodemon] clean exit - waiting for changes before restart
+
+5. To verify the startup is successful & able to call the task-monitor service endpoint with "INITIATE" job name;
+
+7. Follow either a OR b below to specify the job name(for local testing only & use a valid job name, e.g INITIATION)
+    a.Set the following environment variable on your local wa-task-batch-service path terminal
+    export JOB_NAME=INITIATION 
+    OR
+    b.In the dev.yaml file, set the job:name to INITIATION. 
+
+6. Execute the following commands up to yarn start:dev and verify the start up is as below;
+rm -rf node_modules
+yarn install
+yarn start:dev
+[nodemon] 3.1.0
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): src/main/**/*
+[nodemon] watching extensions: ts,js
+[nodemon] starting `ts-node ./src/main/server.ts`
+2024-05-24T09:45:50+01:00 - info: [applicationRunner] Attempting to read properties from volume: '/mnt/secrets/'
+2024-05-24T09:45:50+01:00 - info: [applicationRunner] Could not find properties to load, check your config, you can ignore this if you don't expect any
+Info: [services/task-monitor-service.ts]: environment variable job.name value is INITIATION 
+Info: [services/task-monitor-service.ts]: Attempting to create a job for task INITIATION 
+Info: [services/s2s-service.ts]: Attempting to request a S2S token 
+2024-05-24T09:45:51+01:00 - info: [server] Application started: http://localhost:9999
+Info: [services/s2s-service.ts]: Received S2S token 
+Info: [services/task-monitor-service.ts]: Status: 200 
+Info: [services/task-monitor-service.ts]: Response: {"job_details":{"name":"INITIATION"}} 
+Info: [utils/exit.ts]: Job will now exit with code 0 
+[nodemon] clean exit - waiting for changes before restart
+
+** The expectation is that you should get no error on "yarn start:dev" service startup
+(Note: If you locally get further start-up errors specifying service url or job name could not be resolved then set the following 
+    environment variables;
+    export WA_TASK_MONITOR_SERVICE_URL=http://localhost:{Specify the wa-wa-task-monitor service port number here}
+    export JOB_NAME=INITIATION)
+  
 ```
 
 ### Security
