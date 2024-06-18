@@ -11,7 +11,7 @@ def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
 withPipeline(type, product, component) {
   disableLegacyDeployment()
-  nonServiceApp()
+ // nonServiceApp()
 //  syncBranchesWithMaster(branchesToSync)
 
   afterSuccess('build') {
@@ -19,8 +19,6 @@ withPipeline(type, product, component) {
     sh "yarn test"
     echo "yarn test complete"
   }
-  afterAlways('smoketest:preview') {
-    echo "yarn smoke test complete"
-  }
+
 
 }
