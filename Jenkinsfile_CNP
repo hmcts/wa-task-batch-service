@@ -20,7 +20,7 @@ withPipeline(type, product, component) {
     echo "yarn test complete"
     sh "yarn install"
     echo "Install complete"
-    sh "yarn:dev"
+    sh "yarn start:dev"
     echo "Running app"
     sh "yarn test:smoke"
     echo "Smoke test complete"
