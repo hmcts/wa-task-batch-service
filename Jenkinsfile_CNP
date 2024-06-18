@@ -18,6 +18,12 @@ withPipeline(type, product, component) {
     yarnBuilder.yarn('build')
     sh "yarn test"
     echo "yarn test complete"
+    sh "yarn install"
+    echo "Install complete"
+    sh "yarn:dev"
+    echo "Running app"
+    sh "yarn test:smoke"
+    echo "Smoke test complete"
   }
 
 
