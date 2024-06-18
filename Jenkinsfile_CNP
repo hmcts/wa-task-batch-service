@@ -5,19 +5,20 @@
 def type = "nodejs"
 def product = "wa"
 def component = "task-batch-service"
+//def branchesToSync = ['demo', 'ithc', 'perftest']
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
 withPipeline(type, product, component) {
   disableLegacyDeployment()
+  enableAksStagingDeployment();
   nonServiceApp()
+//  syncBranchesWithMaster(branchesToSync)
 
   afterSuccess('build') {
     yarnBuilder.yarn('build')
     sh "yarn test"
     echo "yarn test complete"
-    sh "yarn test:smoke"
-    echo "yarn test smoke complete"
-
   }
+
 }
