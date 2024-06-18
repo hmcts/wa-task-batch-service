@@ -1,3 +1,5 @@
 job:
   # Don't modify below here
   image: ${IMAGE_NAME}
+smoketests:
+  enabled: true
