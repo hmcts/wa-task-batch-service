@@ -8,8 +8,6 @@ def component = "task-batch-service"
 //def branchesToSync = ['demo', 'ithc', 'perftest']
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
-env.WA_TASK_MONITOR_SERVICE_URL = "http://wa-task-monitor-aat.service.core-compute-aat.internal"
-
 
 def secrets = [
   'wa-${env}' : [
