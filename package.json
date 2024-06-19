@@ -102,7 +102,7 @@
     "formidable": "3.5.1",
     "@grpc/grpc-js": "1.10.9",
     "@azure/msal-node": "2.9.2",
-    "@azure/identity": "4.2.1"
+    "@azure/identity": "4.3.0"
   },
   "packageManager": "yarn@3.8.2"
 }
