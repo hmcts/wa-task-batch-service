@@ -33,7 +33,8 @@ export default class S2SService implements IS2SService {
     logger.trace('Attempting to request a S2S token', logLabel);
 
     const url: string = config.get('s2s.url') + '/lease';
-    const secret: string = config.get('s2s.secret');
+   // const secret: string = config.get('s2s.secret');
+    const secret: string = 'AAAAAAAAAAAAAAAA'
     const microservice: string = config.get('s2s.microserviceName');
 
     const oneTimePassword = authenticator.generate(secret);
