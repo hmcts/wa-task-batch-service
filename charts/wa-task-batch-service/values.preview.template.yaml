@@ -1,14 +1,3 @@
 job:
   # Don't modify below here
   image: ${IMAGE_NAME}
-  keyVaults:
-    wa:
-      secrets:
-        - s2s-secret-task-monitor
-  environment:
-    WA_TASK_MONITOR_SERVICE_URL: "http://wa-task-monitor-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal/engine-rest"
-
-#smoketests:
-#  enabled: true
-#smoketestscron:
-#  enabled: true

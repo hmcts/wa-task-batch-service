@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "NODE_ENV=production ./node_modules/.bin/ts-node -r tsconfig-paths/register src/main/server.ts",
-    "start:dev": "NODE_ENV=dev ALLOW_CONFIG_MUTATIONS=true nodemon --config nodemon.json",
+    "start:dev": "NODE_ENV=dev nodemon --config nodemon.json",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext .js,.jsx,.ts,.tsx",
     "build": "yarn webpack --config webpack.config.js",
     "build:prod": "NODE_ENV=production yarn webpack --mode production --config webpack.config.js",
@@ -17,7 +17,7 @@
     "test:routes": "jest -c jest.routes.config.js",
     "sonar-scan": "sonar-scanner",
     "test:a11y": "echo 'Not needed' && exit 0",
-    "test:smoke": "echo 'TODO add smoke tests'",
+    "test:smoke": "S2S_URL=http://service-auth-provider-api WA_TASK_MONITOR_SERVICE_URL=http://localhost:8077 yarn install && jest --config=jest.smoke.config.js && exit 1",
     "test:functional": "echo 'TODO add functional tests' && exit 1",
     "cichecks": "yarn && yarn build && yarn lint && yarn test && yarn test:routes",
     "audit": "yarn npm audit"

@@ -5,38 +5,17 @@
 def type = "nodejs"
 def product = "wa"
 def component = "task-batch-service"
-//def branchesToSync = ['demo', 'ithc', 'perftest']
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
-
-def secrets = [
-  'wa-${env}' : [
-    secret('s2s-secret-task-monitor', 'S2S_SECRET_TASK_MONITOR'),
-  ]
-]
-
-static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
-  [$class     : 'AzureKeyVaultSecret',
-   secretType : 'Secret',
-   name       : secretName,
-   version    : '',
-   envVariable: envVar
-  ]
-}
 
 withPipeline(type, product, component) {
   disableLegacyDeployment()
   nonServiceApp()
-//  syncBranchesWithMaster(branchesToSync)
 
   afterSuccess('build') {
     yarnBuilder.yarn('build')
     sh "yarn test"
     echo "yarn test complete"
-    sh "yarn install"
-    echo "Install complete"
-    sh "yarn start:dev"
-    echo "Running app"
     sh "yarn test:smoke"
     echo "Smoke test complete"
   }
