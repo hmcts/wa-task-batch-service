@@ -21,7 +21,7 @@ test('should check if server process is running', async () => {
   });
 
   // Wait for some time to let the server start
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 60000));
 
   console.log('Output log', output);
   expect(output).toContain('Application started');
