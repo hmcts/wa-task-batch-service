@@ -5,7 +5,7 @@ test('should check if server process is running', async () => {
   console.log('Starting the server process');
   const nodeEnv = process.env.NODE_ENV;
   console.log(`NODE_ENV: ${nodeEnv}`);
-  serverProcess = spawn('yarn', ['start:conditional'], {
+  serverProcess = spawn('yarn', ['start'], {
     shell: true,
     stdio: 'pipe',
     env: { ...process.env, ALLOW_CONFIG_MUTATIONS: true.toString()},
