@@ -3,9 +3,9 @@ let serverProcess: ChildProcess;
 
 test('should check if server process is running', async () => {
   console.log('Starting the server process');
-  const nodeEnv = process.env.NODE_ENV;
-  console.log(`NODE_ENV: ${nodeEnv}`);
-  serverProcess = spawn('yarn', ['start'], {
+  // const nodeEnv = process.env.NODE_ENV;
+  console.log(process.env.S2S_SECRET_WORKFLOW_API);
+  serverProcess = spawn('yarn', ['start:dev'], {
     shell: true,
     stdio: 'pipe',
     env: { ...process.env, ALLOW_CONFIG_MUTATIONS: true.toString()},
