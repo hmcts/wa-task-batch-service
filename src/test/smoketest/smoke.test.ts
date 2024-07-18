@@ -5,7 +5,7 @@ test('should check if server process is running', async () => {
   serverProcess = spawn('yarn', ['start:conditional'], {
     shell: true,
     stdio: 'pipe',
-    env: { ...process.env, ALLOW_CONFIG_MUTATIONS: true.toString()}
+    env: { ...process.env, ALLOW_CONFIG_MUTATIONS: true.toString()},
   });
   let output = '';
 
