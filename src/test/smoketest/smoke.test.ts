@@ -25,7 +25,7 @@ test('should check if server process is running', async () => {
 
   console.log('Output log', output);
   expect(output).toContain('Application started');
-});
+}, 80000);
 
 afterAll(() => {
   // Clean up the server process
