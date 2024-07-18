@@ -2,6 +2,9 @@ import { spawn, ChildProcess } from 'child_process';
 let serverProcess: ChildProcess;
 
 test('should check if server process is running', async () => {
+  console.log('Starting the server process');
+  const nodeEnv = process.env.NODE_ENV;
+  console.log(`NODE_ENV: ${nodeEnv}`);
   serverProcess = spawn('yarn', ['start:conditional'], {
     shell: true,
     stdio: 'pipe',
