@@ -1,8 +1,12 @@
-const { spawn } = require('child_process');
+import { spawn, ChildProcess } from 'child_process';
+let serverProcess: ChildProcess;
 
 test('should check if server process is running', async () => {
-  const serverProcess = spawn('yarn', ['start:dev'], { shell: true, stdio: 'pipe' });
-
+  serverProcess = spawn('yarn', ['start:conditional'], {
+    shell: true,
+    stdio: 'pipe',
+    env: { ...process.env, ALLOW_CONFIG_MUTATIONS: true.toString()}
+  });
   let output = '';
 
   serverProcess.stdout.on('data', (data: Buffer) => {
@@ -16,11 +20,13 @@ test('should check if server process is running', async () => {
   // Wait for some time to let the server start
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
-
   console.log('Output log', output);
   expect(output).toContain('Application started');
-
-  // Clean up the server process
-  serverProcess.kill();
 });
 
+afterAll(() => {
+  // Clean up the server process
+  if (serverProcess) {
+    serverProcess.kill();
+  }
+});
