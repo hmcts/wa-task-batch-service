@@ -10,7 +10,7 @@ export class PropertiesVolume {
       propertiesVolume.addTo(config);
 
       set(config, 'appInsights.instrumentationKey', get(config, 'secrets.wa.AppInsightsInstrumentationKey'));
-      set(config, 's2s.secret', get(config, 'wa.secrets.s2s-secret-task-monitor'));
+      set(config, 's2s.secret', get(config, 'secrets.wa.s2s-secret-task-monitor'));
     }
   }
 }

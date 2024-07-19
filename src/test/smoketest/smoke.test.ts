@@ -34,4 +34,4 @@ test('should check if server process is running', async () => {
 
   console.log('Output log', output);
   expect(output).toContain('Application started');
-}, 80000);
+}, 60000);
