@@ -2,7 +2,8 @@ import { spawn, ChildProcess } from 'child_process';
 let serverProcess: ChildProcess;
 
 test('should check if server process is running', async () => {
-  console.log('Starting the server process');
+  console.log('Starting the server process', process.env.NODE_ENV);
+
   serverProcess = spawn('yarn', ['start'], {
     shell: true,
     stdio: 'pipe',
@@ -28,6 +29,6 @@ test('should check if server process is running', async () => {
 afterAll(() => {
   // Clean up the server process
   if (serverProcess) {
-    serverProcess.kill();
+    serverProcess.kill('SIGINT');
   }
 });

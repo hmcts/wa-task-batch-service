@@ -18,7 +18,7 @@
     "test:routes": "jest -c jest.routes.config.js",
     "sonar-scan": "sonar-scanner",
     "test:a11y": "echo 'Not needed' && exit 0",
-    "test:smoke": "S2S_URL=http://service-auth-provider-api WA_TASK_MONITOR_SERVICE_URL=http://localhost:8077 yarn install && jest --config=jest.smoke.config.js && exit 0",
+    "test:smoke": "yarn install && jest --config=jest.smoke.config.js && exit 0",
     "test:functional": "echo 'TODO add functional tests' && exit 1",
     "cichecks": "yarn && yarn build && yarn lint && yarn test && yarn test:routes",
     "audit": "yarn npm audit"
