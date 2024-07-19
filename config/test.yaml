@@ -1,3 +1,6 @@
 appInsights:
   enabled: "false"
   instrumentationKey: "false"
+secrets:
+  wa:
+    s2s-secret-task-monitor: AAAAAAAAAAAAAAAA

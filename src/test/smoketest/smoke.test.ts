@@ -3,8 +3,6 @@ let serverProcess: ChildProcess;
 
 test('should check if server process is running', async () => {
   console.log('Starting the server process');
-  // const nodeEnv = process.env.NODE_ENV;
-  console.log(process.env.S2S_SECRET_WORKFLOW_API);
   serverProcess = spawn('yarn', ['start:dev'], {
     shell: true,
     stdio: 'pipe',
@@ -21,7 +19,7 @@ test('should check if server process is running', async () => {
   });
 
   // Wait for some time to let the server start
-  await new Promise((resolve) => setTimeout(resolve, 60000));
+  await new Promise((resolve) => setTimeout(resolve, 3000));
 
   console.log('Output log', output);
   expect(output).toContain('Application started');
