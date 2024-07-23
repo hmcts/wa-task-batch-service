@@ -6,6 +6,3 @@ services:
     url: http://localhost:8077
 job:
   name: JOB_NAME
-secrets:
-  wa:
-    s2s-secret-task-monitor: AAAAAAAAAAAAAAAA
