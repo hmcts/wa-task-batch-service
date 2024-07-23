@@ -1950,6 +1950,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bundled-es-modules/tough-cookie@npm:^0.1.6":
+  version: 0.1.6
+  resolution: "@bundled-es-modules/tough-cookie@npm:0.1.6"
+  dependencies:
+    "@types/tough-cookie": ^4.0.5
+    tough-cookie: ^4.1.4
+  checksum: e31c1262cbc044373e757117b1b152acc86ba5d088124153b3d1ae83e0de0a2b4d2362758cec3e1a49cf15c39a4447587cc2672e4f5a961754c91ef9ca3221e1
+  languageName: node
+  linkType: hard
+
 "@colors/colors@npm:1.6.0":
   version: 1.6.0
   resolution: "@colors/colors@npm:1.6.0"
@@ -2498,13 +2508,6 @@ __metadata:
   version: 1.1.2
   resolution: "@microsoft/applicationinsights-web-snippet@npm:1.1.2"
   checksum: 229bfb6edc39cc436002e1615b22ed1a877211fc37263e476da7754adc80ac0b5d18c5c32de343dbe6fd62d1efe3845da8b11481340317be3727e24ae2915bd7
-  languageName: node
-  linkType: hard
-
-"@mswjs/cookies@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@mswjs/cookies@npm:1.1.0"
-  checksum: 1d9be44548907b92ff6acd46795292968661be19f1c04c43fdb2beb98bc7e58b8ffcef3be19d0f2cb58df07a36a6b53b4bbc0ea34e023b7366dbc28ffee90338
   languageName: node
   linkType: hard
 
@@ -3928,6 +3931,13 @@ __metadata:
     "@types/methods": ^1.1.4
     "@types/superagent": ^8.1.0
   checksum: 1eafa472665757a6fd984439d11f388ae0480c6d243a6884066c474c4e0357de5373316488da503b1690c3163e075ca8c64c0c4853b3bb7deb09e05d1b64e556
+  languageName: node
+  linkType: hard
+
+"@types/tough-cookie@npm:^4.0.5":
+  version: 4.0.5
+  resolution: "@types/tough-cookie@npm:4.0.5"
+  checksum: f19409d0190b179331586365912920d192733112a195e870c7f18d20ac8adb7ad0b0ff69dad430dba8bc2be09593453a719cfea92dc3bda19748fd158fe1498d
   languageName: node
   linkType: hard
 
@@ -8511,14 +8521,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:2.3.1":
-  version: 2.3.1
-  resolution: "msw@npm:2.3.1"
+"msw@npm:2.3.3":
+  version: 2.3.3
+  resolution: "msw@npm:2.3.3"
   dependencies:
     "@bundled-es-modules/cookie": ^2.0.0
     "@bundled-es-modules/statuses": ^1.0.1
+    "@bundled-es-modules/tough-cookie": ^0.1.6
     "@inquirer/confirm": ^3.0.0
-    "@mswjs/cookies": ^1.1.0
     "@mswjs/interceptors": ^0.29.0
     "@open-draft/until": ^2.1.0
     "@types/cookie": ^0.6.0
@@ -8539,7 +8549,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: bae72567488822889cc5c18318206c847b85d1df4c7bff0eac62e3fa902b95dd2e36710e3679829eaceb9c4f5066f9ed441afd919b304fba111fe2dacf82cefb
+  checksum: 1a1cf596df9ade96fecba9533afde676ea1e93ddfba70d00486753eefc04a8fb90e80c3747deec0bd737664b8f8eb908416e014c67158cb8b9ceecac24858d9a
   languageName: node
   linkType: hard
 
@@ -10843,7 +10853,7 @@ __metadata:
     jest: ^29.0.0
     jquery: 3.7.1
     lodash: 4.17.21
-    msw: 2.3.1
+    msw: 2.3.3
     nock: ^13.2.8
     nodemon: ^3.0.0
     otplib: ^12.0.1
