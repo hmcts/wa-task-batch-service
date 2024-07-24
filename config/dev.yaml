@@ -1,11 +1,9 @@
 s2s:
-  microserviceName: wa_task_monitor_test
+  microserviceName: wa_task_monitor
+  secret: AAAAAAAAAAAAAAAA
   url: http://service-auth-provider-api
 services:
   taskMonitor:
     url: http://localhost:8077
 job:
   name: JOB_NAME
-secrets:
-  wa:
-    s2s-secret-task-monitor: AAAAAAAAAAAAAAAA
