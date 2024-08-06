@@ -105,5 +105,5 @@
     "@azure/msal-node": "2.9.2",
     "@azure/identity": "4.3.0"
   },
-  "packageManager": "yarn@3.8.3"
+  "packageManager": "yarn@3.8.4"
 }
