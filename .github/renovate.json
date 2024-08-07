@@ -117,6 +117,17 @@
       "prPriority": 20,
       "groupName": "Testing Dependencies - Non Major",
       "automergeSchedule": "after 8am and before 11am every Monday"
+    },
+    {
+      "matchPackageNames": [
+        "helmet"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "automerge": false,
+      "groupName": "Helmet Upgrade"
     }
   ]
 }
