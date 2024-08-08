@@ -40,34 +40,12 @@
       "automerge": true
     },
     {
-      "matchDatasources": [
-        "terraform-module",
-        "terraform-provider"
-      ],
-      "prPriority": 10,
-      "automerge": false,
-      "groupName": "Terraform Upgrades",
-      "automergeSchedule": "after 8am and before 11am every fifth of Month"
-    },
-    {
-      "matchPackagePrefixes": [
-        "org.springframework",
-        "io.spring"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "prPriority": 80,
-      "automerge": false,
-      "groupName": "Spring Upgrade - Non Major",
-      "automergeSchedule": "after 8am and before 11am every Tuesday"
-    },
-    {
       "matchPackagePatterns": [
-        "serenity",
-        "pitest",
-        "pact"
+        "^eslint",
+        "^@typescript-eslint",
+        "^tslint",
+        "^prettier",
+        "^style-loader"
       ],
       "matchUpdateTypes": [
         "minor",
@@ -75,48 +53,87 @@
       ],
       "prPriority": 20,
       "automerge": false,
-      "groupName": "QA & Nightly Checks - Non Major",
+      "groupName": "Linters and Formatters",
       "automergeSchedule": "after 8am and before 11am every first day of month"
     },
     {
       "matchPackagePatterns": [
-        "hmcts:java-logging",
-        "log4j",
-        "slf4j"
-      ],
-      "prPriority": 30,
-      "groupName": "Logging Dependencies"
-    },
-    {
-      "matchPackagePatterns": [
-        "dependencycheck",
-        "sonarqube",
-        "checkstyle",
-        "jacoco"
+        "^jest",
+        "^@types/jest",
+        "^sinon",
+        "^sinon-chai",
+        "^chai",
+        "^chai-as-promised",
+        "^supertest",
+        "^@types/supertest",
+        "^ts-jest",
+        "^nock",
+        "^msw"
       ],
       "matchUpdateTypes": [
         "minor",
         "patch"
       ],
       "prPriority": 20,
-      "groupName": "Automated Checks - Non Major",
+      "automerge": false,
+      "groupName": "Testing Frameworks and Utilities",
       "automergeSchedule": "after 8am and before 11am every first day of month"
     },
     {
-      "matchPackagePrefixes": [
-        "org.assertj",
-        "org.junit",
-        "org.mockito",
-        "com.h2database",
-        "org.testcontainers"
+      "matchPackagePatterns": [
+        "^webpack",
+        "^webpack-cli",
+        "^webpack-dev-middleware",
+        "^webpack-node-externals",
+        "^babel-loader",
+        "^@babel",
+        "^style-loader",
+        "^ts-loader"
       ],
       "matchUpdateTypes": [
         "minor",
         "patch"
       ],
       "prPriority": 20,
-      "groupName": "Testing Dependencies - Non Major",
-      "automergeSchedule": "after 8am and before 11am every Monday"
+      "automerge": false,
+      "groupName": "Build Tools",
+      "automergeSchedule": "after 8am and before 11am every first day of month"
+    },
+    {
+      "matchPackagePatterns": [
+        "^typescript",
+        "^ts-node",
+        "^tsconfig-paths",
+        "^@types"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "prPriority": 20,
+      "automerge": false,
+      "groupName": "TypeScript and Type Definitions",
+      "automergeSchedule": "after 8am and before 11am every first day of month"
+    },
+    {
+      "matchPackagePatterns": [
+        "^express",
+        "^@types/express",
+        "^cookie-parser",
+        "^@types/cookie-parser",
+        "^csurf",
+        "^@types/csurf",
+        "^serve-favicon",
+        "^@types/serve-favicon"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "prPriority": 20,
+      "automerge": false,
+      "groupName": "Express and Middleware",
+      "automergeSchedule": "after 8am and before 11am every first day of month"
     },
     {
       "matchPackageNames": [
