@@ -1,18 +1,23 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "schedule": "after 7am and before 11am every weekday",
-  "automergeSchedule": "after 8:00am and before 10:30am Monday to Thursday",
-  "prCreation": "not-pending",
-  "labels": ["dependencies"],
   "extends": [
-    "local>hmcts/.github:renovate-config"],
-  "helm-requirements":
-  {
-    "fileMatch": ["\\Chart.yaml$"],
+    "local>hmcts/.github:renovate-config"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "helm-requirements": {
+    "fileMatch": [
+      "\\Chart.yaml$"
+    ],
     "aliases": {
       "hmctspublic": "https://hmctspublic.azurecr.io/helm/v1/repo/"
     }
   },
+  "automergeSchedule": "after 8:30am and before 10:30am Monday to Thursday",
+  "prCreation": "not-pending",
+  "automergeType": "pr",
   "packageRules": [
     {
       "matchUpdateTypes": [
@@ -31,7 +36,6 @@
       ],
       "automerge": false,
       "groupName": "Helmet Upgrade"
-
     }
   ]
 }
