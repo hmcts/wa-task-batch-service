@@ -7,9 +7,6 @@
   "labels": [
     "dependencies"
   ],
-  "helmv3": {
-    "bumpVersion": "patch"
-  },
   "helm-requirements": {
     "fileMatch": [
       "\\Chart.yaml$"
@@ -18,16 +15,6 @@
       "hmctspublic": "https://hmctspublic.azurecr.io/helm/v1/repo/"
     }
   },
-  "regexManagers": [
-    {
-      "fileMatch": [
-        "^Dockerfile$"
-      ],
-      "matchStrings": [
-        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\sARG .*?_VERSION=(?<currentValue>.*)\\s"
-      ]
-    }
-  ],
   "automergeSchedule": "after 8:30am and before 10:30am Monday to Thursday",
   "prCreation": "not-pending",
   "automergeType": "pr",
@@ -38,102 +25,6 @@
         "patch"
       ],
       "automerge": true
-    },
-    {
-      "matchPackagePatterns": [
-        "^eslint",
-        "^@typescript-eslint",
-        "^tslint",
-        "^prettier",
-        "^style-loader"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "prPriority": 20,
-      "automerge": false,
-      "groupName": "Linters and Formatters",
-      "automergeSchedule": "after 8am and before 11am every first day of month"
-    },
-    {
-      "matchPackagePatterns": [
-        "^jest",
-        "^@types/jest",
-        "^sinon",
-        "^sinon-chai",
-        "^chai",
-        "^chai-as-promised",
-        "^supertest",
-        "^@types/supertest",
-        "^ts-jest",
-        "^nock",
-        "^msw"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "prPriority": 20,
-      "automerge": false,
-      "groupName": "Testing Frameworks and Utilities",
-      "automergeSchedule": "after 8am and before 11am every first day of month"
-    },
-    {
-      "matchPackagePatterns": [
-        "^webpack",
-        "^webpack-cli",
-        "^webpack-dev-middleware",
-        "^webpack-node-externals",
-        "^babel-loader",
-        "^@babel",
-        "^style-loader",
-        "^ts-loader"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "prPriority": 20,
-      "automerge": false,
-      "groupName": "Build Tools",
-      "automergeSchedule": "after 8am and before 11am every first day of month"
-    },
-    {
-      "matchPackagePatterns": [
-        "^typescript",
-        "^ts-node",
-        "^tsconfig-paths",
-        "^@types"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "prPriority": 20,
-      "automerge": false,
-      "groupName": "TypeScript and Type Definitions",
-      "automergeSchedule": "after 8am and before 11am every first day of month"
-    },
-    {
-      "matchPackagePatterns": [
-        "^express",
-        "^@types/express",
-        "^cookie-parser",
-        "^@types/cookie-parser",
-        "^csurf",
-        "^@types/csurf",
-        "^serve-favicon",
-        "^@types/serve-favicon"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "prPriority": 20,
-      "automerge": false,
-      "groupName": "Express and Middleware",
-      "automergeSchedule": "after 8am and before 11am every first day of month"
     },
     {
       "matchPackageNames": [
