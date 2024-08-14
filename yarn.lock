@@ -4743,7 +4743,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.2.2":
+"axios@npm:^1.7.4":
   version: 1.7.4
   resolution: "axios@npm:1.7.4"
   dependencies:
@@ -10853,7 +10853,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin-tslint": ^7.0.0
     "@typescript-eslint/parser": ^7.0.0
     applicationinsights: ^3.0.0
-    axios: ^1.2.2
+    axios: ^1.7.4
     babel-loader: ^9.0.0
     chai: ^5.1.0
     chai-as-promised: ^7.1.1
