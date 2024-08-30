@@ -5631,10 +5631,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^11.0.0":
-  version: 11.1.0
-  resolution: "commander@npm:11.1.0"
-  checksum: fd1a8557c6b5b622c89ecdfde703242ab7db3b628ea5d1755784c79b8e7cb0d74d65b4a262289b533359cd58e1bfc0bf50245dfbcd2954682a6f367c828b79ef
+"commander@npm:^12.0.0":
+  version: 12.1.0
+  resolution: "commander@npm:12.1.0"
+  checksum: 68e9818b00fc1ed9cdab9eb16905551c2b768a317ae69a5e3c43924c2b20ac9bb65b27e1cab36aeda7b6496376d4da908996ba2c0b5d79463e0fb1e77935d514
   languageName: node
   linkType: hard
 
@@ -11484,8 +11484,8 @@ __metadata:
   linkType: hard
 
 "yarn-audit-fix@npm:^10.0.0":
-  version: 10.0.8
-  resolution: "yarn-audit-fix@npm:10.0.8"
+  version: 10.0.9
+  resolution: "yarn-audit-fix@npm:10.0.9"
   dependencies:
     "@types/fs-extra": ^11.0.4
     "@types/lodash-es": ^4.17.12
@@ -11493,7 +11493,7 @@ __metadata:
     "@types/yarnpkg__lockfile": ^1.1.9
     "@yarnpkg/lockfile": ^1.1.0
     chalk: ^5.3.0
-    commander: ^11.0.0
+    commander: ^12.0.0
     fast-glob: ^3.3.2
     fs-extra: ^11.2.0
     js-yaml: ^4.1.0
@@ -11502,7 +11502,7 @@ __metadata:
     synp: ^1.9.13
   bin:
     yarn-audit-fix: target/esm/cli.mjs
-  checksum: 98b8ecece7c4bc2a06ef51a067dca1f5a7eac7f4867d7e19bee8f4f6533cf0d2470635aa131dd07f5e5c2c3885c758de7097ca4689517eb9d303ce45045cf83a
+  checksum: 2d35a33142269953f737b41382e2df4deb6a85b3215c020ae5f7f5c48000a894803b9e85b26cc9eb6846b22722ac7a133b93dcc8ac6cb784d21615a0171fe3eb
   languageName: node
   linkType: hard
 
