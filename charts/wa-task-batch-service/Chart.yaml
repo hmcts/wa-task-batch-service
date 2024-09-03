@@ -6,7 +6,7 @@ home: https://github.com/hmcts/wa-task-batch-service
 version: 0.0.24
 dependencies:
   - name: job
-    version: ~2.1.1
+    version: 2.1.2
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
 
 
