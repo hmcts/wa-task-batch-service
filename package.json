@@ -105,7 +105,8 @@
     "@azure/msal-node": "2.13.1",
     "@azure/identity": "4.4.1",
     "micromatch": "4.0.8",
-    "braces": "3.0.3"
+    "braces": "3.0.3",
+    "path-to-regexp": "^0.1.10"
   },
   "packageManager": "yarn@3.8.5"
 }
