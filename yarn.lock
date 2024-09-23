@@ -1789,9 +1789,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@grpc/grpc-js@npm:1.11.2":
-  version: 1.11.2
-  resolution: "@grpc/grpc-js@npm:1.11.2"
+"@grpc/grpc-js@npm:1.11.3":
+  version: 1.11.3
+  resolution: "@grpc/grpc-js@npm:1.11.3"
   dependencies:
     "@grpc/proto-loader": "npm:^0.7.13"
     "@js-sdsl/ordered-map": "npm:^4.4.2"
