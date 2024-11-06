@@ -103,7 +103,7 @@
     "formidable": "3.5.2",
     "@grpc/grpc-js": "1.11.3",
     "@azure/msal-node": "2.14.0",
-    "@azure/identity": "4.4.1",
+    "@azure/identity": "4.5.0",
     "micromatch": "4.0.8",
     "braces": "3.0.3",
     "send": "0.19.1",
