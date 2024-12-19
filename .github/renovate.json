@@ -20,13 +20,6 @@
   "automergeType": "pr",
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "automerge": true
-    },
-    {
       "matchPackageNames": [
         "helmet"
       ],
