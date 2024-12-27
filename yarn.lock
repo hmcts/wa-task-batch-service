@@ -4428,13 +4428,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"arr-union@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "arr-union@npm:3.1.0"
-  checksum: 10c0/7d5aa05894e54aa93c77c5726c1dd5d8e8d3afe4f77983c0aa8a14a8a5cbe8b18f0cf4ecaa4ac8c908ef5f744d2cbbdaa83fd6e96724d15fea56cfa7f5efdd51
-  languageName: node
-  linkType: hard
-
 "array-flatten@npm:1.1.1":
   version: 1.1.1
   resolution: "array-flatten@npm:1.1.1"
@@ -4659,31 +4652,6 @@ __metadata:
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
   checksum: 10c0/9308baf0a7e4838a82bbfd11e01b1cb0f0cf2893bc1676c27c2a8c0e70cbae1c59120c3268517a8ae7fb6376b4639ef81ca22582611dbee4ed28df945134aaee
-  languageName: node
-  linkType: hard
-
-"bash-glob@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "bash-glob@npm:2.0.0"
-  dependencies:
-    bash-path: "npm:^1.0.1"
-    component-emitter: "npm:^1.2.1"
-    cross-spawn: "npm:^5.1.0"
-    each-parallel-async: "npm:^1.0.0"
-    extend-shallow: "npm:^2.0.1"
-    is-extglob: "npm:^2.1.1"
-    is-glob: "npm:^4.0.0"
-  checksum: 10c0/8129781dfd7f39872dcd4e5fe9f5efd040089dc259c5281d8d947b161855106712b2b0130331ebb8b551f5d3e13c8a4fb1733ad7a68b0fffa82f181ac2f07999
-  languageName: node
-  linkType: hard
-
-"bash-path@npm:^1.0.1":
-  version: 1.0.3
-  resolution: "bash-path@npm:1.0.3"
-  dependencies:
-    arr-union: "npm:^3.1.0"
-    is-windows: "npm:^1.0.1"
-  checksum: 10c0/35b540cbcefa2aeb49994db023747f44a7c9de60309decf3dc1d60dc5422aec46564a01f90700d4adffb28d9716b1f32ebeeb3512f458fa2a362b14e6fe9fc8c
   languageName: node
   linkType: hard
 
@@ -5141,7 +5109,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^12.0.0":
+"commander@npm:^12.1.0":
   version: 12.1.0
   resolution: "commander@npm:12.1.0"
   checksum: 10c0/6e1996680c083b3b897bfc1cfe1c58dfbcd9842fd43e1aaf8a795fbc237f65efcc860a3ef457b318e73f29a4f4a28f6403c3d653d021d960e4632dd45bde54a9
@@ -5169,7 +5137,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"component-emitter@npm:^1.2.1, component-emitter@npm:^1.3.0":
+"component-emitter@npm:^1.3.0":
   version: 1.3.1
   resolution: "component-emitter@npm:1.3.1"
   checksum: 10c0/e4900b1b790b5e76b8d71b328da41482118c0f3523a516a41be598dc2785a07fd721098d9bf6e22d89b19f4fa4e1025160dc00317ea111633a3e4f75c2b86032
@@ -5513,13 +5481,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"each-parallel-async@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "each-parallel-async@npm:1.0.0"
-  checksum: 10c0/cc395cc059419a76b858f9f669bf042e92c094c3b511c309c71e0646b505c8e799137c7ab343f2f4a585f019e663961ed4239523e60214edc569072368ec044c
-  languageName: node
-  linkType: hard
-
 "eastasianwidth@npm:^0.2.0":
   version: 0.2.0
   resolution: "eastasianwidth@npm:0.2.0"
@@ -5641,10 +5602,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eol@npm:^0.9.1":
-  version: 0.9.1
-  resolution: "eol@npm:0.9.1"
-  checksum: 10c0/5a6654ca1961529429f4eab4473e6d9351969f25baa30de7232e862c6c5f9037fc0ff044a526fe9cdd6ae65bb1b0db7775bf1d4f342f485c10c34b1444bfb7ab
+"eol@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "eol@npm:0.10.0"
+  checksum: 10c0/810d3c7ca97eadc0e32ed8b280c04e49a564c0a0315d57fd71468094901c15d57270f8e62615b45db4d9bafee0dbfbf51fcfe1f24243414e315fea178682102e
   languageName: node
   linkType: hard
 
@@ -5969,15 +5930,6 @@ __metadata:
     utils-merge: "npm:1.0.1"
     vary: "npm:~1.1.2"
   checksum: 10c0/38168fd0a32756600b56e6214afecf4fc79ec28eca7f7a91c2ab8d50df4f47562ca3f9dee412da7f5cea6b1a1544b33b40f9f8586dbacfbdada0fe90dbb10a1f
-  languageName: node
-  linkType: hard
-
-"extend-shallow@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "extend-shallow@npm:2.0.1"
-  dependencies:
-    is-extendable: "npm:^0.1.0"
-  checksum: 10c0/ee1cb0a18c9faddb42d791b2d64867bd6cfd0f3affb711782eb6e894dd193e2934a7f529426aac7c8ddb31ac5d38000a00aa2caf08aa3dfc3e1c8ff6ba340bd9
   languageName: node
   linkType: hard
 
@@ -6841,13 +6793,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-extendable@npm:^0.1.0":
-  version: 0.1.1
-  resolution: "is-extendable@npm:0.1.1"
-  checksum: 10c0/dd5ca3994a28e1740d1e25192e66eed128e0b2ff161a7ea348e87ae4f616554b486854de423877a2a2c171d5f7cd6e8093b91f54533bc88a59ee1c9838c43879
-  languageName: node
-  linkType: hard
-
 "is-extglob@npm:^2.1.1":
   version: 2.1.1
   resolution: "is-extglob@npm:2.1.1"
@@ -6926,13 +6871,6 @@ __metadata:
   version: 1.0.0
   resolution: "is-typedarray@npm:1.0.0"
   checksum: 10c0/4c096275ba041a17a13cca33ac21c16bc4fd2d7d7eb94525e7cd2c2f2c1a3ab956e37622290642501ff4310601e413b675cf399ad6db49855527d2163b3eeeec
-  languageName: node
-  linkType: hard
-
-"is-windows@npm:^1.0.1":
-  version: 1.0.2
-  resolution: "is-windows@npm:1.0.2"
-  checksum: 10c0/b32f418ab3385604a66f1b7a3ce39d25e8881dee0bd30816dc8344ef6ff9df473a732bcc1ec4e84fe99b2f229ae474f7133e8e93f9241686cfcf7eebe53ba7a5
   languageName: node
   linkType: hard
 
@@ -9948,22 +9886,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"synp@npm:^1.9.13":
-  version: 1.9.13
-  resolution: "synp@npm:1.9.13"
+"synp@npm:^1.9.14":
+  version: 1.9.14
+  resolution: "synp@npm:1.9.14"
   dependencies:
     "@yarnpkg/lockfile": "npm:^1.1.0"
-    bash-glob: "npm:^2.0.0"
     colors: "npm:1.4.0"
     commander: "npm:^7.2.0"
-    eol: "npm:^0.9.1"
+    eol: "npm:^0.10.0"
+    fast-glob: "npm:^3.3.2"
     lodash: "npm:4.17.21"
     nmtree: "npm:^1.0.6"
-    semver: "npm:^7.6.0"
+    semver: "npm:^7.6.3"
     sort-object-keys: "npm:^1.1.3"
   bin:
     synp: cli/synp.js
-  checksum: 10c0/2c43943c160a2567adb67a797b1642e38c433c47a33a751fb85ba694b81d7c86b30655520eb4f778681eab0c88e792b6e550edc84fa20a3f9fe99bac07f6233d
+  checksum: 10c0/38fdc42be845bcdeafd61a1fd63ef98735d89e907864a9ae7727eb1176e90fee35a2f3884d626fe8f077f195a509a4c19829e819673410c9c38cfad8d1522237
   languageName: node
   linkType: hard
 
@@ -10984,8 +10922,8 @@ __metadata:
   linkType: hard
 
 "yarn-audit-fix@npm:^10.0.0":
-  version: 10.0.9
-  resolution: "yarn-audit-fix@npm:10.0.9"
+  version: 10.1.1
+  resolution: "yarn-audit-fix@npm:10.1.1"
   dependencies:
     "@types/fs-extra": "npm:^11.0.4"
     "@types/lodash-es": "npm:^4.17.12"
@@ -10993,16 +10931,16 @@ __metadata:
     "@types/yarnpkg__lockfile": "npm:^1.1.9"
     "@yarnpkg/lockfile": "npm:^1.1.0"
     chalk: "npm:^5.3.0"
-    commander: "npm:^12.0.0"
+    commander: "npm:^12.1.0"
     fast-glob: "npm:^3.3.2"
     fs-extra: "npm:^11.2.0"
     js-yaml: "npm:^4.1.0"
     lodash-es: "npm:^4.17.21"
     semver: "npm:^7.6.3"
-    synp: "npm:^1.9.13"
+    synp: "npm:^1.9.14"
   bin:
     yarn-audit-fix: target/esm/cli.mjs
-  checksum: 10c0/dd022faccf888f9a2b3fb5c5f7a9c2f8437ce900bbf16c894c253916985f818c3c95fb69e48ab057e65d168e38a5a8dcf2c50ce145295d11ef441399533ad0ec
+  checksum: 10c0/c36914d1e17b65aaf47961d5ccdb33387160863204d434bae7762e8d1de76161065da925c3a78b1facf22920a8a764c66139e5d4db992d198f5482b3a28c3eb8
   languageName: node
   linkType: hard
 
