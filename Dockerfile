@@ -1,8 +1,15 @@
 # ---- Base image ----
 FROM hmctspublic.azurecr.io/base/node:20-alpine as base
+USER root
+RUN corepack enable
+USER hmcts
+
 COPY --chown=hmcts:hmcts . .
-RUN yarn install --production \
-  && yarn cache clean
+
+RUN yarn config set httpProxy "$http_proxy" \
+    && yarn config set httpsProxy "$https_proxy" \
+    && yarn workspaces focus --all --production \
+    && rm -rf $(yarn cache clean)
 
 # ---- Build image ----
 FROM base as build
