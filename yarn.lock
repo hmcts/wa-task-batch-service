@@ -2091,12 +2091,12 @@ __metadata:
   linkType: hard
 
 "@hmcts/info-provider@npm:^1.2.1":
-  version: 1.2.2
-  resolution: "@hmcts/info-provider@npm:1.2.2"
+  version: 1.2.3
+  resolution: "@hmcts/info-provider@npm:1.2.3"
   dependencies:
-    express: "npm:^4.19.2"
+    express: "npm:^4.21.2"
     js-yaml: "npm:^4.1.0"
-  checksum: 10c0/52a83aac429c679569b4a4b79244e67c3d0ce0e121fa50ccdff38ab558c4fce6f93f18b3aa7d2d4637e1aa000bf97042a0fa34d9be3168e6097448ea6ffbb1cc
+  checksum: 10c0/1d717d63c682a6f85dad1390c1f01a7b39b044f44c09bd46929b78ac773122b3bbd9517e08424497919d3d962224da5ab7e3c2f6e38170ef0ae72fbe75da6eea
   languageName: node
   linkType: hard
 
