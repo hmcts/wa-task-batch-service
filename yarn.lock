@@ -3871,7 +3871,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/supertest@npm:^6.0.0":
+"@types/supertest@npm:^6.0.3":
   version: 6.0.3
   resolution: "@types/supertest@npm:6.0.3"
   dependencies:
@@ -10042,13 +10042,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"supertest@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "supertest@npm:7.0.0"
+"supertest@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "supertest@npm:7.1.0"
   dependencies:
     methods: "npm:^1.1.2"
     superagent: "npm:^9.0.1"
-  checksum: 10c0/f0b10a1d292e6156fab16efdbb90d8cb1df54367667ae4108a6da67b81058d35182720dd9a3b4b2f538b14729dc8633741e6242724f1a0ccfde5197341ea96ec
+  checksum: 10c0/7a711630b5895c86978980fc88db0b6e54a655424d47e83bb126ff13d3879130271c37bca5e1f404c9ce8cbcaa922ab0897f3955598c3d5bb0dc6914161221bc
   languageName: node
   linkType: hard
 
@@ -10786,7 +10786,7 @@ __metadata:
     "@types/node": "npm:^20.0.0"
     "@types/require-directory": "npm:^2.1.2"
     "@types/serve-favicon": "npm:^2.5.3"
-    "@types/supertest": "npm:^6.0.0"
+    "@types/supertest": "npm:^6.0.3"
     "@types/webpack-dev-middleware": "npm:^5.3.0"
     "@typescript-eslint/eslint-plugin": "npm:^7.0.0"
     "@typescript-eslint/eslint-plugin-tslint": "npm:^7.0.0"
@@ -10820,7 +10820,7 @@ __metadata:
     sinon-chai: "npm:^3.4.0"
     sonar-scanner: "npm:^3.1.0"
     style-loader: "npm:^4.0.0"
-    supertest: "npm:^7.0.0"
+    supertest: "npm:^7.1.0"
     ts-jest: "npm:^29.0.0"
     ts-loader: "npm:^9.3.1"
     ts-node: "npm:^10.8.2"
