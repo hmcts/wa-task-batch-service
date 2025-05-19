@@ -1,0 +1,1 @@
+{"value":"undici","children":{"ID":1104501,"Issue":"undici Denial of Service attack via bad certificate data","URL":"https://github.com/advisories/GHSA-cxrh-j4jr-qwg3","Severity":"low","Vulnerable Versions":"<5.29.0","Tree Versions":["5.28.5"],"Dependents":["@azure/functions@npm:4.5.1"]}}
