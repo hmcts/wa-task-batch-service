@@ -27,13 +27,13 @@ export class Helmet {
     app.use(
       helmet.contentSecurityPolicy({
         directives: {
-          connectSrc: [self],
-          defaultSrc: ["'none'"],
-          fontSrc: [self, 'data:'],
-          imgSrc: [self, googleAnalyticsDomain],
-          objectSrc: [self],
-          scriptSrc: [self, googleAnalyticsDomain, "'sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU='"],
-          styleSrc: [self],
+          'connect-src': [self],
+          'default-src': ["'none'"],
+          'font-src': [self, 'data:'],
+          'img-src': [self, googleAnalyticsDomain],
+          'object-src': [self],
+          'script-src': [self, googleAnalyticsDomain, "'sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU='"],
+          'style-src': [self],
         },
       }),
     );
