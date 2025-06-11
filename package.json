@@ -110,7 +110,7 @@
     "express": "^4.20.0",
     "cookie": "^0.7.0",
     "cross-spawn": "7.0.6",
-    "undici": "7.10.0",
+    "undici": "5.29.0",
     "brace-expansion": "4.0.1"
   },
   "packageManager": "yarn@4.6.0"
