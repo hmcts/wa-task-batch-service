@@ -1,6 +1,6 @@
 import * as express from 'express';
 import config from 'config';
-import helmet = require('helmet');
+import { helmet } from 'helmet';
 
 export interface HelmetConfig {
   referrerPolicy: string;
@@ -44,6 +44,10 @@ export class Helmet {
       throw new Error('Referrer policy configuration is required');
     }
 
-    app.use(helmet.referrerPolicy({policy}));
+    helmet({
+      referrerPolicy: {
+        policy: 'no-referrer',
+      },
+    });
   }
 }
