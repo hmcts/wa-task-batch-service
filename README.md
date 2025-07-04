@@ -135,6 +135,29 @@ Info: [utils/exit.ts]: Job will now exit with code 0
     export JOB_NAME=INITIATION)
 
 ```
+### Unit test
+
+This template app uses [Jest](https://jestjs.io//) as the test engine. You can run unit tests by executing
+the following command:
+
+```bash
+$ yarn test
+```
+
+Here's how to run functional tests (the template contains just one sample test):
+
+```
+1. Ensure wa-task-monitor service is up.
+    (Its dependent services also need to be up I.e. wa-workflow-api & wa-taskmanagement-service).
+2. Set up the following environment variables on your local wa-task-batch-service path terminal.
+    export ALLOW_CONFIG_MUTATIONS=true
+    export JOB_NAME=INITIATION
+```
+
+```bash
+$ yarn test:routes
+```
+
 
 ### Security
 
