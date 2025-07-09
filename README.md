@@ -147,11 +147,8 @@ $ yarn test
 Here's how to run functional tests (the template contains just one sample test):
 
 ```
-1. Ensure wa-task-monitor service is up.
-    (Its dependent services also need to be up I.e. wa-workflow-api & wa-taskmanagement-service).
-2. Set up the following environment variables on your local wa-task-batch-service path terminal.
+1. Set up the following environment variables on your local wa-task-batch-service path terminal.
     export ALLOW_CONFIG_MUTATIONS=true
-    export JOB_NAME=INITIATION
 ```
 
 ```bash
