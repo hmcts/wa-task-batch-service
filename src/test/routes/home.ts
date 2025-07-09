@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import request from 'supertest';
 
 import { app } from '../../main/app';
@@ -9,7 +8,7 @@ describe('Home page', () => {
     test('should return sample home page', async () => {
       await request(app)
         .get('/')
-        .expect((res) => expect(res.status).to.equal(200));
+        .expect((res) => expect(res.status).toBe(200));
     });
   });
 });
