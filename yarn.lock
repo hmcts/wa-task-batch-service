@@ -2277,14 +2277,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hmcts/nodejs-healthcheck@npm:1.8.5":
-  version: 1.8.5
-  resolution: "@hmcts/nodejs-healthcheck@npm:1.8.5"
+"@hmcts/nodejs-healthcheck@npm:1.8.6":
+  version: 1.8.6
+  resolution: "@hmcts/nodejs-healthcheck@npm:1.8.6"
   dependencies:
     "@hmcts/nodejs-logging": "npm:^4.0.4"
     js-yaml: "npm:^4.0.0"
-    superagent: "npm:9"
-  checksum: 10c0/ab4bec03832db962be06022ad01e9c2691004369e2366682cb268cd2df04950c6b069b8c97e42b243cff689482d70043b0db2614d7d3602a9cd4a30d02684975
+    superagent: "npm:^10.2.2"
+  checksum: 10c0/72336c62eb7b9e96a42d912d0e99041fad7c5de64b60da1b73d6d74bb73ac893a6e89122f7ed755ae7f71d50e6a3ea5bbafcdafd15c99848fe1dab4afed419a8
   languageName: node
   linkType: hard
 
@@ -10840,7 +10840,7 @@ __metadata:
     "@eslint/eslintrc": "npm:^3.3.1"
     "@eslint/js": "npm:^9.29.0"
     "@hmcts/info-provider": "npm:^1.2.1"
-    "@hmcts/nodejs-healthcheck": "npm:1.8.5"
+    "@hmcts/nodejs-healthcheck": "npm:1.8.6"
     "@hmcts/nodejs-logging": "npm:^4.0.4"
     "@hmcts/properties-volume": "npm:^1.2.0"
     "@types/chai-as-promised": "npm:^7.1.8"
