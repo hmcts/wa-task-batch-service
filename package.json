@@ -101,7 +101,7 @@
     "follow-redirects": "^1.15.6",
     "formidable": "3.5.4",
     "@grpc/grpc-js": "1.12.5",
-    "@azure/msal-node": "2.16.2",
+    "@azure/msal-node": "2.16.3",
     "@azure/identity": "4.11.1",
     "micromatch": "4.0.8",
     "braces": "3.0.3",
