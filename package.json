@@ -116,5 +116,5 @@
     "superagent": "^10.2.2",
     "@opentelemetry/instrumentation-redis-4": "npm:@opentelemetry/instrumentation-redis@0.50.0"
   },
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.10.3"
 }
