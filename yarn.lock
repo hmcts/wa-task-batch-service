@@ -1566,7 +1566,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.27.6":
+"@babel/runtime@npm:^7.28.4":
   version: 7.28.4
   resolution: "@babel/runtime@npm:7.28.4"
   checksum: 10c0/792ce7af9750fb9b93879cc9d1db175701c4689da890e6ced242ea0207c9da411ccf16dc04e689cc01158b28d7898c40d75598f4559109f761c12ce01e959bf7
@@ -1668,17 +1668,17 @@ __metadata:
   linkType: hard
 
 "@dr.pogodin/csurf@npm:^1.12.0":
-  version: 1.16.5
-  resolution: "@dr.pogodin/csurf@npm:1.16.5"
+  version: 1.16.6
+  resolution: "@dr.pogodin/csurf@npm:1.16.6"
   dependencies:
-    "@babel/runtime": "npm:^7.27.6"
+    "@babel/runtime": "npm:^7.28.4"
     cookie: "npm:^1.0.2"
     cookie-signature: "npm:^1.2.2"
     http-errors: "npm:^2.0.0"
     rndm: "npm:1.2.0"
     tsscmp: "npm:1.0.6"
     uid-safe: "npm:2.1.5"
-  checksum: 10c0/97d892d2b2f20fedb7934383772c47b889ff249e0633d4e77689b648c1d2088915c84bdd7aa37008ee586930110e08153169cfc64ec2dc7d0e38dc26605effb4
+  checksum: 10c0/cf88114dfc1abdd1640883877113b7f65fc13e505a9383ebfde37d909bccd7c9947907ec21521056fd281394c3e9e2d2671bd9ef57e90f489e6a6b1d28696d2a
   languageName: node
   linkType: hard
 
