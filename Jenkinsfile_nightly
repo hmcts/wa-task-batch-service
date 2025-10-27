@@ -19,4 +19,10 @@ withNightlyPipeline(type, product, component) {
     sh "yarn test"
     echo 'yarn test complete'
   }
+
+  enableFortifyScan()
+
+  afterSuccess('fortify-scan') {
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/Fortify Scan/**/*'
+  }
 }
