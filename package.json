@@ -17,7 +17,7 @@
     "test:coverage": "S2S_URL=http://service-auth-provider-api WA_TASK_MONITOR_SERVICE_URL=http://localhost:8077 jest --coverage",
     "test:routes": "jest -c jest.routes.config.js",
     "sonar-scan": "sonar-scanner",
-    "fortifyScan": "./src/test/java/gradlew -p test/java fortifyScan",
+    "fortifyScan": "/src/test/java/gradlew -p test/java fortifyScan",
     "test:a11y": "echo 'Not needed' && exit 0",
     "test:smoke": "yarn install && jest --config=jest.smoke.config.js && exit 0",
     "test:functional": "echo 'TODO add functional tests' && exit 1",
