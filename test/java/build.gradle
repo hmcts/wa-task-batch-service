@@ -5,6 +5,12 @@ plugins {
 sourceCompatibility = '21'
 targetCompatibility = '21'
 
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(21)
+  }
+}
+
 // tag::repositories[]
 repositories {
     mavenLocal()
@@ -22,8 +28,14 @@ dependencies {
 }
 // end::dependencies[]
 
+tasks.withType(JavaExec).configureEach {
+  javaLauncher = javaToolchains.launcherFor {
+    languageVersion = JavaLanguageVersion.of(21)
+  }
+}
+
 task fortifyScan(type: JavaExec)  {
-    main = "uk.gov.hmcts.fortifyclient.FortifyClientMainApp"
-    classpath += sourceSets.test.runtimeClasspath
-    jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
+  main = "uk.gov.hmcts.fortifyclient.FortifyClientMainApp"
+  classpath += sourceSets.test.runtimeClasspath
+  jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
 }
