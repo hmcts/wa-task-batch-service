@@ -116,7 +116,8 @@
     "brace-expansion": "1.1.12",
     "superagent": "^10.2.2",
     "@opentelemetry/instrumentation-redis-4": "npm:@opentelemetry/instrumentation-redis@0.57.0",
-    "js-yaml": "^4.1.1"
+    "js-yaml": "^4.1.1",
+    "glob": "^11.1.0"
   },
   "packageManager": "yarn@4.6.0"
 }
