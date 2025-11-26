@@ -1889,12 +1889,13 @@ __metadata:
   linkType: hard
 
 "@hmcts/info-provider@npm:^1.2.1":
-  version: 1.2.3
-  resolution: "@hmcts/info-provider@npm:1.2.3"
+  version: 1.3.0
+  resolution: "@hmcts/info-provider@npm:1.3.0"
   dependencies:
-    express: "npm:^4.21.2"
     js-yaml: "npm:^4.1.0"
-  checksum: 10c0/1d717d63c682a6f85dad1390c1f01a7b39b044f44c09bd46929b78ac773122b3bbd9517e08424497919d3d962224da5ab7e3c2f6e38170ef0ae72fbe75da6eea
+  peerDependencies:
+    express: ">=4"
+  checksum: 10c0/19d01dc3c620b637557dab513d02af5668f683b938864d1387e749bddf70c3943b2ee285a8185a77f525d6b8a26df754bed1ce5abd22971a7be51c11082b2176
   languageName: node
   linkType: hard
 
