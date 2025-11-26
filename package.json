@@ -118,5 +118,5 @@
     "@opentelemetry/instrumentation-redis-4": "npm:@opentelemetry/instrumentation-redis@0.57.0",
     "js-yaml": "^4.1.1"
   },
-  "packageManager": "yarn@4.6.0"
+  "packageManager": "yarn@4.12.0"
 }
