@@ -102,7 +102,7 @@
     "follow-redirects": "^1.15.6",
     "formidable": "3.5.4",
     "@grpc/grpc-js": "1.14.2",
-    "@azure/msal-node": "2.16.3",
+    "@azure/msal-node": "3.8.4",
     "@azure/identity": "4.13.0",
     "micromatch": "4.0.8",
     "braces": "3.0.3",
@@ -114,6 +114,7 @@
     "cross-spawn": "7.0.6",
     "undici": "5.29.0",
     "brace-expansion": "1.1.12",
+    "jws": "3.2.3",
     "superagent": "^10.2.2",
     "@opentelemetry/instrumentation-redis-4": "npm:@opentelemetry/instrumentation-redis@0.57.1",
     "js-yaml": "^4.1.1"
