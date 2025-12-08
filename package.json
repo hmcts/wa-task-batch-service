@@ -101,7 +101,7 @@
     "tough-cookie": "^4.1.3",
     "follow-redirects": "^1.15.6",
     "formidable": "3.5.4",
-    "@grpc/grpc-js": "1.14.1",
+    "@grpc/grpc-js": "1.14.2",
     "@azure/msal-node": "2.16.3",
     "@azure/identity": "4.13.0",
     "micromatch": "4.0.8",
@@ -115,7 +115,7 @@
     "undici": "5.29.0",
     "brace-expansion": "1.1.12",
     "superagent": "^10.2.2",
-    "@opentelemetry/instrumentation-redis-4": "npm:@opentelemetry/instrumentation-redis@0.57.0",
+    "@opentelemetry/instrumentation-redis-4": "npm:@opentelemetry/instrumentation-redis@0.57.1",
     "js-yaml": "^4.1.1"
   },
   "packageManager": "yarn@4.6.0"
