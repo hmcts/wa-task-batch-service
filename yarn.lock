@@ -3505,12 +3505,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chai-as-promised@npm:^7.1.8":
-  version: 7.1.8
-  resolution: "@types/chai-as-promised@npm:7.1.8"
+"@types/chai-as-promised@npm:^8.0.0":
+  version: 8.0.2
+  resolution: "@types/chai-as-promised@npm:8.0.2"
   dependencies:
     "@types/chai": "npm:*"
-  checksum: 10c0/c0a19cffe8d3f406b2cb9ba17f5f0efe318b14f27896d807b3199cc2231c16a4b5b6c464fdf2a939214de481de58cffd46c240539d3d4ece18659277d71ccc23
+  checksum: 10c0/94492694121ba3c8b16e61be5f3d91bf1996c37e7b5f85363f30e160344b32d42b7ad9606198e57a3b3c06eb3b36e345ac0494e7556fc406433d8e13f1b83a77
   languageName: node
   linkType: hard
 
@@ -10453,7 +10453,7 @@ __metadata:
     "@hmcts/nodejs-healthcheck": "npm:1.8.6"
     "@hmcts/nodejs-logging": "npm:^4.0.4"
     "@hmcts/properties-volume": "npm:^1.2.0"
-    "@types/chai-as-promised": "npm:^7.1.8"
+    "@types/chai-as-promised": "npm:^8.0.0"
     "@types/config": "npm:3.3.5"
     "@types/cookie-parser": "npm:^1.4.8"
     "@types/csurf": "npm:^1.11.5"
