@@ -3,7 +3,7 @@ import Logger, {getLogLabel} from '../utils/logger';
 import config from 'config';
 import {exit} from '../utils/exit';
 
-import { authenticator } from '@otplib/preset-default';
+import {authenticator} from 'otplib';
 
 const logger: Logger = new Logger();
 const logLabel: string = getLogLabel(__filename);
