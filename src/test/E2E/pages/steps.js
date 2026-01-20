@@ -8,7 +8,7 @@ module.exports = function () {
       this.amOnPage(TEST_FRONT_END_URL);
     },
     waitForLandingText(text) {
-      this.waitForTextInDom(text, E2E_TEST_TIME_TO_WAIT_FOR_TEXT);
+      this.waitForText(text, E2E_TEST_TIME_TO_WAIT_FOR_TEXT);
     },
   });
 };

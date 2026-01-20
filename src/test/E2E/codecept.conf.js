@@ -4,16 +4,26 @@ const { TEST_E2E_URL, E2E_TEST_TIME_TO_WAIT_FOR_TEXT } = require('./config');
 
 exports.config = {
   tests: './paths/**/*.js',
-  output: '../../output',
+  output: '../../functional-output',
   helpers: {
     Puppeteer: {
       url: TEST_E2E_URL,
       show: false,
-      windowSize: '1280x720',
       waitForTimeout: E2E_TEST_TIME_TO_WAIT_FOR_TEXT * 1000,
-    },
-    JSWait: {
-      require: './helpers/JSWait.js',
+      getPageTimeout: E2E_TEST_TIME_TO_WAIT_FOR_TEXT * 1000,
+      waitForNavigation: ['domcontentloaded'],
+      chrome: {
+        headless: true,
+        ignoreHTTPSErrors: true,
+        ignoreDefaultArgs: ['--enable-automation'],
+        args: [
+          '--disable-gpu',
+          '--no-sandbox',
+          '--allow-running-insecure-content',
+          '--ignore-certificate-errors',
+          '--window-size=1280,960',
+        ],
+      },
     },
   },
   include: {
@@ -22,7 +32,7 @@ exports.config = {
   mocha: {
     reporter: 'mochawesome',
     reporterOptions: {
-      reportDir: './output',
+      reportDir: './functional-output',
       reportFilename: 'e2e-report',
     },
   },
