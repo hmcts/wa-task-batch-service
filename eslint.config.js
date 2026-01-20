@@ -47,6 +47,18 @@ module.exports = defineConfig([{
     'semi': ['error', 'always'],
   },
 }, {
+  files: ['src/test/E2E/**/*.js'],
+
+  languageOptions: {
+    globals: {
+      ...globals.browser,
+      ...globals.node,
+      Feature: 'readonly',
+      Scenario: 'readonly',
+      actor: 'readonly',
+    },
+  },
+}, {
   files: ['**/*.ts', '**/*.tsx'],
 
   languageOptions: {

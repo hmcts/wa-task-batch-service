@@ -18,7 +18,7 @@ function parseBody(body) {
   }
   try {
     return JSON.parse(body);
-  } catch (err) {
+  } catch {
     return body;
   }
 }
@@ -66,7 +66,7 @@ function runTaskMonitorJob(envOverrides, timeoutMs = 5000) {
           ...envOverrides,
         },
         stdio: ['ignore', 'ignore', 'pipe'],
-      }
+      },
     );
 
     let stderr = '';
