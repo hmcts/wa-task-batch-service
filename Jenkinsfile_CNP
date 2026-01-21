@@ -18,7 +18,7 @@ withPipeline(type, product, component) {
     echo "yarn test complete"
     sh "yarn test:smoke"
     echo "Smoke test complete"
+    sh "yarn test:functional"
+    echo "Functional test complete"
   }
-
-
 }
