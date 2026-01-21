@@ -21,4 +21,9 @@ withPipeline(type, product, component) {
     sh "yarn test:functional"
     echo "Functional test complete"
   }
+
+  onPR {
+    S2S_URL: "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
+    WA_TASK_MONITOR_SERVICE_URL: "http://wa-task-monitor-aat.service.core-compute-aat.internal"
+  }
 }

@@ -7,6 +7,7 @@ let serverProcess: ChildProcess;
 // const BASE_URL: string = config.get('services.taskMonitor.url');
 const BASE_URL: string = 'http://wa-task-monitor-aat.service.core-compute-aat.internal';
 const JOB_REQUEST = {job_details: {name: 'INITIATION'}};
+const s2sService: S2SService = S2SService.getInstance();
 
 const taskMonitorApi: AxiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -47,8 +48,8 @@ test('should check if server process is running', async () => {
   // Wait for some time to let the server start
   await new Promise((resolve) => setTimeout(resolve, 30000));
 
-  const s2sToken = await S2SService.getInstance().getServiceToken();
-  const headers = {ServiceAuthorization: s2sToken};
+  const s2sToken = await s2sService.getServiceToken();
+  const headers: any = {ServiceAuthorization: s2sToken};
   await taskMonitorApi.post('/monitor/tasks/jobs', JOB_REQUEST, {headers});
 
   console.log('Output log', output);
