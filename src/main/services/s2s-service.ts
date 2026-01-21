@@ -39,6 +39,9 @@ export default class S2SService implements IS2SService {
     const oneTimePassword = authenticator.generate(secret);
     const body = {microservice, oneTimePassword};
 
+    //Remove after testing
+    logger.trace('s2s url', url)
+
     try {
       const response: AxiosResponse = await axios.post(url, body);
       if (response && response.data) {
