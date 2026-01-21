@@ -49,7 +49,7 @@ test('should check if server process is running', async () => {
   await new Promise((resolve) => setTimeout(resolve, 30000));
 
   const s2sToken = await s2sService.getServiceToken();
-  const headers: any = {ServiceAuthorization: s2sToken};
+  const headers = {ServiceAuthorization: s2sToken};
   await taskMonitorApi.post('/monitor/tasks/jobs', JOB_REQUEST, {headers});
 
   console.log('Output log', output);
