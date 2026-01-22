@@ -49,8 +49,14 @@ test('should check if server process is running', async () => {
   await new Promise((resolve) => setTimeout(resolve, 30000));
 
   const s2sToken = await s2sService.getServiceToken();
-  const headers = {ServiceAuthorization: s2sToken};
-  await taskMonitorApi.post('/monitor/tasks/jobs', JOB_REQUEST, {headers});
+  s2sService.getServiceToken().then(s2sToken => {
+        //eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const headers: any = {ServiceAuthorization: s2sToken};
+        taskMonitorApi.post('/monitor/tasks/jobs', JOB_REQUEST, {headers});
+        });
+
+//   const headers = {ServiceAuthorization: s2sToken};
+//   await
 
   console.log('Output log', output);
   expect(output).toContain('Application started');
