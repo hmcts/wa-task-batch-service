@@ -50,8 +50,7 @@ export default class S2SService implements IS2SService {
       logger.exception(err, logLabel);
 
       logger.exception('lars s2s url ', url);
-      logger.exception('lars servicename ', microservice);
-      logger.exception('lars otp ', otp);
+      logger.exception('lars servicename ', microservice););
       exit(1);
     }
   }
