@@ -8,6 +8,12 @@ def component = "task-batch-service"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
+def secrets = [
+  's2s-${env}': [
+    secret('microservicekey-wa', 'S2S_SECRET_TASK_MONITOR'),
+  ]
+]
+
 withPipeline(type, product, component) {
   disableLegacyDeployment()
   nonServiceApp()
@@ -26,5 +32,6 @@ withPipeline(type, product, component) {
     env.S2S_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
     env.WA_TASK_MONITOR_SERVICE_URL = "http://wa-task-monitor-aat.service.core-compute-aat.internal"
     env.S2S_MICROSERVICE_NAME_TASK_MONITOR = "wa_task_monitor"
+    env.S2S_SECRET_TASK_MONITOR = "${{ secrets.S2S_SECRET_TASK_MONITOR }}"
   }
 }
