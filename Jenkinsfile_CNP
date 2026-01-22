@@ -24,11 +24,12 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
   ]
 }
 
-loadVaultSecrets(secrets)
+
 
 withPipeline(type, product, component) {
   disableLegacyDeployment()
   nonServiceApp()
+  loadVaultSecrets(secrets)
 
   afterSuccess('build') {
     yarnBuilder.yarn('build')
