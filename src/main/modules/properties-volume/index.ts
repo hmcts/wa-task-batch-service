@@ -8,6 +8,10 @@ export class PropertiesVolume {
 
     propertiesVolume.addTo(config);
 
+    this.setSecret('secrets.wa.AppInsightsInstrumentationKey', 'appInsights.instrumentationKey');
+    this.setSecret('secrets.wa.s2s-secret-task-monitor', 's2s.secret');
+
+
     set(config, 'appInsights.instrumentationKey', get(config, 'secrets.wa.AppInsightsInstrumentationKey'));
     set(config, 's2s.secret', get(config, 'secrets.wa.s2s-secret-task-monitor'));
     set(config, 'secrets.wa.s2s-secret-task-monitor', get(config, 's2s.secret'));
@@ -18,5 +22,11 @@ export class PropertiesVolume {
     console.log('S2S secret from volume:', s2sSecretFromVolume ? '[FOUND]' : '[NOT FOUND]');
     console.log('S2S secret from env:', s2sSecretFromEnv ? '[FOUND]' : '[NOT FOUND]');
 
+  }
+
+  private setSecret(fromPath: string, toPath: string): void {
+    if (config.has(fromPath)) {
+      set(config, toPath, get(config, fromPath));
+    }
   }
 }
