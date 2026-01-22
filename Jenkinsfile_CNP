@@ -9,7 +9,7 @@ def component = "task-batch-service"
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
 def secrets = [
-  'wa-${env}': [
+  'wa-aat': [
     secret('s2s-secret-task-monitor', 'S2S_SECRET_TASK_MONITOR')
   ]
 ]
