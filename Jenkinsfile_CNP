@@ -11,9 +11,6 @@ def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 def secrets = [
   'wa-aat': [
     secret('s2s-secret-task-monitor', 'S2S_SECRET_TASK_MONITOR')
-  ],
-  's2s-aat': [
-    secret('s2s-secret-task-monitor', 'S2S_SECRET_TASK_MONITOR')
   ]
 ]
 
@@ -49,5 +46,20 @@ withPipeline(type, product, component) {
     env.S2S_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
     env.WA_TASK_MONITOR_SERVICE_URL = "http://wa-task-monitor-aat.service.core-compute-aat.internal"
     env.S2S_MICROSERVICE_NAME_TASK_MONITOR = "wa_task_monitor"
+    env.JOB_NAME = "INITIATION"
+  }
+
+  afterSuccess('build') {
+    yarnBuilder.yarn('build')
+    sh "yarn test"
+    echo "yarn test complete"
+    sh "yarn test:smoke"
+    echo "Smoke test complete"
+  }
+
+  afterSuccess('smoketest:aat') {
+    sh "printenv | grep -i s2s || echo 'No S2S vars'"
+    sh "yarn test:functional"
+    echo "Functional test complete"
   }
 }
