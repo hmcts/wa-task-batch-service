@@ -35,12 +35,14 @@ export default class S2SService implements IS2SService {
     const url: string = config.get('s2s.url') + '/lease';
     const secret: string = config.get('s2s.secret');
     const microservice: string = config.get('s2s.microserviceName');
+    const test_env: string = config.get('services.taskMonitor.testEnv');
 
     const oneTimePassword = authenticator.generate(secret);
     const body = {microservice, oneTimePassword};
 
     try {
       const response: AxiosResponse = await axios.post(url, body);
+      logger.exception('lars test env', test_env);
       if (response && response.data) {
         logger.trace('Received S2S token', logLabel);
         return response.data;
