@@ -2,10 +2,8 @@ import axios, {AxiosInstance} from 'axios';
 import {spawn, ChildProcess} from 'child_process';
 import S2SService from '../../main/services/s2s-service';
 
-// import config from 'config';
 let serverProcess: ChildProcess;
 
-const BASE_URL: string = config.get('services.taskMonitor.url');
 const BASE_URL: string = 'http://wa-task-monitor-aat.service.core-compute-aat.internal';
 const JOB_REQUEST = {job_details: {name: 'INITIATION'}};
 const s2sService: S2SService = S2SService.getInstance();
