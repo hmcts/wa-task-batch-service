@@ -10,5 +10,8 @@ export class PropertiesVolume {
 
     set(config, 'appInsights.instrumentationKey', get(config, 'secrets.wa.AppInsightsInstrumentationKey'));
     set(config, 's2s.secret', get(config, 'secrets.wa.s2s-secret-task-monitor'));
+    set(config, 'secrets.wa.s2s-secret-task-monitor', get(config, 's2s.secret'));
+
+
   }
 }
