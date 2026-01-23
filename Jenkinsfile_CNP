@@ -32,6 +32,8 @@ withPipeline(type, product, component) {
   nonServiceApp()
   loadVaultSecrets(secrets)
 
+  echo "S2S secret present: ${S2S_SECRET_TASK_MONITOR:+[FOUND]}"
+
   onPR {
     env.S2S_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
     env.WA_TASK_MONITOR_SERVICE_URL = "http://wa-task-monitor-aat.service.core-compute-aat.internal"
