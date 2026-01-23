@@ -1,4 +1,3 @@
-import axios, {AxiosInstance} from 'axios';
 import {spawn, ChildProcess} from 'child_process';
 import {TaskMonitorService} from '../../main/services/task-monitor-service';
 
