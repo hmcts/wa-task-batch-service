@@ -32,16 +32,6 @@ withPipeline(type, product, component) {
   nonServiceApp()
   loadVaultSecrets(secrets)
 
-  afterSuccess('build') {
-    yarnBuilder.yarn('build')
-    sh "yarn test"
-    echo "yarn test complete"
-    sh "yarn test:smoke"
-    echo "Smoke test complete"
-    sh "yarn test:functional"
-    echo "Functional test complete"
-  }
-
   onPR {
     env.S2S_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
     env.WA_TASK_MONITOR_SERVICE_URL = "http://wa-task-monitor-aat.service.core-compute-aat.internal"
@@ -55,11 +45,9 @@ withPipeline(type, product, component) {
     echo "yarn test complete"
     sh "yarn test:smoke"
     echo "Smoke test complete"
-  }
-
-  afterSuccess('smoketest:aat') {
-    sh "printenv | grep -i s2s || echo 'No S2S vars'"
     sh "yarn test:functional"
     echo "Functional test complete"
   }
+
+
 }
