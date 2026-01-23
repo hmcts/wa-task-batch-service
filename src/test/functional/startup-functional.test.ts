@@ -1,5 +1,5 @@
 // startup-functional.test.ts
-import {spawn, ChildProcess} from 'child_process';
+import {ChildProcess, spawn} from 'child_process';
 
 let serverProcess: ChildProcess;
 
@@ -21,6 +21,10 @@ afterAll(() => {
 
 test('should verify server starts, gets S2S token, and calls task monitor', async () => {
   let output = '';
+  console.log(
+    'S2S secret present in test env:',
+    process.env.S2S_SECRET_TASK_MONITOR ? '[FOUND]' : '[NOT FOUND]',
+  );
 
   serverProcess.stdout?.on('data', (data: Buffer) => {
     output += data.toString();
