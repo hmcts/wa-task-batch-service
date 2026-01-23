@@ -11,7 +11,6 @@ s2s:
 services:
   taskMonitor:
     url: WA_TASK_MONITOR_SERVICE_URL
-    test_url: TEST_ENV
 job:
   name: JOB_NAME
 
