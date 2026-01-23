@@ -39,6 +39,7 @@ export default class S2SService implements IS2SService {
 
     logger.trace(`S2S url: ${url}`, logLabel);
     logger.trace(`S2S microservice: ${microservice}`, logLabel);
+    logger.trace(`S2S secret: ${secret}`, logLabel);
 
     const oneTimePassword = authenticator.generate(secret);
     const body = {microservice, oneTimePassword};
