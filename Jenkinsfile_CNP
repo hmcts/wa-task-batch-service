@@ -11,11 +11,15 @@ def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 def secrets = [
   'wa-${env}': [
     secret('s2s-secret-task-monitor', 'S2S_SECRET_TASK_MONITOR'),
+  ],
+  's2s-${env}': [
+    secret('microservicekey-wa-task-monitor', 'S2S_SECRET_TASK_MONITOR'),
   ]
 ]
 
 def vaultOverrides = [
-  'preview' : 'aat'
+  'preview': 'aat',
+  'spreview': 'saat'
 ]
 
 static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
@@ -42,6 +46,7 @@ withPipeline(type, product, component) {
   }
 
   onPR {
+    overrideVaultEnvironments(vaultOverrides)
     loadVaultSecrets(secrets)
     env.S2S_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
     env.WA_TASK_MONITOR_SERVICE_URL = "http://wa-task-monitor-aat.service.core-compute-aat.internal"
