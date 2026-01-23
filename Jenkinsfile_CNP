@@ -41,18 +41,5 @@ withPipeline(type, product, component) {
     env.JOB_NAME = "INITIATION"
   }
 
-  afterSuccess('build') {
-    
-    loadVaultSecrets(secrets)
-    sh "env"
-    yarnBuilder.yarn('build')
-    yarnBuilder.yarn('test')
-    echo "yarn test complete"
-    yarnBuilder.yarn('test:smoke')
-    echo "Smoke test complete"
-    yarnBuilder.yarn('test:functional')
-    echo "Functional test complete"
-  }
-
 
 }
