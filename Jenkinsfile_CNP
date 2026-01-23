@@ -47,6 +47,7 @@ withPipeline(type, product, component) {
     echo "yarn test complete"
     sh "yarn test:smoke"
     echo "Smoke test complete"
+    echo "S2S secret present: ${S2S_SECRET_TASK_MONITOR:+[FOUND]}"
     sh "yarn test:functional"
     echo "Functional test complete"
   }
