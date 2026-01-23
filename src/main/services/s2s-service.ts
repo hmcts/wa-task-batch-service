@@ -52,8 +52,6 @@ export default class S2SService implements IS2SService {
     } catch (err) {
       logger.exception('Could not retrieve S2S token', logLabel);
       logger.exception(err, logLabel);
-
-      logger.exception('lars s2s url ', url);
       exit(1);
     }
   }
