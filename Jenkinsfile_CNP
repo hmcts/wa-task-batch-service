@@ -42,14 +42,15 @@ withPipeline(type, product, component) {
   }
 
   afterSuccess('build') {
+    
     loadVaultSecrets(secrets)
     sh "env"
     yarnBuilder.yarn('build')
-    sh "yarn test"
+    yarnBuilder.yarn('test')
     echo "yarn test complete"
-    sh "yarn test:smoke"
+    yarnBuilder.yarn('test:smoke')
     echo "Smoke test complete"
-    sh "yarn test:functional"
+    yarnBuilder.yarn('test:functional')
     echo "Functional test complete"
   }
 
