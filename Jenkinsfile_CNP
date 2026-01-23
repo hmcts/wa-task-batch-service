@@ -42,7 +42,6 @@ withPipeline(type, product, component) {
   }
 
   afterSuccess('build') {
-    echo "S2S secret present: ${S2S_SECRET_TASK_MONITOR:+[FOUND]}"
     yarnBuilder.yarn('build')
     sh "yarn test"
     echo "yarn test complete"
