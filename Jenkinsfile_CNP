@@ -43,9 +43,11 @@ withPipeline(type, product, component) {
 
   afterSuccess('build') {
     yarnBuilder.yarn('build')
+    yarnBuilder.yarn('test:smoke')
+    yarnBuilder.yarn('test:functional')
   }
 
-  before('test') {
+  before('functional') {
     setupSecretsForFunctionalTests(pipelineConf)
   }
 
