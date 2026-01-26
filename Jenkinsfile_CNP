@@ -33,8 +33,10 @@ withPipeline(type, product, component) {
   disableLegacyDeployment()
   nonServiceApp()
   loadVaultSecrets(secrets)
-  setupSecretsForFunctionalTests(pipelineConf)
 
+  before('test') {
+    setupSecretsForFunctionalTests(pipelineConf)
+  }
 
 
   onPR {
@@ -46,13 +48,13 @@ withPipeline(type, product, component) {
 
 }
 
-  def setupSecretsForFunctionalTests(pipelineConf) {
-    withSubscription('nonprod') {
-      withTeamSecrets(pipelineConf, 'aat') {
-        env.S2S_SECRET_TASK_MONITOR = "${S2S_SECRET_TASK_MONITOR}"
-      }
+def setupSecretsForFunctionalTests(pipelineConf) {
+  withSubscription('nonprod') {
+    withTeamSecrets(pipelineConf, 'aat') {
+      env.S2S_SECRET_TASK_MONITOR = "${S2S_SECRET_TASK_MONITOR}"
     }
   }
+}
 
 
 
