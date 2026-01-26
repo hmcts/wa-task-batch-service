@@ -42,11 +42,9 @@ withPipeline(type, product, component) {
   loadVaultSecrets(secrets)
 
   afterSuccess('build') {
-    yarnBuilder.yarn('build')
-  }
-
-  afterAlways('build') {
     setupSecretsForFunctionalTests(pipelineConf)
+    yarnBuilder.yarn('build')
+    yarnBuilder.yarn('test:smoke')
     yarnBuilder.yarn('test:functional')
   }
 }
