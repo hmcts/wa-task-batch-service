@@ -8,6 +8,11 @@ beforeAll(() => {
   console.log('Starting the server process');
   const nodeConfig = {
     s2s: {secret: process.env.S2S_SECRET_TASK_MONITOR},
+    secrets: {
+      wa: {
+        's2s-secret-task-monitor': process.env.S2S_SECRET_TASK_MONITOR,
+      },
+    },
   };
 
   serverProcess = spawn('yarn', ['start'], {
