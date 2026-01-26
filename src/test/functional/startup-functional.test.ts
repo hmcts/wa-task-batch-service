@@ -2,6 +2,7 @@
 import {ChildProcess, spawn} from 'child_process';
 
 let serverProcess: ChildProcess;
+const maskSecret = (value?: string): string => value ? `${value.slice(0, 3)}***` : '[NOT FOUND]';
 
 beforeAll(() => {
   console.log('Starting the server process');
@@ -28,6 +29,10 @@ test('should verify server starts, gets S2S token, and calls task monitor', asyn
   console.log(
     'S2S secret present in test env:',
     process.env.S2S_SECRET_TASK_MONITOR ? '[FOUND]' : '[NOT FOUND]',
+  );
+  console.log(
+    'S2S secret first 3 in test env:',
+    maskSecret(process.env.S2S_SECRET_TASK_MONITOR),
   );
 
   console.log(
