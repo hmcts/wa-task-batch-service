@@ -30,6 +30,11 @@ test('should verify server starts, gets S2S token, and calls task monitor', asyn
     process.env.S2S_SECRET_TASK_MONITOR ? '[FOUND]' : '[NOT FOUND]',
   );
 
+  console.log(
+    'Environment :',
+    process.env.NODE_ENV ,
+  );
+
   serverProcess.stdout?.on('data', (data: Buffer) => {
     output += data.toString();
   });
