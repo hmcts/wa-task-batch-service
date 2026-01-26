@@ -6,6 +6,9 @@ const maskSecret = (value?: string): string => value ? `${value.slice(0, 3)}***`
 
 beforeAll(() => {
   console.log('Starting the server process');
+  const nodeConfig = {
+    s2s: {secret: process.env.S2S_SECRET_TASK_MONITOR},
+  };
 
   serverProcess = spawn('yarn', ['start'], {
     shell: true,
@@ -13,7 +16,7 @@ beforeAll(() => {
     env: {
       ...process.env,
       ALLOW_CONFIG_MUTATIONS: 'true',
-      NODE_ENV: 'development',
+      NODE_CONFIG: JSON.stringify(nodeConfig),
     },
   });
 });
