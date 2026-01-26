@@ -20,7 +20,7 @@
     "fortifyScan": "./test/java/gradlew -p test/java fortifyScan",
     "test:a11y": "echo 'Not needed' && exit 0",
     "test:smoke": "yarn install && jest --config=jest.smoke.config.js && exit 0",
-    "test:functional": "echo 'TODO add functional tests' && exit 1",
+    "test:functional": "yarn install && jest --config=jest.functional.config.js && exit 0",
     "cichecks": "yarn && yarn build && yarn lint && yarn test && yarn test:routes",
     "audit": "yarn npm audit"
   },
@@ -112,13 +112,14 @@
     "express": "^4.22.0",
     "cookie": "^1.0.0",
     "cross-spawn": "7.0.6",
-    "undici": "5.29.0",
+    "undici": "7.18.2",
     "brace-expansion": "1.1.12",
     "jws": "3.2.3",
     "superagent": "^10.2.2",
     "@opentelemetry/instrumentation-redis-4": "npm:@opentelemetry/instrumentation-redis@0.57.2",
     "js-yaml": "^4.1.1",
-    "qs": "^6.14.1"
+    "qs": "^6.14.1",
+    "diff": "^8.0.3"
   },
   "packageManager": "yarn@4.12.0"
 }
