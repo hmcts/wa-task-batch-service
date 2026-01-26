@@ -20,7 +20,7 @@ app.locals.ENV = env;
 
 const logger = Logger.getLogger('app');
 
-new PropertiesVolume().enableFor();
+new PropertiesVolume().enableFor(app);
 new Helmet().enableFor(app);
 new AppInsights().enable();
 
