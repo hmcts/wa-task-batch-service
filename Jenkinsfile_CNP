@@ -49,17 +49,6 @@ withPipeline(type, product, component) {
     setupSecretsForFunctionalTests(pipelineConf)
     yarnBuilder.yarn('test:functional')
   }
-
-  before('test:functional') {
-
-  }
-
-
-
-//  afterAlways('smoketest:preview') {
-//    yarnBuilder.yarn('test:smoke')
-//  }
-
 }
 
 def setupSecretsForFunctionalTests(pipelineConf) {

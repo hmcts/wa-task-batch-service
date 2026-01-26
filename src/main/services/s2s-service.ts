@@ -7,7 +7,6 @@ import {authenticator} from 'otplib';
 
 const logger: Logger = new Logger();
 const logLabel: string = getLogLabel(__filename);
-const maskSecret = (value?: string): string => value ? `${value.slice(0, 3)}***` : '[NOT FOUND]';
 
 interface IS2SService {
   requestServiceToken: () => Promise<string>;
@@ -36,11 +35,6 @@ export default class S2SService implements IS2SService {
     const url: string = config.get('s2s.url') + '/lease';
     const secret: string = config.get('s2s.secret');
     const microservice: string = config.get('s2s.microserviceName');
-
-
-    logger.trace(`S2S url: ${url}`, logLabel);
-    logger.trace(`S2S microservice: ${microservice}`, logLabel);
-    logger.trace(`S2S secret (first 3): ${maskSecret(secret)}`, logLabel);
 
     const oneTimePassword = authenticator.generate(secret);
     const body = {microservice, oneTimePassword};
