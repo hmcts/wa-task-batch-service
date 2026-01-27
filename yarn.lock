@@ -2666,6 +2666,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@noble/hashes@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@noble/hashes@npm:2.0.1"
+  checksum: 10c0/e81769ce21c3b1c80141a3b99bd001f17edea09879aa936692ae39525477386d696101cd573928a304806efb2b9fa751e1dd83241c67d0c84d30091e85c79bdb
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -3371,10 +3378,47 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@otplib/core@npm:13.0.2":
+  version: 13.0.2
+  resolution: "@otplib/core@npm:13.0.2"
+  checksum: 10c0/5fc0eae7d74aa773cbf50c3a24a2d26e201ca866b539060316839c6c6938e29d4c916a01d9cb76849fcb0edc14bc99e313ce848e2c44cd672af9b7600151bcc9
+  languageName: node
+  linkType: hard
+
 "@otplib/core@npm:^12.0.1":
   version: 12.0.1
   resolution: "@otplib/core@npm:12.0.1"
   checksum: 10c0/efe703d92d50cf11b39e47fc6ccd10c01d8bfbd9423724e88aecf2470f740562b2422c10b779e0b7d1d29c09f5d3d00de69200f04c8250e2adeb13a15e5dee7f
+  languageName: node
+  linkType: hard
+
+"@otplib/hotp@npm:13.0.2":
+  version: 13.0.2
+  resolution: "@otplib/hotp@npm:13.0.2"
+  dependencies:
+    "@otplib/core": "npm:13.0.2"
+    "@otplib/uri": "npm:13.0.2"
+  checksum: 10c0/b2b20b440212cec005221db610428c391d04a4b6a06faa53b8bad3a14f4710076b7c07b9d4cbef6397727d3486b05feac161ac3005b90054b3f5c125818b15b5
+  languageName: node
+  linkType: hard
+
+"@otplib/plugin-base32-scure@npm:13.0.2":
+  version: 13.0.2
+  resolution: "@otplib/plugin-base32-scure@npm:13.0.2"
+  dependencies:
+    "@otplib/core": "npm:13.0.2"
+    "@scure/base": "npm:^2.0.0"
+  checksum: 10c0/565d4a31ac9350d81490f199b0b0fb70b56a708ef66a2dec78c63e032f9840a7ab7d400ad823ebbfa6bbee56b842c75fa60115cacd16c1447a53d1abf438b335
+  languageName: node
+  linkType: hard
+
+"@otplib/plugin-crypto-noble@npm:13.0.2":
+  version: 13.0.2
+  resolution: "@otplib/plugin-crypto-noble@npm:13.0.2"
+  dependencies:
+    "@noble/hashes": "npm:^2.0.1"
+    "@otplib/core": "npm:13.0.2"
+  checksum: 10c0/7608eace5df5400b3bdf95100b903aad170ab7f7752ee8ebe5e1498156ac5c87362a592da8ef30be8d8e09cf4f13ac6b49ee7b1b69ec93ca0811f359704c45c5
   languageName: node
   linkType: hard
 
@@ -3408,14 +3452,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@otplib/preset-v11@npm:^12.0.1":
-  version: 12.0.1
-  resolution: "@otplib/preset-v11@npm:12.0.1"
+"@otplib/totp@npm:13.0.2":
+  version: 13.0.2
+  resolution: "@otplib/totp@npm:13.0.2"
   dependencies:
-    "@otplib/core": "npm:^12.0.1"
-    "@otplib/plugin-crypto": "npm:^12.0.1"
-    "@otplib/plugin-thirty-two": "npm:^12.0.1"
-  checksum: 10c0/5a1bf8198f169182e267ab6ae3115f2441190f34a212e8232ff4b9c2c8a7253fddf3aa185ab9a6246487e9c1052b676395e80b6e0b2825fa218eb8e29bd7b14b
+    "@otplib/core": "npm:13.0.2"
+    "@otplib/hotp": "npm:13.0.2"
+    "@otplib/uri": "npm:13.0.2"
+  checksum: 10c0/b5f43bda4d1982380849ab099745bad78fdd57d7d34c45b14f6be72d2977aa4a424cd193f7c4b9170a676b6e496ee6c33418fd67e71239261e9c76889d538e52
+  languageName: node
+  linkType: hard
+
+"@otplib/uri@npm:13.0.2":
+  version: 13.0.2
+  resolution: "@otplib/uri@npm:13.0.2"
+  dependencies:
+    "@otplib/core": "npm:13.0.2"
+  checksum: 10c0/70609239627cd33463125aea420294a1100441276d34b022732bcd6cf4bf50128fcf5f62c8a8e0d6f11532648fa47831a682594fc0747addd006f1abb13b0e6d
   languageName: node
   linkType: hard
 
@@ -3505,6 +3558,13 @@ __metadata:
   version: 1.1.0
   resolution: "@protobufjs/utf8@npm:1.1.0"
   checksum: 10c0/a3fe31fe3fa29aa3349e2e04ee13dc170cc6af7c23d92ad49e3eeaf79b9766264544d3da824dba93b7855bd6a2982fb40032ef40693da98a136d835752beb487
+  languageName: node
+  linkType: hard
+
+"@scure/base@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@scure/base@npm:2.0.0"
+  checksum: 10c0/7d999c7bebf053bb49cb706fdc6c5366737cff0f7f7518f52d32d7f7ad7b898904f03673648a2af5c4f22396f5c05f1d8bddbf010d6595052d07ba8163d506ad
   languageName: node
   linkType: hard
 
@@ -8745,14 +8805,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"otplib@npm:^12.0.1":
-  version: 12.0.1
-  resolution: "otplib@npm:12.0.1"
+"otplib@npm:13.0.2":
+  version: 13.0.2
+  resolution: "otplib@npm:13.0.2"
   dependencies:
-    "@otplib/core": "npm:^12.0.1"
-    "@otplib/preset-default": "npm:^12.0.1"
-    "@otplib/preset-v11": "npm:^12.0.1"
-  checksum: 10c0/5a6cd332ed38f9fb6915407775bb9b4bf298d4d32c7c5691291add913dc1788064ab4ca353315f8add4ea704af2cb2c970d2f2d354725c6daa0c945cd5d09811
+    "@otplib/core": "npm:13.0.2"
+    "@otplib/hotp": "npm:13.0.2"
+    "@otplib/plugin-base32-scure": "npm:13.0.2"
+    "@otplib/plugin-crypto-noble": "npm:13.0.2"
+    "@otplib/totp": "npm:13.0.2"
+    "@otplib/uri": "npm:13.0.2"
+  checksum: 10c0/7fde302961488fcf65844c95fee775a37373832db22c37b2a64ae9754dcf95b98d22b9d787bf518cc9b3c32e32c3561039679afef14dc39eba010951f48a6344
   languageName: node
   linkType: hard
 
@@ -10593,6 +10656,7 @@ __metadata:
     "@hmcts/nodejs-healthcheck": "npm:1.8.6"
     "@hmcts/nodejs-logging": "npm:^4.0.4"
     "@hmcts/properties-volume": "npm:^1.3.1"
+    "@otplib/preset-default": "npm:^12.0.1"
     "@types/chai-as-promised": "npm:^8.0.0"
     "@types/config": "npm:3.3.5"
     "@types/cookie-parser": "npm:^1.4.8"
@@ -10629,7 +10693,7 @@ __metadata:
     msw: "npm:2.10.5"
     nock: "npm:^13.2.8"
     nodemon: "npm:^3.0.0"
-    otplib: "npm:^12.0.1"
+    otplib: "npm:13.0.2"
     qs: "npm:^6.14.1"
     require-directory: "npm:^2.1.1"
     serve-favicon: "npm:^2.5.0"
