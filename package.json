@@ -20,7 +20,8 @@
     "fortifyScan": "./test/java/gradlew -p test/java fortifyScan",
     "test:a11y": "echo 'Not needed' && exit 0",
     "test:smoke": "yarn install && jest --config=jest.smoke.config.js && exit 0",
-    "test:functional": "yarn install && jest --config=jest.functional.config.js && exit 0",
+    "test:dependencies": "yarn workspaces focus --all --production && node ./node_modules/.bin/tsc --noEmit --project tsconfig.runtime.json",
+    "test:functional": "NODE_ENV=production yarn install && yarn webpack --mode production --config webpack.config.js && jest --config=jest.functional.config.js && exit 0",
     "cichecks": "yarn && yarn build && yarn lint && yarn test && yarn test:routes",
     "audit": "yarn npm audit"
   },
