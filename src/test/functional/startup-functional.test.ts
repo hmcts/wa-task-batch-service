@@ -24,8 +24,8 @@ beforeAll(() => {
     },
   });
 
-  console.log('lars env', env);
   console.log('lars process env', process.env);
+  console.log('lars nodeconfig', JSON.stringify(nodeConfig));
 });
 
 afterAll(() => {
