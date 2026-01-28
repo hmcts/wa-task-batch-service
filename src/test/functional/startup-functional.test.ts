@@ -23,6 +23,9 @@ beforeAll(() => {
       NODE_CONFIG: JSON.stringify(nodeConfig),
     },
   });
+
+  console.log('lars env', env);
+  console.log('lars process env', process.env);
 });
 
 afterAll(() => {
@@ -33,9 +36,6 @@ afterAll(() => {
 
 test('should verify server starts, gets S2S token, and calls task monitor', async () => {
   let output = '';
-
-  console.log('lars env', env);
-  console.log('lars process env', process.env);
 
   serverProcess.stdout?.on('data', (data: Buffer) => {
     output += data.toString();
