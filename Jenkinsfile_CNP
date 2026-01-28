@@ -41,6 +41,7 @@ withPipeline(type, product, component) {
   disableLegacyDeployment()
   nonServiceApp()
   loadVaultSecrets(secrets)
+  enableAksStagingDeployment()
 
   afterSuccess('build') {
     setupSecretsForFunctionalTests(pipelineConf)
