@@ -155,6 +155,25 @@ Here's how to run functional tests (the template contains just one sample test):
 $ yarn test:routes
 ```
 
+### Functional tests
+To run the functional tests you must export the following variables to you local environment. You must also be connected to f5 VPN for the tests to run.
+```bash
+export ALLOW_CONFIG_MUTATIONS=true
+export JOB_NAME=INITIATION
+export S2S_URL="http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
+export WA_TASK_MONITOR_SERVICE_URL="http://wa-task-monitor-aat.service.core-compute-aat.internal"
+export S2S_MICROSERVICE_NAME_TASK_MONITOR="wa_task_monitor"
+```
+You also have to set the s2s secret which can be found in [wa-aat](https://portal.azure.com/?l=en.en-us#@HMCTS.NET/resource/subscriptions/1c4f0704-a29e-403d-b719-b90c34ef14c9/resourceGroups/wa-aat/providers/Microsoft.KeyVault/vaults/wa-aat/secrets) under s2s-secret-task-monitor.
+```bash
+export S2S_SECRET_TASK_MONITOR="XXXXXX"
+```
+
+Then run the functional tests using the command below:
+```bash
+yarn test:functional
+```
+
 
 ### Security
 

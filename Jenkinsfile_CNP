@@ -2,23 +2,61 @@
 
 @Library("Infrastructure")
 
+import uk.gov.hmcts.contino.AppPipelineConfig
+
 def type = "nodejs"
 def product = "wa"
 def component = "task-batch-service"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
+
+def secrets = [
+  'wa-${env}': [
+    secret('s2s-secret-task-monitor', 'S2S_SECRET_TASK_MONITOR')
+  ]
+]
+
+static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
+  [$class     : 'AzureKeyVaultSecret',
+   secretType : 'Secret',
+   name       : secretName,
+   version    : '',
+   envVariable: envVar
+  ]
+}
+
+def pipelineConf = new AppPipelineConfig()
+pipelineConf.vaultSecrets = secrets
+
+onPR {
+  env.S2S_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
+  env.WA_TASK_MONITOR_SERVICE_URL = "http://wa-task-monitor-aat.service.core-compute-aat.internal"
+  env.S2S_MICROSERVICE_NAME_TASK_MONITOR = "wa_task_monitor"
+  env.JOB_NAME = "INITIATION"
+}
+
 withPipeline(type, product, component) {
   disableLegacyDeployment()
   nonServiceApp()
+  loadVaultSecrets(secrets)
 
   afterSuccess('build') {
+    setupSecretsForFunctionalTests(pipelineConf)
     yarnBuilder.yarn('build')
-    sh "yarn test"
-    echo "yarn test complete"
-    sh "yarn test:smoke"
-    echo "Smoke test complete"
+    yarnBuilder.yarn('test:smoke')
+    yarnBuilder.yarn('test:functional')
+    yarnBuilder.yarn('test:dependencies')
   }
-
-
 }
+
+def setupSecretsForFunctionalTests(pipelineConf) {
+  withSubscription('nonprod') {
+    withTeamSecrets(pipelineConf, 'aat') {
+      env.S2S_SECRET_TASK_MONITOR = "${S2S_SECRET_TASK_MONITOR}"
+    }
+  }
+}
+
+
+
