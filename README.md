@@ -156,7 +156,7 @@ $ yarn test:routes
 ```
 
 ### Functional tests
-To run the functional tests you must export the following variables to you local environment.
+To run the functional tests you must export the following variables to you local environment. You must also be connected to f5 VPN for the tests to run.
 ```bash
 export ALLOW_CONFIG_MUTATIONS=true
 export JOB_NAME=INITIATION
