@@ -29,14 +29,13 @@ static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
 def pipelineConf = new AppPipelineConfig()
 pipelineConf.vaultSecrets = secrets
 
-onPR {
+withPipeline(type, product, component) {
+
   env.S2S_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
   env.WA_TASK_MONITOR_SERVICE_URL = "http://wa-task-monitor-aat.service.core-compute-aat.internal"
   env.S2S_MICROSERVICE_NAME_TASK_MONITOR = "wa_task_monitor"
   env.JOB_NAME = "INITIATION"
-}
 
-withPipeline(type, product, component) {
   disableLegacyDeployment()
   nonServiceApp()
   loadVaultSecrets(secrets)
