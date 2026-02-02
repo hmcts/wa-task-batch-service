@@ -34,14 +34,6 @@ onPR {
   env.WA_TASK_MONITOR_SERVICE_URL = "http://wa-task-monitor-aat.service.core-compute-aat.internal"
   env.S2S_MICROSERVICE_NAME_TASK_MONITOR = "wa_task_monitor"
   env.JOB_NAME = "INITIATION"
-
-  afterSuccess('build') {
-    setupSecretsForFunctionalTests(pipelineConf)
-    yarnBuilder.yarn('build')
-    yarnBuilder.yarn('test:smoke')
-    yarnBuilder.yarn('test:functional')
-    yarnBuilder.yarn('test:dependencies')
-  }
 }
 
 withPipeline(type, product, component) {
@@ -53,6 +45,14 @@ withPipeline(type, product, component) {
     setupSecretsForFunctionalTests(pipelineConf)
     yarnBuilder.yarn('build')
     yarnBuilder.yarn('test:smoke')
+  }
+
+  afterSuccess('build:preview') {
+    setupSecretsForFunctionalTests(pipelineConf)
+    yarnBuilder.yarn('build')
+    yarnBuilder.yarn('test:smoke')
+    yarnBuilder.yarn('test:functional')
+    yarnBuilder.yarn('test:dependencies')
   }
 }
 
