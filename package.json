@@ -115,7 +115,7 @@
     "cross-spawn": "7.0.6",
     "undici": "7.22.0",
     "brace-expansion": "1.1.12",
-    "jws": "3.2.3",
+    "jws": "4.0.1",
     "superagent": "^10.2.2",
     "@opentelemetry/instrumentation-redis-4": "npm:@opentelemetry/instrumentation-redis@0.60.0",
     "js-yaml": "^4.1.1",
