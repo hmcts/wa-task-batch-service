@@ -5578,12 +5578,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"config@npm:3.3.12":
-  version: 3.3.12
-  resolution: "config@npm:3.3.12"
+"config@npm:4.3.0":
+  version: 4.3.0
+  resolution: "config@npm:4.3.0"
   dependencies:
     json5: "npm:^2.2.3"
-  checksum: 10c0/496b3ef740754527cbc59d11df234f5be5b5f44511d14ca7fa6117fda0959ccd4cc6d8da2d94cb0dfcdf77d9d7aaaa34558d6dcce0a7860a3a8cf8a54c77b237
+  checksum: 10c0/ffe8292504933452c284bf7c55e7c1ffb1aec22c0587dfda04979642adee8821b0e6c5483401c3baebbbab78dcb376ca697a06973afc312329e5a8526d023a88
   languageName: node
   linkType: hard
 
@@ -10543,7 +10543,7 @@ __metadata:
     babel-loader: "npm:^10.0.0"
     chai: "npm:^5.1.0"
     chai-as-promised: "npm:^8.0.1"
-    config: "npm:3.3.12"
+    config: "npm:4.3.0"
     cookie-parser: "npm:^1.4.7"
     debug: "npm:4.4.3"
     eslint: "npm:^9.29.0"
