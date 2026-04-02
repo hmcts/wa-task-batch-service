@@ -301,14 +301,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azure/msal-node@npm:5.1.1":
-  version: 5.1.1
-  resolution: "@azure/msal-node@npm:5.1.1"
+"@azure/msal-common@npm:16.4.1":
+  version: 16.4.1
+  resolution: "@azure/msal-common@npm:16.4.1"
+  checksum: 10c0/c12d948825b4486f4ef5ef563920df4d8a2e3b8549ebaaee5d1d8425aaff1d64a1958ac835fbdc286689ba88edad1373360511375d2b4086d7916e637debd3f3
+  languageName: node
+  linkType: hard
+
+"@azure/msal-node@npm:5.1.2":
+  version: 5.1.2
+  resolution: "@azure/msal-node@npm:5.1.2"
   dependencies:
-    "@azure/msal-common": "npm:16.4.0"
+    "@azure/msal-common": "npm:16.4.1"
     jsonwebtoken: "npm:^9.0.0"
     uuid: "npm:^8.3.0"
-  checksum: 10c0/89b3dc3ba665470c2b397bc740b70152884cb0d81c0fc38f866dda30c9739f850bbc388dc173273f8afa9ca779ea12c9d538506d10d1f94d74a81724eeec4bb4
+  checksum: 10c0/a89ee483d4951b2ae15a45a150cc3a913c089ff8d08a6979ee92b6f10255f553d9070b27eb1b9571a422ef1d84df015f4d867f97c2b533b6d68b88d4ddb14ac5
   languageName: node
   linkType: hard
 
