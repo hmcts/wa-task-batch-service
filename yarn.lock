@@ -5181,7 +5181,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.12.0":
+"axios@npm:1.14.0":
   version: 1.14.0
   resolution: "axios@npm:1.14.0"
   dependencies:
@@ -8273,10 +8273,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.23":
-  version: 4.17.23
-  resolution: "lodash@npm:4.17.23"
-  checksum: 10c0/1264a90469f5bb95d4739c43eb6277d15b6d9e186df4ac68c3620443160fc669e2f14c11e7d8b2ccf078b81d06147c01a8ccced9aab9f9f63d50dcf8cace6bf6
+"lodash@npm:^4.18.1":
+  version: 4.18.1
+  resolution: "lodash@npm:4.18.1"
+  checksum: 10c0/757228fc68805c59789e82185135cf85f05d0b2d3d54631d680ca79ec21944ec8314d4533639a14b8bcfbd97a517e78960933041a5af17ecb693ec6eecb99a27
   languageName: node
   linkType: hard
 
@@ -10783,7 +10783,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin-tslint": "npm:^7.0.2"
     "@typescript-eslint/parser": "npm:^7.9.0"
     applicationinsights: "npm:^3.12.0"
-    axios: "npm:^1.12.0"
+    axios: "npm:1.14.0"
     babel-loader: "npm:^10.0.0"
     chai: "npm:^6.0.0"
     chai-as-promised: "npm:^8.0.1"
@@ -10797,7 +10797,7 @@ __metadata:
     helmet: "npm:^8.0.0"
     jest: "npm:^29.7.0"
     jquery: "npm:4.0.0"
-    lodash: "npm:^4.17.23"
+    lodash: "npm:^4.18.1"
     msw: "npm:2.10.5"
     nock: "npm:^14.0.0"
     nodemon: "npm:^3.0.0"
