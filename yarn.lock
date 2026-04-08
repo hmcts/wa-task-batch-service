@@ -5741,13 +5741,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colorette@npm:^2.0.10":
-  version: 2.0.20
-  resolution: "colorette@npm:2.0.20"
-  checksum: 10c0/e94116ff33b0ff56f3b83b9ace895e5bf87c2a7a47b3401b8c3f3226e050d5ef76cf4072fb3325f9dc24d1698f9b730baf4e05eeaf861d74a1883073f4c98a40
-  languageName: node
-  linkType: hard
-
 "colors@npm:1.0.x":
   version: 1.0.3
   resolution: "colors@npm:1.0.3"
@@ -8403,20 +8396,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"memfs@npm:^4.43.1":
-  version: 4.49.0
-  resolution: "memfs@npm:4.49.0"
-  dependencies:
-    "@jsonjoy.com/json-pack": "npm:^1.11.0"
-    "@jsonjoy.com/util": "npm:^1.9.0"
-    glob-to-regex.js: "npm:^1.0.1"
-    thingies: "npm:^2.5.0"
-    tree-dump: "npm:^1.0.3"
-    tslib: "npm:^2.0.0"
-  checksum: 10c0/274b831d86db5ab49da35ee99dbe7d4bb60f7d33c581b9f098bd2eab603b12dac8481db2653636cffd6ff00fd52bf9e73dde52636da0a28538d257e761dd2b63
-  languageName: node
-  linkType: hard
-
 "memfs@npm:^4.56.10":
   version: 4.57.1
   resolution: "memfs@npm:4.57.1"
@@ -8508,15 +8487,6 @@ __metadata:
   dependencies:
     mime-db: "npm:^1.54.0"
   checksum: 10c0/35a0dd1035d14d185664f346efcdb72e93ef7a9b6e9ae808bd1f6358227010267fab52657b37562c80fc888ff76becb2b2938deb5e730818b7983bf8bd359767
-  languageName: node
-  linkType: hard
-
-"mime-types@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "mime-types@npm:3.0.1"
-  dependencies:
-    mime-db: "npm:^1.54.0"
-  checksum: 10c0/bd8c20d3694548089cf229016124f8f40e6a60bbb600161ae13e45f793a2d5bb40f96bbc61f275836696179c77c1d6bf4967b2a75e0a8ad40fe31f4ed5be4da5
   languageName: node
   linkType: hard
 
@@ -9598,7 +9568,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"schema-utils@npm:^4.0.0, schema-utils@npm:^4.3.0, schema-utils@npm:^4.3.3":
+"schema-utils@npm:^4.3.0, schema-utils@npm:^4.3.3":
   version: 4.3.3
   resolution: "schema-utils@npm:4.3.3"
   dependencies:
@@ -10854,28 +10824,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-dev-middleware@npm:*":
-  version: 7.4.5
-  resolution: "webpack-dev-middleware@npm:7.4.5"
-  dependencies:
-    colorette: "npm:^2.0.10"
-    memfs: "npm:^4.43.1"
-    mime-types: "npm:^3.0.1"
-    on-finished: "npm:^2.4.1"
-    range-parser: "npm:^1.2.1"
-    schema-utils: "npm:^4.0.0"
-  peerDependencies:
-    webpack: ^5.0.0
-  peerDependenciesMeta:
-    webpack:
-      optional: true
-  checksum: 10c0/e72fa7de3b1589c0c518976358f946d9ec97699a3eb90bfd40718f4be3e9d5d13dc80f748c5c16662efbf1400cedbb523c79f56a778e6e8ffbdf1bd93be547eb
-  languageName: node
-  linkType: hard
-
-"webpack-dev-middleware@npm:^8.0.0":
-  version: 8.0.2
-  resolution: "webpack-dev-middleware@npm:8.0.2"
+"webpack-dev-middleware@npm:*, webpack-dev-middleware@npm:^8.0.0":
+  version: 8.0.3
+  resolution: "webpack-dev-middleware@npm:8.0.3"
   dependencies:
     memfs: "npm:^4.56.10"
     mime-types: "npm:^3.0.2"
@@ -10887,7 +10838,7 @@ __metadata:
   peerDependenciesMeta:
     webpack:
       optional: true
-  checksum: 10c0/95a810f9081aa83cf9c219e52d8389d113932856ca2caf37445df5bb47c807074e48e1ee65a7dd83d2f23d549e1f21192b218fdbfdc058acb210da293367ede2
+  checksum: 10c0/d9752ce08f1868bec0e49f6034d3b5b23c80c990e8ba3f3e4dfde8ffed552a9e5a10282d7adfaf74318ab17fcd017a10a1ea8871e7f705ab496d970b699c5417
   languageName: node
   linkType: hard
 
