@@ -37,8 +37,7 @@ app.use((req, res, next) => {
 });
 
 glob.sync(__dirname + '/routes/**/*.+(ts|js)')
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-  .map(filename => require(filename))
+  .map(filename => require(filename)) //eslint-disable-line @typescript-eslint/no-require-imports
   .forEach(route => route.default(app));
 
 setupDev(app, developmentMode);
