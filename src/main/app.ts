@@ -8,9 +8,9 @@ import {HTTPError} from 'HttpError';
 import {PropertiesVolume} from './modules/properties-volume';
 import {AppInsights} from './modules/appinsights';
 
-const {Logger} = require('@hmcts/nodejs-logging');
+import {logger} from '@hmcts/nodejs-logging';
 
-const {setupDev} = require('./development');
+import {setupDev} from './development';
 
 const env = process.env.NODE_ENV || 'development';
 const developmentMode = env === 'development';
@@ -37,6 +37,7 @@ app.use((req, res, next) => {
 });
 
 glob.sync(__dirname + '/routes/**/*.+(ts|js)')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
   .map(filename => require(filename))
   .forEach(route => route.default(app));
 

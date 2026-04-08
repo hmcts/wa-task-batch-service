@@ -3,7 +3,7 @@ import {app} from './app';
 import {TaskMonitorService} from './services/task-monitor-service';
 import {exit} from './utils/exit';
 
-const {Logger} = require('@hmcts/nodejs-logging');
+import {logger} from '@hmcts/nodejs-logging';
 
 const logger = Logger.getLogger('server');
 // TODO: set the right port for your application
