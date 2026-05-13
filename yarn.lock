@@ -3242,7 +3242,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/exporter-prometheus@npm:0.217.0":
+"@opentelemetry/exporter-prometheus@npm:^0.217.0":
   version: 0.217.0
   resolution: "@opentelemetry/exporter-prometheus@npm:0.217.0"
   dependencies:
@@ -3690,7 +3690,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/sdk-node@npm:0.217.0":
+"@opentelemetry/sdk-node@npm:^0.217.0":
   version: 0.217.0
   resolution: "@opentelemetry/sdk-node@npm:0.217.0"
   dependencies:
