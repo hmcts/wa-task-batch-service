@@ -102,7 +102,7 @@
     "tough-cookie": "^6.0.0",
     "follow-redirects": "^1.16.0",
     "formidable": "3.5.4",
-    "@grpc/grpc-js": "1.14.3",
+    "@grpc/grpc-js": "1.14.4",
     "@azure/msal-node": "5.2.2",
     "@azure/identity": "4.13.1",
     "micromatch": "4.0.8",
