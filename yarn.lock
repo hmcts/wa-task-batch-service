@@ -1875,14 +1875,14 @@ __metadata:
   linkType: hard
 
 "@dr.pogodin/csurf@npm:^1.12.0":
-  version: 1.17.0
-  resolution: "@dr.pogodin/csurf@npm:1.17.0"
+  version: 1.17.1
+  resolution: "@dr.pogodin/csurf@npm:1.17.1"
   dependencies:
     "@babel/runtime": "npm:^7.29.7"
     cookie: "npm:^1.1.1"
     cookie-signature: "npm:^1.2.2"
     http-errors: "npm:^2.0.1"
-  checksum: 10c0/514a8ea99d691bbaedf82cb74f4b96b74126df04ebde72eb0fc26445ccd157c5654b53033e762b249d90d944f488b9e951c11ae66f3575e05966c6130675ac57
+  checksum: 10c0/a2bb0a79961483c9e2e39193fe3bb8fa7784cd2128ded68ab8b67a9e10ea869e0a3156c52e4a0d5c16a4a11de823b313c2361f3f87cf0716c0e0c0bc6ce748e3
   languageName: node
   linkType: hard
 
