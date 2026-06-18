@@ -31,7 +31,6 @@ afterAll(() => {
   }
 });
 
-// Temporarily skipped while wa-task-monitor INITIATION endpoint timeout is investigated.
 test('should verify server starts, gets S2S token, and calls task monitor', async () => {
   let output = '';
 
