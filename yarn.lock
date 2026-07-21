@@ -9052,11 +9052,11 @@ __metadata:
   linkType: hard
 
 "protobufjs@npm:^8.0.1":
-  version: 8.6.4
-  resolution: "protobufjs@npm:8.6.4"
+  version: 8.7.1
+  resolution: "protobufjs@npm:8.7.1"
   dependencies:
     long: "npm:^5.3.2"
-  checksum: 10c0/fafe74f62961d0cd17106002b183989079731baf0db2dd622ec43f600d36a1864849ef88c62d9c7a385a7b7cf2ed3a6e6d7d35652473e8255a3df11acd2c3d3d
+  checksum: 10c0/2d5e0355301657e671c9dd7a84ed80a908e2c6172f38ede8e5df8a4455fa3eb5eb7edfda16c3072b2a9e23c16c657774bca962942125047c21a347534ea07083
   languageName: node
   linkType: hard
 
