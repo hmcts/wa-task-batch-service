@@ -7843,14 +7843,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-yaml@npm:^4.1.1":
-  version: 4.2.0
-  resolution: "js-yaml@npm:4.2.0"
+"js-yaml@npm:4.3.0":
+  version: 4.3.0
+  resolution: "js-yaml@npm:4.3.0"
   dependencies:
     argparse: "npm:^2.0.1"
   bin:
     js-yaml: bin/js-yaml.js
-  checksum: 10c0/1916456c118746603b067d74bbcbb0445d9a1d5e474ad4ae775e7b20525bed902e01d9d97dd0c81fcd8d4f596162309d0eb057f4aa38f3e9647f14075e9dea45
+  checksum: 10c0/058b30473d6915ca5b4feb11e2f7d4d97242f98d00a798ed48dd90b46b7c640398afe9128c5db22c5300f8c6528fe2a174b9a93f351a70ebc28c6203938d8bff
   languageName: node
   linkType: hard
 
@@ -9051,12 +9051,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"protobufjs@npm:^8.0.1":
-  version: 8.6.4
-  resolution: "protobufjs@npm:8.6.4"
+"protobufjs@npm:8.6.6":
+  version: 8.6.6
+  resolution: "protobufjs@npm:8.6.6"
   dependencies:
     long: "npm:^5.3.2"
-  checksum: 10c0/fafe74f62961d0cd17106002b183989079731baf0db2dd622ec43f600d36a1864849ef88c62d9c7a385a7b7cf2ed3a6e6d7d35652473e8255a3df11acd2c3d3d
+  checksum: 10c0/9bc4515089383ba0ce89bfa10cbe63fac02a1466a0a602fb853e5d8b1a17729547cd77e42b21e75b7a3b3ec052a8929c9c98bc0d4f1bd06440869f46ca3c3b2b
   languageName: node
   linkType: hard
 
