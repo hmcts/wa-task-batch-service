@@ -129,7 +129,8 @@
     "minimatch": "^10.2.1",
     "test-exclude": "^8.0.0",
     "protobufjs": "8.6.6",
-    "uuid": "^14.0.0"
+    "uuid": "^14.0.0",
+    "@opentelemetry/propagator-jaeger": "2.9.0"
   },
   "packageManager": "yarn@4.15.0"
 }
