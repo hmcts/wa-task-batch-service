@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Strategy"
+  short_description: "Guide focused branch, commit, and PR workflow."
+  default_prompt: "Use $git-strategy to prepare a focused branch, staging plan, commit, or PR notes for this repository."
