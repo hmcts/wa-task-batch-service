@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maintenance"
+  short_description: "Maintain Node/Yarn dependencies and CVEs."
+  default_prompt: "Use $maintenance to handle dependency maintenance, CVE remediation, stale resolutions, or unused dependency cleanup."
