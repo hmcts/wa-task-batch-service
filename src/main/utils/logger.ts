@@ -30,7 +30,6 @@ export default class Logger implements ILogger {
     const log = `[${label}]: ${message}`;
     switch (severity) {
       case SEVERITY.REQUEST:
-        // tslint:disable:no-console
         console.log(`Request: ${log}`);
         break;
       case SEVERITY.TRACE:
