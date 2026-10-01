@@ -7,10 +7,13 @@
 !package.json
 !yarn.lock
 !.yarnrc.yml
+!.yarn
 !.yarn/**
-
 !tsconfig.json
+!webpack
 !webpack/**
+!src/main
 !src/main/**
+!config
 !config/**
 !webpack.config.js
