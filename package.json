@@ -94,6 +94,8 @@
     "yarn-audit-fix": "^10.0.0"
   },
   "resolutions": {
+    "@opentelemetry/instrumentation-mysql": "0.67.0",
+    "@opentelemetry/instrumentation-pg": "0.73.0",
     "baseline-browser-mapping": "2.11.27",
     "browserslist": "4.28.7",
     "semver": "^7.5.3",
@@ -122,6 +124,7 @@
     "@opentelemetry/instrumentation-redis-4": "npm:@opentelemetry/instrumentation-redis@0.70.0",
     "js-yaml": "4.3.2",
     "fast-uri": "3.1.8",
+    "http-cache-semantics": "4.3.0",
     "ip-address": "10.7.2",
     "moment": "2.31.0",
     "qs": "6.16.0",
@@ -131,6 +134,7 @@
     "minimatch": "^10.2.1",
     "test-exclude": "^8.0.0",
     "protobufjs": "8.7.2",
+    "proxy-addr": "2.0.8",
     "tar": "7.5.22",
     "uuid": "^14.0.0",
     "@opentelemetry/propagator-jaeger": "2.9.0"
