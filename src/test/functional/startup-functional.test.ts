@@ -49,6 +49,6 @@ test('should verify server starts, gets S2S token, and calls task monitor', asyn
 
   expect(output).toContain('Application started');
   expect(output).toContain('Received S2S token');
-  expect(output).toContain('Status: 200');
+  expect(output).toContain('HTTP request completed operation=task-monitor-create-job status=200');
   expect(output).toContain('Response: {"job_details":{"name":"INITIATION"}}');
 }, 60000);
