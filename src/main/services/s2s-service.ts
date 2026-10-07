@@ -5,6 +5,7 @@ import {exit} from '../utils/exit';
 
 import {authenticator} from 'otplib';
 
+const appInsights = require('applicationinsights');
 const logger: Logger = new Logger();
 const logLabel: string = getLogLabel(__filename);
 
@@ -47,9 +48,19 @@ export default class S2SService implements IS2SService {
       }
     } catch (err) {
       if (axios.isAxiosError(err)) {
-        logger.exception(`HTTP request failed dependency=s2s durationMs=${Date.now() - startedAt} code=${err.code || 'none'} message=${err.message} responseStatus=${err.response?.status || 'none'}`, logLabel);
+        const message = `HTTP request failed dependency=s2s durationMs=${Date.now() - startedAt} code=${err.code || 'none'} message=${err.message} responseStatus=${err.response?.status || 'none'}`;
+        logger.exception(message, logLabel);
+        appInsights.defaultClient?.trackException({
+          exception: new Error(message),
+          properties: {dependency: 's2s'},
+        });
       } else {
-        logger.exception(`HTTP request failed dependency=s2s durationMs=${Date.now() - startedAt} error=${String(err)}`, logLabel);
+        const message = `HTTP request failed dependency=s2s durationMs=${Date.now() - startedAt} error=${String(err)}`;
+        logger.exception(message, logLabel);
+        appInsights.defaultClient?.trackException({
+          exception: new Error(message),
+          properties: {dependency: 's2s'},
+        });
       }
       exit(1);
     }

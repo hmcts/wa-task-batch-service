@@ -5,6 +5,7 @@ import Logger, {getLogLabel} from '../utils/logger';
 import S2SService from './s2s-service';
 import {exit} from '../utils/exit';
 
+const appInsights = require('applicationinsights');
 const BASE_URL: string = config.get('services.taskMonitor.url');
 const logger: Logger = new Logger();
 const logLabel: string = getLogLabel(__filename);
@@ -47,9 +48,19 @@ export class TaskMonitorService {
         logger.trace(`Response: ${JSON.stringify(resp.data)}`, logLabel);
       }).catch(err => {
         if (axios.isAxiosError(err)) {
-          logger.exception(`HTTP request failed dependency=task-monitor operation=create-job durationMs=${Date.now() - startedAt} code=${err.code || 'none'} message=${err.message} responseStatus=${err.response?.status || 'none'}`, logLabel);
+          const message = `HTTP request failed dependency=task-monitor operation=create-job durationMs=${Date.now() - startedAt} code=${err.code || 'none'} message=${err.message} responseStatus=${err.response?.status || 'none'}`;
+          logger.exception(message, logLabel);
+          appInsights.defaultClient?.trackException({
+            exception: new Error(message),
+            properties: {dependency: 'task-monitor', operation: 'create-job'},
+          });
         } else {
-          logger.exception(`HTTP request failed dependency=task-monitor operation=create-job durationMs=${Date.now() - startedAt} error=${String(err)}`, logLabel);
+          const message = `HTTP request failed dependency=task-monitor operation=create-job durationMs=${Date.now() - startedAt} error=${String(err)}`;
+          logger.exception(message, logLabel);
+          appInsights.defaultClient?.trackException({
+            exception: new Error(message),
+            properties: {dependency: 'task-monitor', operation: 'create-job'},
+          });
         }
         exit(1);
       });
