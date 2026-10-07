@@ -2,7 +2,6 @@ import axios, {AxiosResponse} from 'axios';
 import Logger, {getLogLabel} from '../utils/logger';
 import config from 'config';
 import {exit} from '../utils/exit';
-import {getHttpRequestFailureMessage, sanitiseHttpUrl} from '../utils/http-logging';
 
 import {authenticator} from 'otplib';
 
@@ -38,20 +37,20 @@ export default class S2SService implements IS2SService {
     const oneTimePassword = authenticator.generate(secret);
     const body = {microservice, oneTimePassword};
     const startedAt = Date.now();
-    logger.trace(`Attempting to request a S2S token operation=s2s-token method=POST url=${sanitiseHttpUrl(url)} timeoutMs=none`, logLabel);
+    logger.trace('Attempting to request a S2S token dependency=s2s timeoutMs=none', logLabel);
 
     try {
       const response: AxiosResponse = await axios.post(url, body);
       if (response && response.data) {
-        logger.trace(`Received S2S token operation=s2s-token status=${response.status} durationMs=${Date.now() - startedAt}`, logLabel);
+        logger.trace(`Received S2S token dependency=s2s status=${response.status} durationMs=${Date.now() - startedAt}`, logLabel);
         return response.data;
       }
     } catch (err) {
-      logger.exception(getHttpRequestFailureMessage({
-        operation: 's2s-token',
-        startedAt,
-        error: err,
-      }), logLabel);
+      if (axios.isAxiosError(err)) {
+        logger.exception(`HTTP request failed dependency=s2s durationMs=${Date.now() - startedAt} code=${err.code || 'none'} message=${err.message} responseStatus=${err.response?.status || 'none'}`, logLabel);
+      } else {
+        logger.exception(`HTTP request failed dependency=s2s durationMs=${Date.now() - startedAt} error=${String(err)}`, logLabel);
+      }
       exit(1);
     }
   }
