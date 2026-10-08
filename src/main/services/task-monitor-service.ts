@@ -43,10 +43,12 @@ export class TaskMonitorService {
       const startedAt = Date.now();
       logger.trace(`HTTP request started dependency=task-monitor timeoutMs=30000 jobName=${job}`, logLabel);
       return taskMonitorApi.post('/monitor/tasks/jobs', jobRequest, {headers}).then(resp => {
-        logger.trace(`HTTP request completed dependency=task-monitor status=${resp.status} durationMs=${Date.now() - startedAt}`, logLabel);
+        logger.exception(`HTTP request failed dependency=s2s durationMs=${Date.now() - startedAt} error=${String(err)}
+              code=${err.code || 'none'} message=${err.message}`, logLabel);
         logger.trace(`Response: ${JSON.stringify(resp.data)}`, logLabel);
       }).catch(err => {
-        logger.exception(`HTTP request failed dependency=task-monitor durationMs=${Date.now() - startedAt} error=${String(err)}`, logLabel);
+        logger.exception(`HTTP request failed dependency=s2s durationMs=${Date.now() - startedAt} error=${String(err)}
+              code=${err.code || 'none'} message=${err.message}`, logLabel);
         exit(1);
       });
     });

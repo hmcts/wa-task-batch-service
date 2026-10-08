@@ -46,7 +46,8 @@ export default class S2SService implements IS2SService {
         return response.data;
       }
     } catch (err) {
-      logger.exception(`HTTP request failed dependency=s2s durationMs=${Date.now() - startedAt} error=${String(err)}`, logLabel);
+      logger.exception(`HTTP request failed dependency=s2s durationMs=${Date.now() - startedAt} error=${String(err)}
+      code=${err.code || 'none'} message=${err.message}`, logLabel);
       exit(1);
     }
   }
