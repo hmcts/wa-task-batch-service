@@ -42,6 +42,7 @@ export default class S2SService implements IS2SService {
     try {
       const response: AxiosResponse = await axios.post(url, body);
       if (response && response.data) {
+        logger.trace('Received S2S token', logLabel);
         logger.trace(`Received S2S token dependency=s2s status=${response.status} durationMs=${Date.now() - startedAt}`, logLabel);
         return response.data;
       }
