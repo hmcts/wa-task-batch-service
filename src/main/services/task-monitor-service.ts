@@ -5,7 +5,6 @@ import Logger, {getLogLabel} from '../utils/logger';
 import S2SService from './s2s-service';
 import {exit} from '../utils/exit';
 
-const appInsights = require('applicationinsights');
 const BASE_URL: string = config.get('services.taskMonitor.url');
 const logger: Logger = new Logger();
 const logLabel: string = getLogLabel(__filename);
@@ -42,26 +41,12 @@ export class TaskMonitorService {
       //eslint-disable-next-line @typescript-eslint/no-explicit-any
       const headers: any = {ServiceAuthorization: s2sToken};
       const startedAt = Date.now();
-      logger.trace(`HTTP request started dependency=task-monitor operation=create-job timeoutMs=30000 jobName=${job}`, logLabel);
+      logger.trace(`HTTP request started dependency=task-monitor timeoutMs=30000 jobName=${job}`, logLabel);
       return taskMonitorApi.post('/monitor/tasks/jobs', jobRequest, {headers}).then(resp => {
-        logger.trace(`HTTP request completed dependency=task-monitor operation=create-job status=${resp.status} durationMs=${Date.now() - startedAt}`, logLabel);
+        logger.trace(`HTTP request completed dependency=task-monitor status=${resp.status} durationMs=${Date.now() - startedAt}`, logLabel);
         logger.trace(`Response: ${JSON.stringify(resp.data)}`, logLabel);
       }).catch(err => {
-        if (axios.isAxiosError(err)) {
-          const message = `HTTP request failed dependency=task-monitor operation=create-job durationMs=${Date.now() - startedAt} code=${err.code || 'none'} message=${err.message} responseStatus=${err.response?.status || 'none'}`;
-          logger.exception(message, logLabel);
-          appInsights.defaultClient?.trackException({
-            exception: new Error(message),
-            properties: {dependency: 'task-monitor', operation: 'create-job'},
-          });
-        } else {
-          const message = `HTTP request failed dependency=task-monitor operation=create-job durationMs=${Date.now() - startedAt} error=${String(err)}`;
-          logger.exception(message, logLabel);
-          appInsights.defaultClient?.trackException({
-            exception: new Error(message),
-            properties: {dependency: 'task-monitor', operation: 'create-job'},
-          });
-        }
+        logger.exception(`HTTP request failed dependency=task-monitor durationMs=${Date.now() - startedAt} error=${String(err)}`, logLabel);
         exit(1);
       });
     });
