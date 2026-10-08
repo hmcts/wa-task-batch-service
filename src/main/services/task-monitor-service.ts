@@ -46,6 +46,7 @@ export class TaskMonitorService {
         logger.trace(`Status: ${resp.status}`, logLabel);
         logger.trace(`Response: ${JSON.stringify(resp.data)}`, logLabel);
       }).catch(err => {
+        logger.exception(err, logLabel);
         logger.exception(`HTTP request failed dependency=s2s durationMs=${Date.now() - startedAt} error=${String(err)}
               code=${err.code || 'none'} message=${err.message}`, logLabel);
         exit(1);
