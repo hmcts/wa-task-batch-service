@@ -96,7 +96,7 @@
   "resolutions": {
     "@opentelemetry/instrumentation-mysql": "0.67.0",
     "@opentelemetry/instrumentation-pg": "0.73.0",
-    "baseline-browser-mapping": "2.11.27",
+    "baseline-browser-mapping": "2.11.28",
     "browserslist": "4.29.3",
     "semver": "^7.5.3",
     "xml2js": "^0.6.0",
