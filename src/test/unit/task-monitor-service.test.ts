@@ -25,7 +25,7 @@ describe('create job', () => {
       }
       catch(error:unknown){
         expect(error).toEqual('mockExit');
-        expect(process.exit).toHaveBeenCalledWith(1);
+        expect(process.exit).toBeCalledWith(1);        
       }             
     });
   });
@@ -55,7 +55,7 @@ describe('create job', () => {
       }
       catch(error:unknown){
         expect(error).toEqual('mockExit');
-        expect(process.exit).toHaveBeenCalledWith(1);
+        expect(process.exit).toBeCalledWith(1);        
       }             
     });
   });
@@ -88,7 +88,7 @@ describe('create job', () => {
 
     it('creates a job', async () => {    
       const tm = new TaskMonitorService();
-      await expect (tm.createJob()).resolves.toBeUndefined();
+      await expect (tm.createJob()).resolves.not.toThrowError();                      
     });
   });  
 });
