@@ -3,7 +3,7 @@ import Logger, {getLogLabel} from '../utils/logger';
 import config from 'config';
 import {exit} from '../utils/exit';
 
-import {authenticator} from 'otplib';
+import {generateSync} from 'otplib';
 
 const logger: Logger = new Logger();
 const logLabel: string = getLogLabel(__filename);
@@ -36,10 +36,9 @@ export default class S2SService implements IS2SService {
     const secret: string = config.get('s2s.secret');
     const microservice: string = config.get('s2s.microserviceName');
 
-    const oneTimePassword = authenticator.generate(secret);
-    const body = {microservice, oneTimePassword};
-
     try {
+      const oneTimePassword = generateSync({secret});
+      const body = {microservice, oneTimePassword};
       const response: AxiosResponse = await axios.post(url, body);
       if (response && response.data) {
         logger.trace('Received S2S token', logLabel);

@@ -1,6 +1,6 @@
 s2s:
   microserviceName: wa_task_monitor
-  secret: AAAAAAAAAAAAAAAA
+  secret: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   url: http://service-auth-provider-api
 services:
   taskMonitor:
