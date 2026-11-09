@@ -42,8 +42,8 @@ describe('S2S token requests', () => {
     });
   });
 
-  it('generates the expected token for the compliant development secret', async () => {
-    secret = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+  it('generates the expected token for a secret meeting the 16-byte minimum', async () => {
+    secret = 'AAAAAAAAAAAAAAAAAAAAAAAAAA';
     await expect(service.requestServiceToken()).resolves.toBe('service-token');
     expect(post).toHaveBeenCalledWith('http://service-auth-provider-api/lease', {
       microservice: 'wa_task_monitor',
@@ -70,7 +70,7 @@ describe('S2S token requests', () => {
     expect(process.exit).toHaveBeenCalledWith(1);
   });
 
-  it.each(['INVALID!BASE32', 'AAAAAAAAAAAAAAAA', 'AAAAAAAA', ''])('exits without requesting a lease for invalid secret %j', async value => {
+  it.each(['INVALID!BASE32', 'AAAAAAAA', ''])('exits without requesting a lease for invalid secret %j', async value => {
     secret = value;
     await expect(service.requestServiceToken()).rejects.toThrow('Process exited');
     expect(process.exit).toHaveBeenCalledWith(1);

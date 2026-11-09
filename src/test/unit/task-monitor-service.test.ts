@@ -5,7 +5,7 @@ import  config  from 'config';
 jest.mock('config', () => {
   const actualConfig = jest.requireActual<typeof config>('config');
   return {
-    get: (key: string) => key === 's2s.secret' ? 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' : actualConfig.get(key),
+    get: (key: string) => key === 's2s.secret' ? 'AAAAAAAAAAAAAAAAAAAAAAAAAA' : actualConfig.get(key),
   };
 });
 
