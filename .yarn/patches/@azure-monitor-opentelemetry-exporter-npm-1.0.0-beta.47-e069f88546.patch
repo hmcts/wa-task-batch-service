@@ -1,0 +1,178 @@
+diff --git a/dist/commonjs/export/trace.d.ts b/dist/commonjs/export/trace.d.ts
+index 95f92b3193b2c626bf327cddcbdd38eaeb5eff7a..2dc37bb825517b966e3f060752ddf3feb48023be 100644
+--- a/dist/commonjs/export/trace.d.ts
++++ b/dist/commonjs/export/trace.d.ts
+@@ -1,5 +1,5 @@
+ import type { ExportResult } from "@opentelemetry/core";
+-import type { ReadableSpan, SpanExporter } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan, SpanExporter } from "@opentelemetry/sdk-trace";
+ import { AzureMonitorBaseExporter } from "./base.js";
+ import type { AzureMonitorExporterOptions } from "../config.js";
+ /**
+diff --git a/dist/commonjs/sampling/percentageSampler.d.ts b/dist/commonjs/sampling/percentageSampler.d.ts
+index f3b7075ecb00cde3e73f6255e570101d2b0dee09..1fe93bdb3a093a8cc33795c89b13912ac06a2324 100644
+--- a/dist/commonjs/sampling/percentageSampler.d.ts
++++ b/dist/commonjs/sampling/percentageSampler.d.ts
+@@ -1,5 +1,5 @@
+ import type { Link, Attributes, SpanKind, Context } from "@opentelemetry/api";
+-import type { Sampler, SamplingResult } from "@opentelemetry/sdk-trace-base";
++import type { Sampler, SamplingResult } from "@opentelemetry/sdk-trace";
+ /**
+  * ApplicationInsightsSampler is responsible for the following:
+  * Implements same trace id hashing algorithm so that traces are sampled the same across multiple nodes
+diff --git a/dist/commonjs/sampling/percentageSampler.js b/dist/commonjs/sampling/percentageSampler.js
+index 4544f08c94bc0dd5f84bd1183e470f0cf604a74c..4a8410eceb3147388778a0ad9887fda783867053 100644
+--- a/dist/commonjs/sampling/percentageSampler.js
++++ b/dist/commonjs/sampling/percentageSampler.js
+@@ -20,7 +20,7 @@ __export(percentageSampler_exports, {
+   ApplicationInsightsSampler: () => ApplicationInsightsSampler
+ });
+ module.exports = __toCommonJS(percentageSampler_exports);
+-var import_sdk_trace_base = require("@opentelemetry/sdk-trace-base");
++var import_sdk_trace_base = require("@opentelemetry/sdk-trace");
+ var import_samplingUtils = require("./samplingUtils.js");
+ class ApplicationInsightsSampler {
+   _sampleRate;
+diff --git a/dist/commonjs/sampling/rateLimitedSampler.d.ts b/dist/commonjs/sampling/rateLimitedSampler.d.ts
+index 282c9bde4df22e874230eb1b6414483ef9ce50d9..f4a8e6d4ec4a51c33a6bb3d51124540a44232908 100644
+--- a/dist/commonjs/sampling/rateLimitedSampler.d.ts
++++ b/dist/commonjs/sampling/rateLimitedSampler.d.ts
+@@ -1,5 +1,5 @@
+ import type { Link, Attributes, SpanKind, Context } from "@opentelemetry/api";
+-import type { Sampler, SamplingResult } from "@opentelemetry/sdk-trace-base";
++import type { Sampler, SamplingResult } from "@opentelemetry/sdk-trace";
+ /**
+  * RateLimitedSampler is responsible for the following:
+  * - Implements a rate-limiting sampling strategy based on a specified number of requests per second.
+diff --git a/dist/commonjs/sampling/rateLimitedSampler.js b/dist/commonjs/sampling/rateLimitedSampler.js
+index 5101a76c42c3b2bfd7544ca7caee72d7fdf53f83..68fe6f832e38f392da47265e52204d03903b7b58 100644
+--- a/dist/commonjs/sampling/rateLimitedSampler.js
++++ b/dist/commonjs/sampling/rateLimitedSampler.js
+@@ -20,7 +20,7 @@ __export(rateLimitedSampler_exports, {
+   RateLimitedSampler: () => RateLimitedSampler
+ });
+ module.exports = __toCommonJS(rateLimitedSampler_exports);
+-var import_sdk_trace_base = require("@opentelemetry/sdk-trace-base");
++var import_sdk_trace_base = require("@opentelemetry/sdk-trace");
+ var import_samplingUtils = require("./samplingUtils.js");
+ class RateLimitedSampler {
+   nanoTimeSupplier;
+diff --git a/dist/commonjs/utils/common.d.ts b/dist/commonjs/utils/common.d.ts
+index 347bfec9a21c4847837d7bba077cd71f3e70dd1b..938eee309d45d3e0f14cc76a1828d42639b93563 100644
+--- a/dist/commonjs/utils/common.d.ts
++++ b/dist/commonjs/utils/common.d.ts
+@@ -2,7 +2,7 @@ import { type Measurements, type Tags } from "../types.js";
+ import type { TelemetryItem as Envelope } from "../generated/index.js";
+ import { type Resource } from "@opentelemetry/resources";
+ import type { Attributes, HrTime } from "@opentelemetry/api";
+-import type { AnyValue } from "@opentelemetry/api-logs";
++import type { AnyValue } from "@opentelemetry/api";
+ export declare function hrTimeToDate(hrTime: HrTime): Date;
+ export declare function createTagsFromResource(resource: Resource): Tags;
+ export declare function isSqlDB(dbSystem: string): boolean;
+diff --git a/dist/commonjs/utils/eventhub.d.ts b/dist/commonjs/utils/eventhub.d.ts
+index a81771c7762fb2d81fc439d8c87d04405929da50..c2c969e3cb7bc63834b1a4e08c2d34ef3ea216d3 100644
+--- a/dist/commonjs/utils/eventhub.d.ts
++++ b/dist/commonjs/utils/eventhub.d.ts
+@@ -1,4 +1,4 @@
+-import type { ReadableSpan } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan } from "@opentelemetry/sdk-trace";
+ import type { MonitorDomain } from "../generated/index.js";
+ /**
+  * Implementation of Mapping to Azure Monitor
+diff --git a/dist/commonjs/utils/spanUtils.d.ts b/dist/commonjs/utils/spanUtils.d.ts
+index 7540c5d2a481241751496c17a1549cdbe7033e47..1d17ae12257933a26357c7f19dddf1c67c83d566 100644
+--- a/dist/commonjs/utils/spanUtils.d.ts
++++ b/dist/commonjs/utils/spanUtils.d.ts
+@@ -1,4 +1,4 @@
+-import type { ReadableSpan } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan } from "@opentelemetry/sdk-trace";
+ import type { Attributes, AttributeValue } from "@opentelemetry/api";
+ import type { Tags } from "../types.js";
+ import type { TelemetryItem as Envelope } from "../generated/index.js";
+diff --git a/dist/esm/export/trace.d.ts b/dist/esm/export/trace.d.ts
+index 95f92b3193b2c626bf327cddcbdd38eaeb5eff7a..2dc37bb825517b966e3f060752ddf3feb48023be 100644
+--- a/dist/esm/export/trace.d.ts
++++ b/dist/esm/export/trace.d.ts
+@@ -1,5 +1,5 @@
+ import type { ExportResult } from "@opentelemetry/core";
+-import type { ReadableSpan, SpanExporter } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan, SpanExporter } from "@opentelemetry/sdk-trace";
+ import { AzureMonitorBaseExporter } from "./base.js";
+ import type { AzureMonitorExporterOptions } from "../config.js";
+ /**
+diff --git a/dist/esm/sampling/percentageSampler.d.ts b/dist/esm/sampling/percentageSampler.d.ts
+index f3b7075ecb00cde3e73f6255e570101d2b0dee09..1fe93bdb3a093a8cc33795c89b13912ac06a2324 100644
+--- a/dist/esm/sampling/percentageSampler.d.ts
++++ b/dist/esm/sampling/percentageSampler.d.ts
+@@ -1,5 +1,5 @@
+ import type { Link, Attributes, SpanKind, Context } from "@opentelemetry/api";
+-import type { Sampler, SamplingResult } from "@opentelemetry/sdk-trace-base";
++import type { Sampler, SamplingResult } from "@opentelemetry/sdk-trace";
+ /**
+  * ApplicationInsightsSampler is responsible for the following:
+  * Implements same trace id hashing algorithm so that traces are sampled the same across multiple nodes
+diff --git a/dist/esm/sampling/percentageSampler.js b/dist/esm/sampling/percentageSampler.js
+index 656944579aeff41de3f84a5df48f7678d412a159..03861928e3fe99e5eea59cbfe6c9d40eb8762342 100644
+--- a/dist/esm/sampling/percentageSampler.js
++++ b/dist/esm/sampling/percentageSampler.js
+@@ -1,4 +1,4 @@
+-import { SamplingDecision } from "@opentelemetry/sdk-trace-base";
++import { SamplingDecision } from "@opentelemetry/sdk-trace";
+ import { shouldSample } from "./samplingUtils.js";
+ /**
+  * ApplicationInsightsSampler is responsible for the following:
+diff --git a/dist/esm/sampling/rateLimitedSampler.d.ts b/dist/esm/sampling/rateLimitedSampler.d.ts
+index 282c9bde4df22e874230eb1b6414483ef9ce50d9..f4a8e6d4ec4a51c33a6bb3d51124540a44232908 100644
+--- a/dist/esm/sampling/rateLimitedSampler.d.ts
++++ b/dist/esm/sampling/rateLimitedSampler.d.ts
+@@ -1,5 +1,5 @@
+ import type { Link, Attributes, SpanKind, Context } from "@opentelemetry/api";
+-import type { Sampler, SamplingResult } from "@opentelemetry/sdk-trace-base";
++import type { Sampler, SamplingResult } from "@opentelemetry/sdk-trace";
+ /**
+  * RateLimitedSampler is responsible for the following:
+  * - Implements a rate-limiting sampling strategy based on a specified number of requests per second.
+diff --git a/dist/esm/sampling/rateLimitedSampler.js b/dist/esm/sampling/rateLimitedSampler.js
+index ee86b16465cb490c8fab89fb454bc4d20a07aef0..b435d972da5e0acebeda7d9ef3a2bf927d213528 100644
+--- a/dist/esm/sampling/rateLimitedSampler.js
++++ b/dist/esm/sampling/rateLimitedSampler.js
+@@ -1,4 +1,4 @@
+-import { SamplingDecision } from "@opentelemetry/sdk-trace-base";
++import { SamplingDecision } from "@opentelemetry/sdk-trace";
+ import { roundDownToNearest, shouldSample } from "./samplingUtils.js";
+ /**
+  * RateLimitedSampler is responsible for the following:
+diff --git a/dist/esm/utils/common.d.ts b/dist/esm/utils/common.d.ts
+index 347bfec9a21c4847837d7bba077cd71f3e70dd1b..938eee309d45d3e0f14cc76a1828d42639b93563 100644
+--- a/dist/esm/utils/common.d.ts
++++ b/dist/esm/utils/common.d.ts
+@@ -2,7 +2,7 @@ import { type Measurements, type Tags } from "../types.js";
+ import type { TelemetryItem as Envelope } from "../generated/index.js";
+ import { type Resource } from "@opentelemetry/resources";
+ import type { Attributes, HrTime } from "@opentelemetry/api";
+-import type { AnyValue } from "@opentelemetry/api-logs";
++import type { AnyValue } from "@opentelemetry/api";
+ export declare function hrTimeToDate(hrTime: HrTime): Date;
+ export declare function createTagsFromResource(resource: Resource): Tags;
+ export declare function isSqlDB(dbSystem: string): boolean;
+diff --git a/dist/esm/utils/eventhub.d.ts b/dist/esm/utils/eventhub.d.ts
+index a81771c7762fb2d81fc439d8c87d04405929da50..c2c969e3cb7bc63834b1a4e08c2d34ef3ea216d3 100644
+--- a/dist/esm/utils/eventhub.d.ts
++++ b/dist/esm/utils/eventhub.d.ts
+@@ -1,4 +1,4 @@
+-import type { ReadableSpan } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan } from "@opentelemetry/sdk-trace";
+ import type { MonitorDomain } from "../generated/index.js";
+ /**
+  * Implementation of Mapping to Azure Monitor
+diff --git a/dist/esm/utils/spanUtils.d.ts b/dist/esm/utils/spanUtils.d.ts
+index 7540c5d2a481241751496c17a1549cdbe7033e47..1d17ae12257933a26357c7f19dddf1c67c83d566 100644
+--- a/dist/esm/utils/spanUtils.d.ts
++++ b/dist/esm/utils/spanUtils.d.ts
+@@ -1,4 +1,4 @@
+-import type { ReadableSpan } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan } from "@opentelemetry/sdk-trace";
+ import type { Attributes, AttributeValue } from "@opentelemetry/api";
+ import type { Tags } from "../types.js";
+ import type { TelemetryItem as Envelope } from "../generated/index.js";

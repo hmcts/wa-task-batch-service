@@ -1,0 +1,698 @@
+diff --git a/dist/commonjs/index.js b/dist/commonjs/index.js
+index 7a0052d2677947bb3072be02eafcf7560c12ea8c..5f84fecb2cbe8b043679809cd6c35e5ef6d1e93e 100644
+--- a/dist/commonjs/index.js
++++ b/dist/commonjs/index.js
+@@ -6,7 +6,7 @@ exports.useAzureMonitor = useAzureMonitor;
+ exports.shutdownAzureMonitor = shutdownAzureMonitor;
+ exports._getSdkInstance = _getSdkInstance;
+ const api_1 = require("@opentelemetry/api");
+-const api_logs_1 = require("@opentelemetry/api-logs");
++const api_logs_1 = require("@opentelemetry/api");
+ const sdk_node_1 = require("@opentelemetry/sdk-node");
+ const config_js_1 = require("./shared/config.js");
+ const index_js_1 = require("./metrics/index.js");
+diff --git a/dist/commonjs/logs/batchLogRecordProcessor.d.ts b/dist/commonjs/logs/batchLogRecordProcessor.d.ts
+index 59870c17c8163ccfc5b14ce752dba4b5a92a8ccc..da361c478621ac54d291fe4b290d72a09474ca67 100644
+--- a/dist/commonjs/logs/batchLogRecordProcessor.d.ts
++++ b/dist/commonjs/logs/batchLogRecordProcessor.d.ts
+@@ -1,4 +1,4 @@
+-import type { LogRecordExporter, SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { LogRecordExporter, ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import { BatchLogRecordProcessor } from "@opentelemetry/sdk-logs";
+ /**
+  * Azure Monitor BatchLogRecord Processor.
+@@ -9,6 +9,6 @@ export declare class AzureBatchLogRecordProcessor extends BatchLogRecordProcesso
+     constructor(exporter: LogRecordExporter, options: {
+         enableTraceBasedSamplingForLogs: boolean | undefined;
+     });
+-    onEmit(logRecord: SdkLogRecord): void;
++    onEmit(logRecord: ReadWriteLogRecord): void;
+ }
+ //# sourceMappingURL=batchLogRecordProcessor.d.ts.map
+\ No newline at end of file
+diff --git a/dist/commonjs/logs/logRecordProcessor.d.ts b/dist/commonjs/logs/logRecordProcessor.d.ts
+index e914f28971f21e05f68024bdab4f40dcbb73b61a..b48583450eec1592c975df7c1a4aad528507f7e8 100644
+--- a/dist/commonjs/logs/logRecordProcessor.d.ts
++++ b/dist/commonjs/logs/logRecordProcessor.d.ts
+@@ -1,5 +1,5 @@
+ import type { MetricHandler } from "../metrics/handler.js";
+-import type { LogRecordProcessor, SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { LogRecordProcessor, ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import type { Context } from "@opentelemetry/api";
+ /**
+  * Azure Monitor LogRecord Processor.
+@@ -8,7 +8,7 @@ import type { Context } from "@opentelemetry/api";
+ export declare class AzureLogRecordProcessor implements LogRecordProcessor {
+     private readonly _metricHandler;
+     constructor(metricHandler: MetricHandler);
+-    onEmit(logRecord: SdkLogRecord, context?: Context): void;
++    onEmit(logRecord: ReadWriteLogRecord, context?: Context): void;
+     private _propagateMainAgentAttributesFromActiveSpan;
+     forceFlush(): Promise<void>;
+     shutdown(): Promise<void>;
+diff --git a/dist/commonjs/metrics/handler.d.ts b/dist/commonjs/metrics/handler.d.ts
+index bc0005733919e7a79813d0796f30bdbdb9c4b8c2..b1fe5c07d786418b8fd1e8ac796bcec3d9137ab6 100644
+--- a/dist/commonjs/metrics/handler.d.ts
++++ b/dist/commonjs/metrics/handler.d.ts
+@@ -1,8 +1,8 @@
+ import type { ViewOptions } from "@opentelemetry/sdk-metrics";
+ import { PeriodicExportingMetricReader } from "@opentelemetry/sdk-metrics";
+-import type { SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import type { InternalConfig } from "../shared/config.js";
+-import type { ReadableSpan, Span } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan, Span } from "@opentelemetry/sdk-trace";
+ /**
+  * Azure Monitor OpenTelemetry Metric Handler
+  */
+@@ -25,7 +25,7 @@ export declare class MetricHandler {
+     getViews(): ViewOptions[];
+     markSpanAsProcessed(span: Span): void;
+     recordSpan(span: ReadableSpan): void;
+-    recordLog(logRecord: SdkLogRecord): void;
++    recordLog(logRecord: ReadWriteLogRecord): void;
+     /**
+      * Shutdown handler
+      */
+diff --git a/dist/commonjs/metrics/performanceCounters.d.ts b/dist/commonjs/metrics/performanceCounters.d.ts
+index a66a853ae935d1143bf35fb3a2b85385182b732c..744d0162d1e3ab04b2fc7f3fe0877380b75d40cc 100644
+--- a/dist/commonjs/metrics/performanceCounters.d.ts
++++ b/dist/commonjs/metrics/performanceCounters.d.ts
+@@ -1,6 +1,6 @@
+-import type { SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import { MeterProvider } from "@opentelemetry/sdk-metrics";
+-import type { ReadableSpan } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan } from "@opentelemetry/sdk-trace";
+ import type { AzureMonitorOpenTelemetryOptions } from "../types.js";
+ /**
+  * Azure Monitor PerformanceCounter Metrics
+@@ -67,7 +67,7 @@ export declare class PerformanceCounterMetrics {
+      * Record Log metrics
+      * @internal
+      */
+-    recordLog(logRecord: SdkLogRecord): void;
++    recordLog(logRecord: ReadWriteLogRecord): void;
+     private getRequestRate;
+     private getPrivateMemory;
+     private getAvailableMemory;
+diff --git a/dist/commonjs/metrics/quickpulse/liveMetrics.d.ts b/dist/commonjs/metrics/quickpulse/liveMetrics.d.ts
+index 9f0276c0de185b06c8fc4e4bd3e08b15fd05cb6a..101f80f05a6494634e206b4322607920e3b6093f 100644
+--- a/dist/commonjs/metrics/quickpulse/liveMetrics.d.ts
++++ b/dist/commonjs/metrics/quickpulse/liveMetrics.d.ts
+@@ -1,7 +1,7 @@
+ import { MeterProvider } from "@opentelemetry/sdk-metrics";
+-import type { SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import type { InternalConfig } from "../../shared/config.js";
+-import type { ReadableSpan } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan } from "@opentelemetry/sdk-trace";
+ import type { DocumentIngress } from "../../generated/index.js";
+ import type { CollectionConfigurationError } from "../../generated/index.js";
+ /**
+@@ -108,7 +108,7 @@ export declare class LiveMetrics {
+      * Record LogRecord metrics, add attribute so data is not aggregated again in ingestion
+      * @internal
+      */
+-    recordLog(logRecord: SdkLogRecord): void;
++    recordLog(logRecord: ReadWriteLogRecord): void;
+     private getRequestDuration;
+     private getRequestRate;
+     private getRequestFailedRate;
+diff --git a/dist/commonjs/metrics/quickpulse/liveMetrics.js b/dist/commonjs/metrics/quickpulse/liveMetrics.js
+index cfb156a3db332214e3c74fd60fedea1366d86788..e5004e5c6b80f15577b92c7c31e537029ce91d3a 100644
+--- a/dist/commonjs/metrics/quickpulse/liveMetrics.js
++++ b/dist/commonjs/metrics/quickpulse/liveMetrics.js
+@@ -7,7 +7,7 @@ const tslib_1 = require("tslib");
+ const node_os_1 = tslib_1.__importDefault(require("node:os"));
+ const sdk_metrics_1 = require("@opentelemetry/sdk-metrics");
+ const api_1 = require("@opentelemetry/api");
+-const sdk_trace_base_1 = require("@opentelemetry/sdk-trace-base");
++const sdk_trace_base_1 = require("@opentelemetry/sdk-trace");
+ const utils_js_1 = require("./utils.js");
+ const exporter_js_1 = require("./export/exporter.js");
+ const sender_js_1 = require("./export/sender.js");
+diff --git a/dist/commonjs/metrics/quickpulse/utils.d.ts b/dist/commonjs/metrics/quickpulse/utils.d.ts
+index 68af7b47a2fabdac6edfbf43e630118699133d98..b61778d2bbf74d2ab8a12a3e02801e5da822265a 100644
+--- a/dist/commonjs/metrics/quickpulse/utils.d.ts
++++ b/dist/commonjs/metrics/quickpulse/utils.d.ts
+@@ -1,5 +1,5 @@
+-import type { ReadableSpan } from "@opentelemetry/sdk-trace-base";
+-import type { SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { ReadableSpan } from "@opentelemetry/sdk-trace";
++import type { ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import type { DocumentIngress, Exception, MonitoringDataPoint, RemoteDependency, Request, Trace, CollectionConfigurationError } from "../../generated/index.js";
+ import type { Attributes } from "@opentelemetry/api";
+ import type { ResourceMetrics } from "@opentelemetry/sdk-metrics";
+@@ -13,7 +13,7 @@ export declare function setSdkPrefix(): void;
+ export declare function resourceMetricsToQuickpulseDataPoint(metrics: ResourceMetrics, baseMonitoringDataPoint: MonitoringDataPoint, documents: DocumentIngress[], errors: CollectionConfigurationError[], derivedMetricValues: Map<string, number>): MonitoringDataPoint[];
+ export declare function getSpanData(span: ReadableSpan): RequestData | DependencyData;
+ export declare function getSpanExceptionColumns(eventAttributes: Attributes, spanAttributes: Attributes): ExceptionData;
+-export declare function getLogData(log: SdkLogRecord): ExceptionData | TraceData;
++export declare function getLogData(log: ReadWriteLogRecord): ExceptionData | TraceData;
+ export declare function getLogDocument(data: TelemetryData, exceptionType?: string): Trace | Exception;
+ export declare function isRequestData(data: TelemetryData): data is RequestData;
+ export declare function isDependencyData(data: TelemetryData): data is DependencyData;
+diff --git a/dist/commonjs/metrics/standardMetrics.d.ts b/dist/commonjs/metrics/standardMetrics.d.ts
+index b97a9537284b9bb5dea6efc44d9d0fb84e736567..de5b65edeab0fb29124f128fa02be08341e9bcfa 100644
+--- a/dist/commonjs/metrics/standardMetrics.d.ts
++++ b/dist/commonjs/metrics/standardMetrics.d.ts
+@@ -1,7 +1,7 @@
+ import { MeterProvider } from "@opentelemetry/sdk-metrics";
+-import type { SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import type { InternalConfig } from "../shared/config.js";
+-import type { ReadableSpan, Span } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan, Span } from "@opentelemetry/sdk-trace";
+ /**
+  * Azure Monitor Standard Metrics
+  * @internal
+@@ -51,6 +51,6 @@ export declare class StandardMetrics {
+      * Record LogRecord metrics, add attribute so data is not aggregated again in ingestion
+      * @internal
+      */
+-    recordLog(logRecord: SdkLogRecord): void;
++    recordLog(logRecord: ReadWriteLogRecord): void;
+ }
+ //# sourceMappingURL=standardMetrics.d.ts.map
+\ No newline at end of file
+diff --git a/dist/commonjs/metrics/utils.d.ts b/dist/commonjs/metrics/utils.d.ts
+index 3f92690a4423d8d01c08810b9ee8ae20a75d177e..f466dfb2d418ea5619eb344e972d49394621e5a5 100644
+--- a/dist/commonjs/metrics/utils.d.ts
++++ b/dist/commonjs/metrics/utils.d.ts
+@@ -1,6 +1,6 @@
+ import type { Attributes } from "@opentelemetry/api";
+-import type { ReadableSpan } from "@opentelemetry/sdk-trace-base";
+-import type { SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { ReadableSpan } from "@opentelemetry/sdk-trace";
++import type { ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import type { MetricDependencyDimensions, MetricRequestDimensions, StandardMetricBaseDimensions } from "./types.js";
+ import type { Resource } from "@opentelemetry/resources";
+ export declare function getRequestDimensions(span: ReadableSpan): Attributes;
+@@ -10,9 +10,9 @@ export declare function getTraceDimensions(resource: Resource): Attributes;
+ export declare function getBaseDimensions(resource: Resource): StandardMetricBaseDimensions;
+ export declare function getDependencyTarget(attributes: Attributes): string;
+ export declare function isSqlDB(dbSystem: string): boolean;
+-export declare function isExceptionTelemetry(logRecord: SdkLogRecord): boolean;
+-export declare function isTraceTelemetry(logRecord: SdkLogRecord): boolean;
+-export declare function isSyntheticLoad(record: SdkLogRecord | ReadableSpan): boolean;
++export declare function isExceptionTelemetry(logRecord: ReadWriteLogRecord): boolean;
++export declare function isTraceTelemetry(logRecord: ReadWriteLogRecord): boolean;
++export declare function isSyntheticLoad(record: ReadWriteLogRecord | ReadableSpan): boolean;
+ export declare function convertDimensions(dimensions: MetricDependencyDimensions | MetricRequestDimensions): Attributes;
+ /**
+  * Returns available system memory in bytes.
+diff --git a/dist/commonjs/shared/config.d.ts b/dist/commonjs/shared/config.d.ts
+index 4939b3b9a222f7c2ec1fb559f6e99db66ed42847..5fe699e6c6e0220499c7969c63df039328266397 100644
+--- a/dist/commonjs/shared/config.d.ts
++++ b/dist/commonjs/shared/config.d.ts
+@@ -1,6 +1,6 @@
+ import type { Resource } from "@opentelemetry/resources";
+ import type { BrowserSdkLoaderOptions, AzureMonitorOpenTelemetryOptions, InstrumentationOptions } from "../types.js";
+-import type { Sampler } from "@opentelemetry/sdk-trace-base";
++import type { Sampler } from "@opentelemetry/sdk-trace";
+ import type { AzureMonitorExporterOptions } from "@azure/monitor-opentelemetry-exporter";
+ /**
+  * Azure Monitor OpenTelemetry Client Configuration
+diff --git a/dist/commonjs/shared/envConfig.d.ts b/dist/commonjs/shared/envConfig.d.ts
+index 7687807a580a13e477a75ecf3d8c3951aac5c034..73eb20ca05fa2c1735281e14c2dd7c077addc035 100644
+--- a/dist/commonjs/shared/envConfig.d.ts
++++ b/dist/commonjs/shared/envConfig.d.ts
+@@ -1,5 +1,5 @@
+ import type { AzureMonitorOpenTelemetryOptions } from "../types.js";
+-import type { Sampler } from "@opentelemetry/sdk-trace-base";
++import type { Sampler } from "@opentelemetry/sdk-trace";
+ /**
+  * Azure Monitor OpenTelemetry Client Configuration through Env variables
+  * @internal
+diff --git a/dist/commonjs/shared/envConfig.js b/dist/commonjs/shared/envConfig.js
+index 0d48a4ea7786b3e217ff21012cbefd22abf9b097..0bf603a83a66c433c4bea4ce75c3aa0616bc6d75 100644
+--- a/dist/commonjs/shared/envConfig.js
++++ b/dist/commonjs/shared/envConfig.js
+@@ -3,7 +3,7 @@
+ // Licensed under the MIT License.
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.EnvConfig = void 0;
+-const sdk_trace_base_1 = require("@opentelemetry/sdk-trace-base");
++const sdk_trace_base_1 = require("@opentelemetry/sdk-trace");
+ const index_js_1 = require("./logging/index.js");
+ const TRACES_SAMPLER = "OTEL_TRACES_SAMPLER";
+ const TRACES_SAMPLER_ARG = "OTEL_TRACES_SAMPLER_ARG";
+diff --git a/dist/commonjs/traces/handler.d.ts b/dist/commonjs/traces/handler.d.ts
+index 8ec4fb76ea78b586ed478cfb4a5b44275ef2d4da..7cd7daf996003d5d2a8d36eba49d1ad58819b2f4 100644
+--- a/dist/commonjs/traces/handler.d.ts
++++ b/dist/commonjs/traces/handler.d.ts
+@@ -1,5 +1,5 @@
+-import type { Sampler } from "@opentelemetry/sdk-trace-base";
+-import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
++import type { Sampler } from "@opentelemetry/sdk-trace";
++import { BatchSpanProcessor } from "@opentelemetry/sdk-trace";
+ import type { InternalConfig } from "../shared/config.js";
+ import type { MetricHandler } from "../metrics/handler.js";
+ import { AzureMonitorSpanProcessor } from "./spanProcessor.js";
+diff --git a/dist/commonjs/traces/handler.js b/dist/commonjs/traces/handler.js
+index 9a970140aa97b297d4a462f792fe4b6b929512b3..a6b4edf34f21d2d98d7e38af6ff26520e54cc07a 100644
+--- a/dist/commonjs/traces/handler.js
++++ b/dist/commonjs/traces/handler.js
+@@ -4,7 +4,7 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.TraceHandler = void 0;
+ const monitor_opentelemetry_exporter_1 = require("@azure/monitor-opentelemetry-exporter");
+-const sdk_trace_base_1 = require("@opentelemetry/sdk-trace-base");
++const sdk_trace_base_1 = require("@opentelemetry/sdk-trace");
+ const instrumentation_http_1 = require("@opentelemetry/instrumentation-http");
+ const instrumentation_mongodb_1 = require("@opentelemetry/instrumentation-mongodb");
+ const instrumentation_mysql_1 = require("@opentelemetry/instrumentation-mysql");
+@@ -53,7 +53,7 @@ class TraceHandler {
+             this._sampler = new sampler_js_1.ApplicationInsightsSampler(this._config.samplingRatio);
+         }
+         this._azureExporter = new monitor_opentelemetry_exporter_1.AzureMonitorTraceExporter(this._config.azureMonitorExporterOptions);
+-        this._batchSpanProcessor = new sdk_trace_base_1.BatchSpanProcessor(this._azureExporter);
++        this._batchSpanProcessor = new sdk_trace_base_1.BatchSpanProcessor({ exporter: this._azureExporter });
+         this._azureSpanProcessor = new spanProcessor_js_1.AzureMonitorSpanProcessor(this._metricHandler);
+         this._azureFunctionsHook = new azureFnHook_js_1.AzureFunctionsHook();
+         this._initializeInstrumentations();
+diff --git a/dist/commonjs/traces/sampler.d.ts b/dist/commonjs/traces/sampler.d.ts
+index d6801b65db4627ba3ed0041b3d1f06573b479004..1d541ad19f879c129618e632f56199e267938f6b 100644
+--- a/dist/commonjs/traces/sampler.d.ts
++++ b/dist/commonjs/traces/sampler.d.ts
+@@ -3,7 +3,7 @@
+  * This sampler specifically marks spans as sampled out and records them instead of dropping the span altogether.
+  */
+ import type { Link, Attributes, SpanKind, Context } from "@opentelemetry/api";
+-import type { Sampler, SamplingResult } from "@opentelemetry/sdk-trace-base";
++import type { Sampler, SamplingResult } from "@opentelemetry/sdk-trace";
+ /**
+  * ApplicationInsightsSampler is responsible for the following:
+  * Implements same trace id hashing algorithm so that traces are sampled the same across multiple nodes
+diff --git a/dist/commonjs/traces/sampler.js b/dist/commonjs/traces/sampler.js
+index c7fb218a3c84094fdaab0b4ff4027fb304cf3e8b..c10c6b01d7ff575a66552775f2518750ca3b9698 100644
+--- a/dist/commonjs/traces/sampler.js
++++ b/dist/commonjs/traces/sampler.js
+@@ -2,7 +2,7 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.ApplicationInsightsSampler = void 0;
+ const api_1 = require("@opentelemetry/api");
+-const sdk_trace_base_1 = require("@opentelemetry/sdk-trace-base");
++const sdk_trace_base_1 = require("@opentelemetry/sdk-trace");
+ const types_js_1 = require("../types.js");
+ /**
+  * ApplicationInsightsSampler is responsible for the following:
+diff --git a/dist/commonjs/traces/spanProcessor.d.ts b/dist/commonjs/traces/spanProcessor.d.ts
+index ed6d51895964bd3f0a39b85e42558fb869cf29cb..9916e80c87c4161668bb380bbb249ae14aeda843 100644
+--- a/dist/commonjs/traces/spanProcessor.d.ts
++++ b/dist/commonjs/traces/spanProcessor.d.ts
+@@ -1,5 +1,5 @@
+ import type { Context } from "@opentelemetry/api";
+-import type { ReadableSpan, Span, SpanProcessor } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan, Span, SpanProcessor } from "@opentelemetry/sdk-trace";
+ import type { MetricHandler } from "../metrics/index.js";
+ /**
+  * Azure Monitor Span Processor.
+diff --git a/dist/commonjs/types.d.ts b/dist/commonjs/types.d.ts
+index 261702e5f273fba93b9ca68805ac93a507e977f7..08c7f8fa6f9b820ba14ae2f16ab04908211cad8b 100644
+--- a/dist/commonjs/types.d.ts
++++ b/dist/commonjs/types.d.ts
+@@ -1,10 +1,10 @@
+ import type { AzureMonitorExporterOptions } from "@azure/monitor-opentelemetry-exporter";
+ import type { InstrumentationConfig } from "@opentelemetry/instrumentation";
+-import type { SeverityNumber } from "@opentelemetry/api-logs";
++import type { SeverityNumber } from "@opentelemetry/api";
+ import type { Resource } from "@opentelemetry/resources";
+ import type { LogRecordProcessor } from "@opentelemetry/sdk-logs";
+ import type { MetricReader, ViewOptions } from "@opentelemetry/sdk-metrics";
+-import type { SpanProcessor } from "@opentelemetry/sdk-trace-base";
++import type { SpanProcessor } from "@opentelemetry/sdk-trace";
+ /**
+  * Azure Monitor OpenTelemetry Options
+  */
+diff --git a/dist/commonjs/utils/logUtils.d.ts b/dist/commonjs/utils/logUtils.d.ts
+index 8bc20985f9294f64b1100c36866eb45697407fcd..64182156b4ec7510ca232246ff6bf561635ca407 100644
+--- a/dist/commonjs/utils/logUtils.d.ts
++++ b/dist/commonjs/utils/logUtils.d.ts
+@@ -1,4 +1,4 @@
+-import { SeverityNumber } from "@opentelemetry/api-logs";
++import { SeverityNumber } from "@opentelemetry/api";
+ /**
+  * Checks whether the instrumentation logging level disables collection.
+  * @internal
+diff --git a/dist/commonjs/utils/logUtils.js b/dist/commonjs/utils/logUtils.js
+index 7e4a837fb9bbe72b4f5798c3b064d3beec970fb4..bd5be9944e1d2b15da09ed89d6d646e676701dc1 100644
+--- a/dist/commonjs/utils/logUtils.js
++++ b/dist/commonjs/utils/logUtils.js
+@@ -4,7 +4,7 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.isLogCollectionDisabled = isLogCollectionDisabled;
+ exports.logLevelToSeverityNumber = logLevelToSeverityNumber;
+-const api_logs_1 = require("@opentelemetry/api-logs");
++const api_logs_1 = require("@opentelemetry/api");
+ /**
+  * Checks whether the instrumentation logging level disables collection.
+  * @internal
+diff --git a/dist/esm/index.js b/dist/esm/index.js
+index 887f2ba88b006b905e43a5af74e2b1b1c3f98696..24bd8f06274349e1c9d9779a4f313cf77d85cdfa 100644
+--- a/dist/esm/index.js
++++ b/dist/esm/index.js
+@@ -1,7 +1,7 @@
+ // Copyright (c) Microsoft Corporation.
+ // Licensed under the MIT License.
+ import { metrics, trace } from "@opentelemetry/api";
+-import { logs } from "@opentelemetry/api-logs";
++import { logs } from "@opentelemetry/api";
+ import { NodeSDK } from "@opentelemetry/sdk-node";
+ import { InternalConfig } from "./shared/config.js";
+ import { MetricHandler } from "./metrics/index.js";
+diff --git a/dist/esm/logs/batchLogRecordProcessor.d.ts b/dist/esm/logs/batchLogRecordProcessor.d.ts
+index 59870c17c8163ccfc5b14ce752dba4b5a92a8ccc..da361c478621ac54d291fe4b290d72a09474ca67 100644
+--- a/dist/esm/logs/batchLogRecordProcessor.d.ts
++++ b/dist/esm/logs/batchLogRecordProcessor.d.ts
+@@ -1,4 +1,4 @@
+-import type { LogRecordExporter, SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { LogRecordExporter, ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import { BatchLogRecordProcessor } from "@opentelemetry/sdk-logs";
+ /**
+  * Azure Monitor BatchLogRecord Processor.
+@@ -9,6 +9,6 @@ export declare class AzureBatchLogRecordProcessor extends BatchLogRecordProcesso
+     constructor(exporter: LogRecordExporter, options: {
+         enableTraceBasedSamplingForLogs: boolean | undefined;
+     });
+-    onEmit(logRecord: SdkLogRecord): void;
++    onEmit(logRecord: ReadWriteLogRecord): void;
+ }
+ //# sourceMappingURL=batchLogRecordProcessor.d.ts.map
+\ No newline at end of file
+diff --git a/dist/esm/logs/logRecordProcessor.d.ts b/dist/esm/logs/logRecordProcessor.d.ts
+index e914f28971f21e05f68024bdab4f40dcbb73b61a..b48583450eec1592c975df7c1a4aad528507f7e8 100644
+--- a/dist/esm/logs/logRecordProcessor.d.ts
++++ b/dist/esm/logs/logRecordProcessor.d.ts
+@@ -1,5 +1,5 @@
+ import type { MetricHandler } from "../metrics/handler.js";
+-import type { LogRecordProcessor, SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { LogRecordProcessor, ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import type { Context } from "@opentelemetry/api";
+ /**
+  * Azure Monitor LogRecord Processor.
+@@ -8,7 +8,7 @@ import type { Context } from "@opentelemetry/api";
+ export declare class AzureLogRecordProcessor implements LogRecordProcessor {
+     private readonly _metricHandler;
+     constructor(metricHandler: MetricHandler);
+-    onEmit(logRecord: SdkLogRecord, context?: Context): void;
++    onEmit(logRecord: ReadWriteLogRecord, context?: Context): void;
+     private _propagateMainAgentAttributesFromActiveSpan;
+     forceFlush(): Promise<void>;
+     shutdown(): Promise<void>;
+diff --git a/dist/esm/metrics/handler.d.ts b/dist/esm/metrics/handler.d.ts
+index bc0005733919e7a79813d0796f30bdbdb9c4b8c2..b1fe5c07d786418b8fd1e8ac796bcec3d9137ab6 100644
+--- a/dist/esm/metrics/handler.d.ts
++++ b/dist/esm/metrics/handler.d.ts
+@@ -1,8 +1,8 @@
+ import type { ViewOptions } from "@opentelemetry/sdk-metrics";
+ import { PeriodicExportingMetricReader } from "@opentelemetry/sdk-metrics";
+-import type { SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import type { InternalConfig } from "../shared/config.js";
+-import type { ReadableSpan, Span } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan, Span } from "@opentelemetry/sdk-trace";
+ /**
+  * Azure Monitor OpenTelemetry Metric Handler
+  */
+@@ -25,7 +25,7 @@ export declare class MetricHandler {
+     getViews(): ViewOptions[];
+     markSpanAsProcessed(span: Span): void;
+     recordSpan(span: ReadableSpan): void;
+-    recordLog(logRecord: SdkLogRecord): void;
++    recordLog(logRecord: ReadWriteLogRecord): void;
+     /**
+      * Shutdown handler
+      */
+diff --git a/dist/esm/metrics/performanceCounters.d.ts b/dist/esm/metrics/performanceCounters.d.ts
+index a66a853ae935d1143bf35fb3a2b85385182b732c..744d0162d1e3ab04b2fc7f3fe0877380b75d40cc 100644
+--- a/dist/esm/metrics/performanceCounters.d.ts
++++ b/dist/esm/metrics/performanceCounters.d.ts
+@@ -1,6 +1,6 @@
+-import type { SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import { MeterProvider } from "@opentelemetry/sdk-metrics";
+-import type { ReadableSpan } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan } from "@opentelemetry/sdk-trace";
+ import type { AzureMonitorOpenTelemetryOptions } from "../types.js";
+ /**
+  * Azure Monitor PerformanceCounter Metrics
+@@ -67,7 +67,7 @@ export declare class PerformanceCounterMetrics {
+      * Record Log metrics
+      * @internal
+      */
+-    recordLog(logRecord: SdkLogRecord): void;
++    recordLog(logRecord: ReadWriteLogRecord): void;
+     private getRequestRate;
+     private getPrivateMemory;
+     private getAvailableMemory;
+diff --git a/dist/esm/metrics/quickpulse/liveMetrics.d.ts b/dist/esm/metrics/quickpulse/liveMetrics.d.ts
+index 9f0276c0de185b06c8fc4e4bd3e08b15fd05cb6a..101f80f05a6494634e206b4322607920e3b6093f 100644
+--- a/dist/esm/metrics/quickpulse/liveMetrics.d.ts
++++ b/dist/esm/metrics/quickpulse/liveMetrics.d.ts
+@@ -1,7 +1,7 @@
+ import { MeterProvider } from "@opentelemetry/sdk-metrics";
+-import type { SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import type { InternalConfig } from "../../shared/config.js";
+-import type { ReadableSpan } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan } from "@opentelemetry/sdk-trace";
+ import type { DocumentIngress } from "../../generated/index.js";
+ import type { CollectionConfigurationError } from "../../generated/index.js";
+ /**
+@@ -108,7 +108,7 @@ export declare class LiveMetrics {
+      * Record LogRecord metrics, add attribute so data is not aggregated again in ingestion
+      * @internal
+      */
+-    recordLog(logRecord: SdkLogRecord): void;
++    recordLog(logRecord: ReadWriteLogRecord): void;
+     private getRequestDuration;
+     private getRequestRate;
+     private getRequestFailedRate;
+diff --git a/dist/esm/metrics/quickpulse/liveMetrics.js b/dist/esm/metrics/quickpulse/liveMetrics.js
+index dcd7dd2b461b67389c37c8e9debfbd2a8168d232..da634696d2700eb4943b0555d34e30535aaeaf72 100644
+--- a/dist/esm/metrics/quickpulse/liveMetrics.js
++++ b/dist/esm/metrics/quickpulse/liveMetrics.js
+@@ -3,7 +3,7 @@
+ import os from "node:os";
+ import { MeterProvider, PeriodicExportingMetricReader } from "@opentelemetry/sdk-metrics";
+ import { SpanKind, SpanStatusCode, ValueType, context } from "@opentelemetry/api";
+-import { RandomIdGenerator } from "@opentelemetry/sdk-trace-base";
++import { RandomIdGenerator } from "@opentelemetry/sdk-trace";
+ import { getLogDocument, getSdkVersion, getSpanData, getLogData, getSpanDocument, getTransmissionTime, isRequestData, getSpanExceptionColumns, isExceptionData, isDependencyData, } from "./utils.js";
+ import { QuickpulseMetricExporter } from "./export/exporter.js";
+ import { QuickpulseSender } from "./export/sender.js";
+diff --git a/dist/esm/metrics/quickpulse/utils.d.ts b/dist/esm/metrics/quickpulse/utils.d.ts
+index 68af7b47a2fabdac6edfbf43e630118699133d98..b61778d2bbf74d2ab8a12a3e02801e5da822265a 100644
+--- a/dist/esm/metrics/quickpulse/utils.d.ts
++++ b/dist/esm/metrics/quickpulse/utils.d.ts
+@@ -1,5 +1,5 @@
+-import type { ReadableSpan } from "@opentelemetry/sdk-trace-base";
+-import type { SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { ReadableSpan } from "@opentelemetry/sdk-trace";
++import type { ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import type { DocumentIngress, Exception, MonitoringDataPoint, RemoteDependency, Request, Trace, CollectionConfigurationError } from "../../generated/index.js";
+ import type { Attributes } from "@opentelemetry/api";
+ import type { ResourceMetrics } from "@opentelemetry/sdk-metrics";
+@@ -13,7 +13,7 @@ export declare function setSdkPrefix(): void;
+ export declare function resourceMetricsToQuickpulseDataPoint(metrics: ResourceMetrics, baseMonitoringDataPoint: MonitoringDataPoint, documents: DocumentIngress[], errors: CollectionConfigurationError[], derivedMetricValues: Map<string, number>): MonitoringDataPoint[];
+ export declare function getSpanData(span: ReadableSpan): RequestData | DependencyData;
+ export declare function getSpanExceptionColumns(eventAttributes: Attributes, spanAttributes: Attributes): ExceptionData;
+-export declare function getLogData(log: SdkLogRecord): ExceptionData | TraceData;
++export declare function getLogData(log: ReadWriteLogRecord): ExceptionData | TraceData;
+ export declare function getLogDocument(data: TelemetryData, exceptionType?: string): Trace | Exception;
+ export declare function isRequestData(data: TelemetryData): data is RequestData;
+ export declare function isDependencyData(data: TelemetryData): data is DependencyData;
+diff --git a/dist/esm/metrics/standardMetrics.d.ts b/dist/esm/metrics/standardMetrics.d.ts
+index b97a9537284b9bb5dea6efc44d9d0fb84e736567..de5b65edeab0fb29124f128fa02be08341e9bcfa 100644
+--- a/dist/esm/metrics/standardMetrics.d.ts
++++ b/dist/esm/metrics/standardMetrics.d.ts
+@@ -1,7 +1,7 @@
+ import { MeterProvider } from "@opentelemetry/sdk-metrics";
+-import type { SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import type { InternalConfig } from "../shared/config.js";
+-import type { ReadableSpan, Span } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan, Span } from "@opentelemetry/sdk-trace";
+ /**
+  * Azure Monitor Standard Metrics
+  * @internal
+@@ -51,6 +51,6 @@ export declare class StandardMetrics {
+      * Record LogRecord metrics, add attribute so data is not aggregated again in ingestion
+      * @internal
+      */
+-    recordLog(logRecord: SdkLogRecord): void;
++    recordLog(logRecord: ReadWriteLogRecord): void;
+ }
+ //# sourceMappingURL=standardMetrics.d.ts.map
+\ No newline at end of file
+diff --git a/dist/esm/metrics/utils.d.ts b/dist/esm/metrics/utils.d.ts
+index 3f92690a4423d8d01c08810b9ee8ae20a75d177e..f466dfb2d418ea5619eb344e972d49394621e5a5 100644
+--- a/dist/esm/metrics/utils.d.ts
++++ b/dist/esm/metrics/utils.d.ts
+@@ -1,6 +1,6 @@
+ import type { Attributes } from "@opentelemetry/api";
+-import type { ReadableSpan } from "@opentelemetry/sdk-trace-base";
+-import type { SdkLogRecord } from "@opentelemetry/sdk-logs";
++import type { ReadableSpan } from "@opentelemetry/sdk-trace";
++import type { ReadWriteLogRecord } from "@opentelemetry/sdk-logs";
+ import type { MetricDependencyDimensions, MetricRequestDimensions, StandardMetricBaseDimensions } from "./types.js";
+ import type { Resource } from "@opentelemetry/resources";
+ export declare function getRequestDimensions(span: ReadableSpan): Attributes;
+@@ -10,9 +10,9 @@ export declare function getTraceDimensions(resource: Resource): Attributes;
+ export declare function getBaseDimensions(resource: Resource): StandardMetricBaseDimensions;
+ export declare function getDependencyTarget(attributes: Attributes): string;
+ export declare function isSqlDB(dbSystem: string): boolean;
+-export declare function isExceptionTelemetry(logRecord: SdkLogRecord): boolean;
+-export declare function isTraceTelemetry(logRecord: SdkLogRecord): boolean;
+-export declare function isSyntheticLoad(record: SdkLogRecord | ReadableSpan): boolean;
++export declare function isExceptionTelemetry(logRecord: ReadWriteLogRecord): boolean;
++export declare function isTraceTelemetry(logRecord: ReadWriteLogRecord): boolean;
++export declare function isSyntheticLoad(record: ReadWriteLogRecord | ReadableSpan): boolean;
+ export declare function convertDimensions(dimensions: MetricDependencyDimensions | MetricRequestDimensions): Attributes;
+ /**
+  * Returns available system memory in bytes.
+diff --git a/dist/esm/shared/config.d.ts b/dist/esm/shared/config.d.ts
+index 4939b3b9a222f7c2ec1fb559f6e99db66ed42847..5fe699e6c6e0220499c7969c63df039328266397 100644
+--- a/dist/esm/shared/config.d.ts
++++ b/dist/esm/shared/config.d.ts
+@@ -1,6 +1,6 @@
+ import type { Resource } from "@opentelemetry/resources";
+ import type { BrowserSdkLoaderOptions, AzureMonitorOpenTelemetryOptions, InstrumentationOptions } from "../types.js";
+-import type { Sampler } from "@opentelemetry/sdk-trace-base";
++import type { Sampler } from "@opentelemetry/sdk-trace";
+ import type { AzureMonitorExporterOptions } from "@azure/monitor-opentelemetry-exporter";
+ /**
+  * Azure Monitor OpenTelemetry Client Configuration
+diff --git a/dist/esm/shared/envConfig.d.ts b/dist/esm/shared/envConfig.d.ts
+index 7687807a580a13e477a75ecf3d8c3951aac5c034..73eb20ca05fa2c1735281e14c2dd7c077addc035 100644
+--- a/dist/esm/shared/envConfig.d.ts
++++ b/dist/esm/shared/envConfig.d.ts
+@@ -1,5 +1,5 @@
+ import type { AzureMonitorOpenTelemetryOptions } from "../types.js";
+-import type { Sampler } from "@opentelemetry/sdk-trace-base";
++import type { Sampler } from "@opentelemetry/sdk-trace";
+ /**
+  * Azure Monitor OpenTelemetry Client Configuration through Env variables
+  * @internal
+diff --git a/dist/esm/shared/envConfig.js b/dist/esm/shared/envConfig.js
+index 2a8a7a4893d1bb4eb0aa58f8e61f769227bc95ce..7b67c3eb3d1aea2077f45231dbdbaa2752d6059a 100644
+--- a/dist/esm/shared/envConfig.js
++++ b/dist/esm/shared/envConfig.js
+@@ -1,6 +1,6 @@
+ // Copyright (c) Microsoft Corporation.
+ // Licensed under the MIT License.
+-import { AlwaysOffSampler, AlwaysOnSampler, ParentBasedSampler, TraceIdRatioBasedSampler, } from "@opentelemetry/sdk-trace-base";
++import { AlwaysOffSampler, AlwaysOnSampler, ParentBasedSampler, TraceIdRatioBasedSampler, } from "@opentelemetry/sdk-trace";
+ import { Logger } from "./logging/index.js";
+ const TRACES_SAMPLER = "OTEL_TRACES_SAMPLER";
+ const TRACES_SAMPLER_ARG = "OTEL_TRACES_SAMPLER_ARG";
+diff --git a/dist/esm/traces/handler.d.ts b/dist/esm/traces/handler.d.ts
+index 8ec4fb76ea78b586ed478cfb4a5b44275ef2d4da..7cd7daf996003d5d2a8d36eba49d1ad58819b2f4 100644
+--- a/dist/esm/traces/handler.d.ts
++++ b/dist/esm/traces/handler.d.ts
+@@ -1,5 +1,5 @@
+-import type { Sampler } from "@opentelemetry/sdk-trace-base";
+-import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
++import type { Sampler } from "@opentelemetry/sdk-trace";
++import { BatchSpanProcessor } from "@opentelemetry/sdk-trace";
+ import type { InternalConfig } from "../shared/config.js";
+ import type { MetricHandler } from "../metrics/handler.js";
+ import { AzureMonitorSpanProcessor } from "./spanProcessor.js";
+diff --git a/dist/esm/traces/handler.js b/dist/esm/traces/handler.js
+index 4b52c717249fcedb6e3316d5e4349ce1ff6b07a7..4947849944877a1c71dd2b72ecc8ae28e01f3ff8 100644
+--- a/dist/esm/traces/handler.js
++++ b/dist/esm/traces/handler.js
+@@ -1,7 +1,7 @@
+ // Copyright (c) Microsoft Corporation.
+ // Licensed under the MIT License.
+ import { AzureMonitorTraceExporter, RateLimitedSampler, } from "@azure/monitor-opentelemetry-exporter";
+-import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
++import { BatchSpanProcessor } from "@opentelemetry/sdk-trace";
+ import { HttpInstrumentation } from "@opentelemetry/instrumentation-http";
+ import { MongoDBInstrumentation } from "@opentelemetry/instrumentation-mongodb";
+ import { MySQLInstrumentation } from "@opentelemetry/instrumentation-mysql";
+@@ -50,7 +50,7 @@ export class TraceHandler {
+             this._sampler = new ApplicationInsightsSampler(this._config.samplingRatio);
+         }
+         this._azureExporter = new AzureMonitorTraceExporter(this._config.azureMonitorExporterOptions);
+-        this._batchSpanProcessor = new BatchSpanProcessor(this._azureExporter);
++        this._batchSpanProcessor = new BatchSpanProcessor({ exporter: this._azureExporter });
+         this._azureSpanProcessor = new AzureMonitorSpanProcessor(this._metricHandler);
+         this._azureFunctionsHook = new AzureFunctionsHook();
+         this._initializeInstrumentations();
+diff --git a/dist/esm/traces/sampler.d.ts b/dist/esm/traces/sampler.d.ts
+index d6801b65db4627ba3ed0041b3d1f06573b479004..1d541ad19f879c129618e632f56199e267938f6b 100644
+--- a/dist/esm/traces/sampler.d.ts
++++ b/dist/esm/traces/sampler.d.ts
+@@ -3,7 +3,7 @@
+  * This sampler specifically marks spans as sampled out and records them instead of dropping the span altogether.
+  */
+ import type { Link, Attributes, SpanKind, Context } from "@opentelemetry/api";
+-import type { Sampler, SamplingResult } from "@opentelemetry/sdk-trace-base";
++import type { Sampler, SamplingResult } from "@opentelemetry/sdk-trace";
+ /**
+  * ApplicationInsightsSampler is responsible for the following:
+  * Implements same trace id hashing algorithm so that traces are sampled the same across multiple nodes
+diff --git a/dist/esm/traces/sampler.js b/dist/esm/traces/sampler.js
+index 1e36509162d4bcca219d60e1afe5caa349ce8b42..685012a0c061485e131e84512ef03265d994720e 100644
+--- a/dist/esm/traces/sampler.js
++++ b/dist/esm/traces/sampler.js
+@@ -1,5 +1,5 @@
+ import { diag } from "@opentelemetry/api";
+-import { SamplingDecision } from "@opentelemetry/sdk-trace-base";
++import { SamplingDecision } from "@opentelemetry/sdk-trace";
+ import { AzureMonitorSampleRate } from "../types.js";
+ /**
+  * ApplicationInsightsSampler is responsible for the following:
+diff --git a/dist/esm/traces/spanProcessor.d.ts b/dist/esm/traces/spanProcessor.d.ts
+index ed6d51895964bd3f0a39b85e42558fb869cf29cb..9916e80c87c4161668bb380bbb249ae14aeda843 100644
+--- a/dist/esm/traces/spanProcessor.d.ts
++++ b/dist/esm/traces/spanProcessor.d.ts
+@@ -1,5 +1,5 @@
+ import type { Context } from "@opentelemetry/api";
+-import type { ReadableSpan, Span, SpanProcessor } from "@opentelemetry/sdk-trace-base";
++import type { ReadableSpan, Span, SpanProcessor } from "@opentelemetry/sdk-trace";
+ import type { MetricHandler } from "../metrics/index.js";
+ /**
+  * Azure Monitor Span Processor.
+diff --git a/dist/esm/types.d.ts b/dist/esm/types.d.ts
+index 261702e5f273fba93b9ca68805ac93a507e977f7..08c7f8fa6f9b820ba14ae2f16ab04908211cad8b 100644
+--- a/dist/esm/types.d.ts
++++ b/dist/esm/types.d.ts
+@@ -1,10 +1,10 @@
+ import type { AzureMonitorExporterOptions } from "@azure/monitor-opentelemetry-exporter";
+ import type { InstrumentationConfig } from "@opentelemetry/instrumentation";
+-import type { SeverityNumber } from "@opentelemetry/api-logs";
++import type { SeverityNumber } from "@opentelemetry/api";
+ import type { Resource } from "@opentelemetry/resources";
+ import type { LogRecordProcessor } from "@opentelemetry/sdk-logs";
+ import type { MetricReader, ViewOptions } from "@opentelemetry/sdk-metrics";
+-import type { SpanProcessor } from "@opentelemetry/sdk-trace-base";
++import type { SpanProcessor } from "@opentelemetry/sdk-trace";
+ /**
+  * Azure Monitor OpenTelemetry Options
+  */
+diff --git a/dist/esm/utils/logUtils.d.ts b/dist/esm/utils/logUtils.d.ts
+index 8bc20985f9294f64b1100c36866eb45697407fcd..64182156b4ec7510ca232246ff6bf561635ca407 100644
+--- a/dist/esm/utils/logUtils.d.ts
++++ b/dist/esm/utils/logUtils.d.ts
+@@ -1,4 +1,4 @@
+-import { SeverityNumber } from "@opentelemetry/api-logs";
++import { SeverityNumber } from "@opentelemetry/api";
+ /**
+  * Checks whether the instrumentation logging level disables collection.
+  * @internal
+diff --git a/dist/esm/utils/logUtils.js b/dist/esm/utils/logUtils.js
+index 99b80df97bb69b1762df2d7f41aee2f78bcbaf4b..12b30ac696796c6718010dd22f52e9b460bfb473 100644
+--- a/dist/esm/utils/logUtils.js
++++ b/dist/esm/utils/logUtils.js
+@@ -1,6 +1,6 @@
+ // Copyright (c) Microsoft Corporation.
+ // Licensed under the MIT License.
+-import { SeverityNumber } from "@opentelemetry/api-logs";
++import { SeverityNumber } from "@opentelemetry/api";
+ /**
+  * Checks whether the instrumentation logging level disables collection.
+  * @internal

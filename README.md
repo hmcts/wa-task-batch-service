@@ -6,7 +6,7 @@
 
 Running the application requires the following tools to be installed in your environment:
 
-  * [Node.js](https://nodejs.org/) v18.0.0 or later
+  * [Node.js](https://nodejs.org/) v22.15.0 or later (the Docker image uses Node.js 24)
   * [yarn](https://yarnpkg.com/)
   * [Docker](https://www.docker.com)
 
@@ -228,4 +228,3 @@ e.g. the ones verifying the state of each service it depends on.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-
