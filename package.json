@@ -96,7 +96,7 @@
   "packageManager": "yarn@4.15.0",
   "resolutions": {
     "@azure/msal-node": "7.2.1",
-    "follow-redirects": "1.16.2",
+    "follow-redirects": "1.16.3",
     "glob": "14.0.3",
     "minimatch": "11.0.4",
     "@opentelemetry/instrumentation-mysql": "0.67.0",
