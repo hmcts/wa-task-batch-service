@@ -8,7 +8,10 @@ module.exports = {
   "testEnvironment": "node",
   transform: {
     '^.+\\.ts?$': 'ts-jest',
+    '^.+\\.js$': ['babel-jest', {
+      presets: [['@babel/preset-env', {targets: {node: 'current'}, modules: 'commonjs'}]],
+    }],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  transformIgnorePatterns: ['/node_modules/(?!react-dnd|dnd-core|@react-dnd|react-dnd-html5-backend)'],
+  transformIgnorePatterns: ['/node_modules/(?!(?:@scure/base|@noble/hashes|@otplib/plugin-crypto-noble/node_modules/@noble/hashes)/)'],
 }

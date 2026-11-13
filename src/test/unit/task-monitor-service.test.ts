@@ -2,9 +2,12 @@ import { TaskMonitorService } from '../../main/services/task-monitor-service';
 import { setupServer }  from 'msw/node';
 import { http } from 'msw';
 import  config  from 'config';
-//import Logger from 'utils/logger';
-
-
+jest.mock('config', () => {
+  const actualConfig = jest.requireActual<typeof config>('config');
+  return {
+    get: (key: string) => key === 's2s.secret' ? 'AAAAAAAAAAAAAAAAAAAAAAAAAA' : actualConfig.get(key),
+  };
+});
 
 describe('create job', () => {
   const s2sUrl = config.get('s2s.url') + '/lease';
