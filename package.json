@@ -98,7 +98,7 @@
     "@azure/msal-node": "7.2.1",
     "follow-redirects": "1.16.2",
     "glob": "14.0.3",
-    "minimatch": "11.0.4",
+    "minimatch": "11.0.8",
     "@opentelemetry/instrumentation-mysql": "0.67.0",
     "@opentelemetry/instrumentation-pg": "0.73.0",
     "test-exclude": "7.0.2"
