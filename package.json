@@ -95,7 +95,7 @@
   },
   "packageManager": "yarn@4.15.0",
   "resolutions": {
-    "@azure/msal-node": "7.2.1",
+    "@azure/msal-node": "7.2.2",
     "follow-redirects": "1.16.2",
     "glob": "14.0.3",
     "minimatch": "11.0.4",
