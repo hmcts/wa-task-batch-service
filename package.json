@@ -102,6 +102,6 @@
     "@opentelemetry/instrumentation-mysql": "0.67.0",
     "@opentelemetry/instrumentation-pg": "0.73.0",
     "test-exclude": "7.0.2",
-    "@opentelemetry/instrumentation-http": "0.222.0"
+    "@opentelemetry/instrumentation-http": "0.301.2"
   }
 }
