@@ -10510,6 +10510,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^8.59.4"
     applicationinsights: "npm:^3.12.0"
     axios: "npm:1.21.1"
+    babel-jest: "npm:^29.7.0"
     babel-loader: "npm:^10.0.0"
     chai: "npm:^6.0.0"
     chai-as-promised: "npm:^8.0.1"
