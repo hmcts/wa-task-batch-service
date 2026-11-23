@@ -3,7 +3,7 @@ import Logger, {getLogLabel} from '../utils/logger';
 import config from 'config';
 import {exit} from '../utils/exit';
 
-import {authenticator} from 'otplib';
+import {createGuardrails, generateSync} from 'otplib';
 
 const logger: Logger = new Logger();
 const logLabel: string = getLogLabel(__filename);
@@ -36,10 +36,15 @@ export default class S2SService implements IS2SService {
     const secret: string = config.get('s2s.secret');
     const microservice: string = config.get('s2s.microserviceName');
 
-    const oneTimePassword = authenticator.generate(secret);
-    const body = {microservice, oneTimePassword};
-
     try {
+      // Temporary compatibility for existing 16-character Base32 S2S secrets (10 bytes).
+      // Remove this override once shared secrets are updated in S2S and all consumers
+      // to meet otplib's default minimum of 16 decoded bytes.
+      const oneTimePassword = generateSync({
+        secret,
+        guardrails: createGuardrails({MIN_SECRET_BYTES: 10}),
+      });
+      const body = {microservice, oneTimePassword};
       const response: AxiosResponse = await axios.post(url, body);
       if (response && response.data) {
         logger.trace('Received S2S token', logLabel);
